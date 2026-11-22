@@ -129,6 +129,8 @@ def _parser() -> argparse.ArgumentParser:
     pitch = sub.add_parser("pitch", help="合成若干词并画出各自的 F0")
     pitch.add_argument("words", nargs="+")
     pitch.add_argument("-o", "--output", required=True)
+    pitch.add_argument("--engine", default="openjtalk", choices=["auto", "openjtalk", "voicevox"])
+    pitch.add_argument("--particle", default="", help="合成时附在词后，例如 が。图用带助词的高低型。")
     pitch.set_defaults(func=_cmd_pitch)
 
     export = sub.add_parser("export", help="导出 Anki")
@@ -201,10 +203,12 @@ def _cmd_setup(args: argparse.Namespace) -> int:
     lines.append("可选安装")
     lines.append("  pip install 'oto-coach[teach]'     # OpenJTalk、波形、图")
     lines.append("  pip install 'oto-coach[praat]'     # Parselmouth，GPL-3.0")
+    lines.append("  pip install 'oto-coach[score]'     # hatsuon 运行时：librosa、onnxruntime")
     lines.append("  pip install 'hatsuon[export]' && hatsuon-export")
-    lines.append("  VOICEVOX：见 README 的 CPU 下载步骤，目录给 OTO_VOICEVOX_DIR")
-    lines.append("  pip install 'oto-coach[asr]'       # Kotoba-Whisper 转写")
-    lines.append("  pip install 'oto-coach[dict]'      # JMdict，CC BY-SA")
+    lines.append("  VOICEVOX CPU：download-linux-x64 --models-pattern 0.vvm，目录给 OTO_VOICEVOX_DIR")
+    lines.append("  pip install 'oto-coach[asr]'       # faster-whisper int8，Kotoba-Whisper")
+    lines.append("  pip install 'oto-coach[dict]'      # JMdict，CC BY-SA，数据不进仓库")
+    lines.append("  pip install 'oto-coach[anki]'      # genanki，导出 apkg")
     return _emit(args, status, "\n".join(lines) + "\n")
 
 
@@ -373,8 +377,7 @@ def _cmd_lookup(args: argparse.Namespace) -> int:
     pitfalls = load_pitfalls()
     local = lookup_local(args.text, curriculum, pitfalls)
     local["furigana"] = furigana(args.text)
-    if args.jmdict:
-        local["jmdict"] = lookup_jmdict(args.text)
+    local["jmdict"] = lookup_jmdict(args.text)
     lines = [f"查 {args.text}", ""]
     if local["false_friends"]:
         lines.append("同形词")
@@ -396,6 +399,16 @@ def _cmd_lookup(args: argparse.Namespace) -> int:
         lines.append("课文")
         for hit in local["curriculum"]:
             lines.append(f"- {hit['jp']} {hit.get('reading') or ''} {hit.get('zh') or ''} {hit.get('pattern') or ''}")
+    jmdict = local.get("jmdict") or {}
+    if jmdict.get("available"):
+        lines.append(f"JMdict（{jmdict['license']}）")
+        lines.append(jmdict["attribution"])
+        for entry in jmdict["entries"]:
+            lines.append(f"- {entry}")
+        if not jmdict["entries"]:
+            lines.append("- （没有条目）")
+    elif args.jmdict:
+        lines.append(f"JMdict 未用：{jmdict.get('reason')}")
     furigana_info = local["furigana"]
     if furigana_info.get("available"):
         lines.append(f"引擎读音 {furigana_info.get('read')} / 发音 {furigana_info.get('pron')}")
@@ -490,10 +503,23 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
         )
         lines.append(hatsuon["disclaimer_zh"])
         for word in hatsuon.get("words") or []:
-            bits = " ".join(f"{m['kana']}:{m['status']}" for m in word["morae"])
-            lines.append(f"  {word['surface']} {word['reading']} {word['accent']} {bits}")
+            bits = " ".join(_mora_bit(mora) for mora in word["morae"])
+            lines.append(
+                f"  {word['surface']} {word['reading']} 词分 {word['score']} "
+                f"重音结果 {word['accent']} 核 {word['accent_type']} {bits}"
+            )
     elif hatsuon:
         lines.append(f"hatsuon 未用：{hatsuon.get('reason')}")
+    transcript = result.get("transcript") or {}
+    if transcript.get("available"):
+        lines.append(
+            f"转写 {transcript.get('engine')} {transcript.get('compute_type') or ''}："
+            f"{transcript.get('text')}"
+        )
+        if transcript.get("note_zh"):
+            lines.append(transcript["note_zh"])
+    elif transcript:
+        lines.append(f"转写未用：{transcript.get('reason')}")
     lines.append("")
     lines.append("提醒（看的是目标音，不是诊断）")
     for reminder in result["reminders_zh"]:
@@ -501,6 +527,12 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
     lines.append("")
     lines.append(result["disclaimer_zh"])
     return _emit(args, result, "\n".join(lines) + "\n")
+
+
+def _mora_bit(mora: dict) -> str:
+    pitch = mora.get("pitch_status") or "—"
+    level = mora.get("expected_level") or "—"
+    return f"{mora['kana']}:{mora['status']}/{mora['score']}/预期{level}/音高{pitch}"
 
 
 def _cmd_pitch(args: argparse.Namespace) -> int:
@@ -511,34 +543,79 @@ def _cmd_pitch(args: argparse.Namespace) -> int:
     from oto.pronounce.tts import synthesize
 
     out = Path(args.output)
+    particle = args.particle or ""
     rows = []
     details = []
+    credits = []
+    engines = []
     for word in args.words:
-        wav = out.with_name(out.stem + f"-{word}.wav")
-        spoken = synthesize(word, wav, engine="openjtalk")
+        lexical = word[: -len(particle)] if particle and word.endswith(particle) else word
+        spoken_text = f"{lexical}{particle}" if particle else word
+        wav = out.with_name(out.stem + f"-{spoken_text}.wav")
+        spoken = synthesize(spoken_text, wav, engine=args.engine)
         if not spoken.get("available"):
-            raise RuntimeError(spoken.get("reason"))
-        ref = merge_reference(word, load_curriculum())
+            raise RuntimeError(spoken.get("reason") or f"{spoken_text} 合成失败")
+        ref = merge_reference(lexical, load_curriculum())
         samples, sample_rate = read_wav(wav)
         track = extract_f0(samples, sample_rate)
         if not ref.get("morae"):
-            raise RuntimeError(f"{word} 没有单字重音型，不能放进对照图。")
+            raise RuntimeError(f"{lexical} 没有单字重音型，不能放进对照图。")
+        morae = list(ref["morae"])
+        levels = list(ref["levels"])
+        if particle:
+            morae = [*morae, particle]
+            levels = list(ref.get("levels_with_particle") or levels)
         rows.append(
             {
-                "surface": word,
+                "surface": lexical,
+                "spoken": spoken_text,
                 "reading": ref.get("reading"),
                 "type": ref.get("type"),
                 "accent": ref.get("accent"),
-                "morae": ref.get("morae"),
-                "levels": ref.get("levels"),
+                "morae": morae,
+                "levels": levels,
                 "times": track["times"],
                 "freqs": track["freqs"],
             }
         )
-        details.append({"word": word, "wav": str(wav), "reference": ref, "f0": track["summary"], "credit": spoken.get("credit")})
-    plot_trio(out, rows)
-    payload = {"chart": str(out), "items": details}
-    return _emit(args, payload, f"已写入 {out}\n引擎 OpenJTalk。曲线是合成音，不是学习者。\n")
+        details.append(
+            {
+                "word": lexical,
+                "spoken": spoken_text,
+                "wav": str(wav),
+                "engine": spoken.get("engine"),
+                "reference": {
+                    "type": ref.get("type"),
+                    "accent": ref.get("accent"),
+                    "reading": ref.get("reading"),
+                },
+                "f0": track["summary"],
+                "credit": spoken.get("credit"),
+            }
+        )
+        if spoken.get("credit"):
+            credits.append(spoken["credit"])
+        if spoken.get("engine"):
+            engines.append(spoken["engine"])
+    engine_name = engines[0] if engines else args.engine
+    title = f"{' '.join(args.words)} 的实测 F0（{engine_name}）"
+    caption = "曲线是合成音的基频，不是学习者录音。朱红字是教材重音型，没有对齐到时间上。"
+    if particle:
+        caption += f" 短语带助词「{particle}」，用来分开尾高和平板。"
+    else:
+        caption += " 无助词时，尾高和平板的合成曲线可能重合。"
+    if credits:
+        caption += " 署名：" + "；".join(dict.fromkeys(credits)) + "。"
+    plot_trio(out, rows, title=title, caption=caption)
+    payload = {"chart": str(out), "items": details, "engine": engine_name}
+    credit_line = ""
+    if credits:
+        credit_line = "署名 " + "；".join(dict.fromkeys(credits)) + "。\n"
+    return _emit(
+        args,
+        payload,
+        f"已写入 {out}\n引擎 {engine_name}。曲线是合成音，不是学习者。\n{credit_line}",
+    )
 
 
 def _cmd_export(args: argparse.Namespace) -> int:

@@ -46,19 +46,19 @@ python3 -m venv .venv && .venv/bin/pip install -e ".[teach]"
 .venv/bin/oto quiz --unit vocab-traps
 .venv/bin/oto lookup 手紙
 .venv/bin/oto reference 箸
-.venv/bin/oto speak はし -o /tmp/hashi.wav --engine openjtalk
+.venv/bin/oto speak はし -o /tmp/hashi.wav --engine voicevox
 .venv/bin/oto analyze /tmp/hashi.wav --text はし --chart /tmp/hashi.png
 ```
 
-查词典是可选的：`oto lookup 手紙 --jmdict`，需要安装 `.[dict]`，词典不随包分发。
+装了 `.[dict]` 之后，`oto lookup` 会在课文后面附上 JMdict 词条。数据是 EDRDG 的 CC BY-SA，不随包分发。
 
 ## 发音
 
 `oto analyze` 里的中文提醒是规则，不是听诊。基频图是测量，音高条是词典预期，两者没有做时间对齐。
 
-hatsuon 有模型时才出分数，并且只作参考。它没有按中文母语者校准，不能当考试分。模型要用户自己导出。
+hatsuon 有模型时才出分数，并且只作参考。它没有按中文母语者校准，不能当考试分。模型要用户自己跑 `hatsuon-export`，不进仓库。24 kHz 的音频靠 librosa / soxr 重采样；这一步失败时，先用 numpy 重采样到 16 kHz 再试一次。
 
-VOICEVOX 需要另外下载运行时和声库，并署名 `VOICEVOX:四国めたん`。没有它就用 OpenJTalk。
+VOICEVOX 需要另外下载 CPU 运行时和声库，并署名 `VOICEVOX:四国めたん`。没有它就用 OpenJTalk。`--transcribe` 用 faster-whisper int8 跑 Kotoba-Whisper，只核对是不是这一句，不评分。
 
 ## 语气
 

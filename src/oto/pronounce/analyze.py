@@ -41,14 +41,17 @@ def analyze(
     use_hatsuon: bool = True,
 ) -> dict[str, Any]:
     reference = merge_reference(text, curriculum, reading=reading, accent=accent)
+    reference = _particle_reference(text, curriculum, reference, reading=reading, accent=accent)
     samples, sample_rate = read_wav(audio)
     track = extract_f0(samples, sample_rate)
     reminders = _reminders(reference)
     hatsuon = None
     if use_hatsuon:
         accent_map = None
-        surface = reference.get("surface") or text
+        surface = str(reference.get("surface") or text)
         if reference.get("accent") is not None and reference.get("morae"):
+            # Key the lexical surface only. Mapping the whole phrase (箸が)
+            # onto the word's kana drops the particle.
             accent_map = {surface: int(reference["accent"])}
         hatsuon = score_audio(
             str(audio),
@@ -69,8 +72,8 @@ def analyze(
                 times=track["times"],
                 freqs=track["freqs"],
                 title=f"{text}  ·  {reference.get('type') or '语调'}",
-                levels=reference.get("levels"),
-                morae=reference.get("morae"),
+                levels=reference.get("chart_levels") or reference.get("levels"),
+                morae=reference.get("chart_morae") or reference.get("morae"),
                 caption=_caption(track["summary"], reference),
             )
             chart_path = str(chart)
@@ -91,6 +94,28 @@ def analyze(
         "chart_error": chart_error,
         "disclaimer_zh": "F0 是这条例录音的基频。下面的拍型来自教材或引擎，画在另一栏，没有被假装成时间对齐。针对中文母语者的提醒只看目标音里有什么，不是从声波里诊断出来的错误。",
     }
+
+
+def _particle_reference(
+    text: str,
+    curriculum: dict[str, Any],
+    reference: dict[str, Any],
+    *,
+    reading: str | None,
+    accent: int | None,
+) -> dict[str, Any]:
+    """A phrase like 箸が has no single nucleus. Draw the word's pattern plus が."""
+    if reading or accent is not None or reference.get("morae"):
+        return reference
+    if not text.endswith("が") or len(text) < 2:
+        return reference
+    lexical = merge_reference(text[:-1], curriculum)
+    if not lexical.get("morae") or lexical.get("accent") is None:
+        return reference
+    drawn = dict(lexical)
+    drawn["chart_morae"] = [*lexical["morae"], "が"]
+    drawn["chart_levels"] = list(lexical.get("levels_with_particle") or [])
+    return drawn
 
 
 def _public_reference(reference: dict[str, Any]) -> dict[str, Any]:

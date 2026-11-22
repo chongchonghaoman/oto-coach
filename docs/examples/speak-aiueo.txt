@@ -1,6 +1,4 @@
-Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
-Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
 已写入 docs/examples/aiueo.wav
-引擎 openjtalk
-署名 OpenJTalk / hts_engine / HTS voice nitech_jp_atr503_m001（名古屋工业大学）
-这是合成参考音，不是母语者录音，也不能当作学习者的目标音色。
+引擎 voicevox
+署名 VOICEVOX:四国めたん
+使用了语音库，公开这段音频时请注明「VOICEVOX:四国めたん」。不要把角色音当成标准发音教师。

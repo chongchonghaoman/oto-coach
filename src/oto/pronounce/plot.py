@@ -99,8 +99,11 @@ def plot_analysis(
 def plot_trio(
     path: Path,
     rows: list[dict],
+    *,
+    title: str,
+    caption: str,
 ) -> None:
-    """Three synthesized words, each with its own F0 and expected pattern."""
+    """Synthesized phrases, each with its own F0 and expected pattern."""
     import matplotlib
 
     matplotlib.use("Agg")
@@ -129,7 +132,8 @@ def plot_trio(
         axis.set_facecolor(paper)
         axis.spines["top"].set_visible(False)
         axis.spines["right"].set_visible(False)
-        label = f"{row['surface']}  {row['reading']}  {row['type']}  核 {row['accent']}"
+        spoken = row.get("spoken") or row["surface"]
+        label = f"{spoken}  {row['reading']}  {row['type']}  核 {row['accent']}"
         axis.set_title(label, loc="left", color=ink, fontsize=12)
         axis.set_ylabel("Hz")
         axis.tick_params(colors=muted)
@@ -146,14 +150,8 @@ def plot_trio(
             color=vermilion,
             fontsize=11,
         )
-    fig.suptitle("はし  三词的实测 F0（OpenJTalk 合成）", color=ink, fontsize=14, x=0.02, ha="left")
-    fig.text(
-        0.01,
-        0.005,
-        "曲线是合成音的基频，不是学习者录音。朱红字是教材重音型，没有对齐到时间上。无助词时，尾高和平板的合成曲线可能重合。",
-        color=muted,
-        fontsize=8,
-    )
+    fig.suptitle(title, color=ink, fontsize=14, x=0.02, ha="left")
+    fig.text(0.01, 0.005, caption, color=muted, fontsize=8)
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, facecolor=paper)

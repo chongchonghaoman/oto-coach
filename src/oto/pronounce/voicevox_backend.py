@@ -46,16 +46,17 @@ def voicevox_synthesize(text: str, out: Path) -> dict[str, Any]:
         ort = root / "onnxruntime" / "lib" / ort_name
         dictionary = _find_dict(root)
         vvm = next((root / "models" / "vvms").glob("*.vvm"))
-        kwargs = {}
         synthesizer = Synthesizer(
             Onnxruntime.load_once(filename=str(ort)),
-            OpenJtalk(str(dictionary)),
-            **kwargs,
+            OpenJtalk(dictionary),
+            acceleration_mode="CPU",
+            cpu_num_threads=2,
         )
-        with VoiceModelFile.open(str(vvm)) as model:
+        with VoiceModelFile.open(vvm) as model:
             synthesizer.load_voice_model(model)
-            style_id, speaker, style = _pick_style(model)
-        wav = synthesizer.tts(text, style_id)
+        style_id, speaker, style = _pick_style(synthesizer.metas())
+        query = synthesizer.create_audio_query(text, style_id)
+        wav = synthesizer.synthesis(query, style_id)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_bytes(wav)
     except Exception as exc:  # pragma: no cover - needs the runtime
@@ -81,13 +82,15 @@ def _find_dict(root: Path) -> Path:
     return found[0]
 
 
-def _pick_style(model: Any) -> tuple[int, str, str]:
+def _pick_style(metas: Any) -> tuple[int, str, str]:
     preferred = ("四国めたん", "ノーマル")
-    metas = list(getattr(model, "metas", []) or [])
     fallback = None
-    for meta in metas:
+    for meta in list(metas or []):
         name = getattr(meta, "name", "")
         for style in getattr(meta, "styles", []) or []:
+            style_type = str(getattr(style, "type", "talk")).lower()
+            if "song" in style_type or "frame" in style_type:
+                continue
             style_name = getattr(style, "name", "")
             style_id = int(getattr(style, "id"))
             if fallback is None:

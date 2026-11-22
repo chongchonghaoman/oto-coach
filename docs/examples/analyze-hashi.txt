@@ -1,11 +1,12 @@
-Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
-Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
-分析 箸
+分析 箸が
 
 头高，核=1。单独：は↑ し↓。加「が」：は↑ し↓ が↓
-F0 后端 parselmouth，浊音帧 15，中位 392 Hz。
+F0 后端 parselmouth，浊音帧 23，中位 358 Hz。
 图 docs/examples/hashi-analysis.png
-hatsuon 未用：resampling from 48000 Hz needs: pip install 'hatsuon[audio]'
+hatsuon 综合 71.6，准确 67.5，重音 100.0，信心 0.667。
+hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准。下面的数字是反馈，不是成绩，也不要据此给等级。
+  箸 ハシ 词分 53.5 重音结果 correct 核 1 ハ:mispronounced/6.9/预期H/音高ok シ:correct/100.0/预期L/音高ok
+  が ガ 词分 95.6 重音结果 unknown 核 None ガ:correct/95.6/预期L/音高—
 
 提醒（看的是目标音，不是诊断）
 - し更接近「西」的声母，不是「思」。

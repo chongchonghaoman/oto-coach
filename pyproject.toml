@@ -32,10 +32,10 @@ audio = ["numpy>=1.24", "soundfile>=0.12"]
 tts = ["pyopenjtalk-plus>=0.4.1", "numpy>=1.24"]
 plot = ["matplotlib>=3.7", "numpy>=1.24"]
 praat = ["praat-parselmouth>=0.4.3", "numpy>=1.24"]
-score = ["hatsuon>=0.1.2"]
-dict = ["jamdict>=0.1a11"]
+score = ["hatsuon>=0.1.2", "librosa>=0.10", "soundfile>=0.12", "onnxruntime>=1.17", "soxr>=0.3"]
+dict = ["jamdict>=0.1a11", "jamdict_data>=1.5"]
 anki = ["genanki>=0.13"]
-asr = ["transformers>=4.39", "torch>=2.2"]
+asr = ["faster-whisper>=1.1.0"]
 teach = [
     "numpy>=1.24",
     "soundfile>=0.12",

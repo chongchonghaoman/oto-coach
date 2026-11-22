@@ -1,8 +1,21 @@
 import sys
 import types
 
-from oto.pronounce.hatsuon_backend import score_audio
+from oto.pronounce.hatsuon_backend import reading_attempts, score_audio
 from oto.pronounce.voicevox_backend import voicevox_synthesize
+
+
+def test_kanji_accent_is_tried_before_a_bare_kana_reading():
+    attempts = reading_attempts("箸", "はし", {"箸": 1})
+    assert attempts[0] == ({"箸": "はし"}, {"箸": 1})
+    assert ("はし", {"箸": 1}) in attempts
+
+
+def test_one_kana_reading_is_not_copied_onto_every_accent_key():
+    accent = {"箸": 1, "箸が": 1}
+    attempts = reading_attempts("箸が", "はし", accent)
+    assert attempts[0] == ("はし", accent)
+    assert ({"箸": "はし", "箸が": "はし"}, accent) not in attempts
 
 
 def test_hatsuon_reports_a_missing_model(monkeypatch):

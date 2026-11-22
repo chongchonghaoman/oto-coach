@@ -64,16 +64,22 @@ def lookup_jmdict(query: str) -> dict[str, Any]:
     except ImportError:
         return {
             "available": False,
-            "reason": "未安装 jamdict。pip install 'oto-coach[dict]'。JMdict 数据是 CC BY-SA 4.0，不随仓库分发。",
+            "reason": "未安装 jamdict。pip install 'oto-coach[dict]'。JMdict 数据是 CC BY-SA 4.0（EDRDG），不随本仓库分发。",
         }
     try:
-        jam = Jamdict()
+        jam = Jamdict(memory_mode=False)
+        if not jam.db_file or not __import__("os").path.isfile(str(jam.db_file)):
+            return {
+                "available": False,
+                "reason": "没有本地 JMdict 数据库。pip install jamdict_data。数据是 CC BY-SA 4.0（EDRDG），不随本仓库分发。",
+            }
         result = jam.lookup(query)
     except Exception as exc:  # pragma: no cover - depends on local db
         return {"available": False, "reason": f"JMdict 查询失败：{exc}"}
     entries = []
-    for entry in list(result.entries)[:5]:
-        entries.append(str(entry))
+    for entry in list(result.entries)[:3]:
+        text = " ".join(str(entry).split())
+        entries.append(text)
     return {
         "available": True,
         "license": "JMdict / EDRDG, CC BY-SA 4.0",

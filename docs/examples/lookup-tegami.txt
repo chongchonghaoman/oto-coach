@@ -1,10 +1,11 @@
-Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
-Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
 查 手紙
 
 同形词
 - 手紙：日语 信；中文常作 卫生纸。卫生纸说トイレットペーパー。不要在邮局或别人家里把「手紙」理解成纸。
 课文
 - 手紙 てがみ 信 平板，核=0。单独：て↓ が↑ み↑。加「が」：て↓ が↑ み↑ が↑
+JMdict（JMdict / EDRDG, CC BY-SA 4.0）
+https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project
+- [id#1327720] てがみ (手紙) : letter/missive/note/mail ((noun (common) (futsuumeishi)))
 引擎读音 テガミ / 发音 テガミ
 read 是表记读音，pron 含连读和无声化。助词「は」常在 pron 里变成「ワ」。这是引擎词典，不是 NHK 审定。

@@ -28,8 +28,7 @@ def backend_status() -> dict[str, Any]:
         "voicevox_core": _installed("voicevox_core"),
         "voicevox_dir": str(runtime_dir()),
         "voicevox_models": voicevox_available(),
-        "transformers": _installed("transformers"),
-        "torch": _installed("torch"),
+        "faster_whisper": _installed("faster_whisper"),
         "jamdict": _installed("jamdict"),
         "genanki": _installed("genanki"),
         "licenses_zh": [
@@ -38,7 +37,7 @@ def backend_status() -> dict[str, Any]:
             "hatsuon：MIT，alpha，未用学习者数据校准。",
             "pyopenjtalk-plus：MIT。OpenJTalk 与 hts_engine 为修改版 BSD。HTS 音源 nitech_jp_atr503_m001 需保留名古屋工业大学署名。",
             "VOICEVOX CORE 0.16+：MIT。四国めたん等音源另有规约，公开音频须写「VOICEVOX:四国めたん」。",
-            "Kotoba-Whisper v2.0：Apache-2.0。按需下载，不随包分发。",
+            "Kotoba-Whisper v2.0（faster 版）：Apache-2.0。faster-whisper int8，按需下载，不随包分发。",
             "JMdict：CC BY-SA 4.0（EDRDG）。jamdict 代码是 MIT。词典数据不进仓库。",
         ],
     }

@@ -58,7 +58,7 @@ python3 -m venv .venv
 .venv/bin/oto place
 ```
 
-要画基频并尽量用 Praat，再装 `.[praat]`。这一项是 GPL-3.0，不装也能跑，会退回 numpy 的自相关。
+要画基频并尽量用 Praat，再装 `.[praat]`。这一项是 GPL-3.0，不装也能跑，会退回 numpy 的自相关。发音分数（`.[score]`）、JMdict（`.[dict]`）、转写（`.[asr]`）、apkg（`.[anki]`）和 VOICEVOX 都是另外装的。CI 只跑不带这些依赖的测试。
 
 进度默认在 `~/.oto/learner.yaml`。换路径用 `--learner`，或环境变量 `OTO_LEARNER`。课程数据可用 `OTO_DATA` 指到别的目录。
 
@@ -94,12 +94,13 @@ oto grade v-tegami --rating good
 oto mistake --error gram-wa-ga --detail "把は说成了が"
 oto quiz --unit vocab-traps --seed 1
 oto lookup 手紙
-oto lookup 読む --jmdict          # 需要 .[dict]，词典不进仓库
 oto reference 箸
-oto speak あいうえお -o /tmp/aiueo.wav --engine openjtalk
+oto speak あいうえお -o /tmp/aiueo.wav --engine voicevox
 oto analyze /tmp/aiueo.wav --text あいうえお --chart /tmp/aiueo.png
-oto pitch 箸 橋 端 -o /tmp/hashi.png
+oto analyze /tmp/aiueo.wav --text あいうえお --transcribe
+oto pitch 箸 橋 端 -o /tmp/hashi.png --engine voicevox --particle が
 oto export anki -o cards.csv --all
+oto export anki -o cards.apkg --format apkg --all
 oto setup
 ```
 
@@ -135,7 +136,7 @@ oto --learner docs/examples/learner.yaml --date 2026-11-22 lesson --unit vocab-t
 
 对照在分隔线下面。第二天再跑 `oto review --date 2026-11-23`，这五张卡片到期。完整输出在 [docs/examples/lesson-traps.txt](docs/examples/lesson-traps.txt) 和 [docs/examples/review.txt](docs/examples/review.txt)。
 
-查词：
+查词。装了 `.[dict]` 之后，课文和同形词后面会附上 JMdict。完整输出在 [docs/examples/lookup-tegami.txt](docs/examples/lookup-tegami.txt)：
 
 ```text
 查 手紙
@@ -144,76 +145,125 @@ oto --learner docs/examples/learner.yaml --date 2026-11-22 lesson --unit vocab-t
 - 手紙：日语 信；中文常作 卫生纸。卫生纸说トイレットペーパー。不要在邮局或别人家里把「手紙」理解成纸。
 课文
 - 手紙 てがみ 信 平板，核=0。单独：て↓ が↑ み↑。加「が」：て↓ が↑ み↑ が↑
+JMdict（JMdict / EDRDG, CC BY-SA 4.0）
+https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project
+- [id#1327720] てがみ (手紙) : letter/missive/note/mail ((noun (common) (futsuumeishi)))
 引擎读音 テガミ / 发音 テガミ
 ```
 
 ## 一次真的合成和测量
 
-`oto speak` 用 OpenJTalk 写出了 [docs/examples/aiueo.wav](docs/examples/aiueo.wav)。署名是 HTS voice `nitech_jp_atr503_m001`（名古屋工业大学）。这是合成参考音，不是母语者，也不是学习者该去模仿的音色。
+这次的示例音频是 VOICEVOX 合成的。本机没有 Docker，所以没有跑 `voicevox/voicevox_engine:cpu-latest`，用的是官方 Linux CPU 轮子 `voicevox_core` 0.17.1 和官方下载器。声库是 `0.vvm`，风格是四国めたん / ノーマル（style id 2）。下载器默认的 ONNX Runtime 1.17.3 对不上轮子要求的 `libvoicevox_onnxruntime.so.1.23.2`，换成 1.23.2 之后才出声。公开这些 wav 时署名 `VOICEVOX:四国めたん`。这是角色音，不是要模仿的标准教师，也不是 NHK 审定。
 
-`oto pitch 箸 橋 端` 合成了三个词，并画出实测基频。[docs/examples/hashi-trio.png](docs/examples/hashi-trio.png) 里的朱红字是教材重音型，没有贴到时间轴上。
-
-<p align="center">
-  <img src="docs/examples/hashi-trio.png" alt="箸、橋、端的合成基频。朱红字是教材重音型。" width="100%">
-</p>
-
-同一批文件再用 Parselmouth 算浊音中位，结果写在 [docs/examples/f0-medians.txt](docs/examples/f0-medians.txt)：
-
-```text
-hashi-trio-箸.wav  1.030s  浊音帧 15  中位 392.0 Hz
-hashi-trio-橋.wav  1.030s  浊音帧 16  中位 280.6 Hz
-hashi-trio-端.wav  1.030s  浊音帧 16  中位 280.6 Hz
-aiueo.wav          1.155s  浊音帧 47  中位 365.1 Hz
+```bash
+oto speak あいうえお -o docs/examples/aiueo.wav --engine voicevox
+oto pitch 箸 橋 端 -o docs/examples/hashi-trio.png --engine voicevox --particle が
 ```
 
-橋和端的曲线在这次合成里是重合的。尾高和平板要靠后面的助词才分开，这套 HTS 音没有把两个词读成两条不同的曲线。不要把这张图读成「三个重音都已经在声波里分开了」。
-
-单独分析「箸」的原样输出：
+音频是 [docs/examples/aiueo.wav](docs/examples/aiueo.wav)。`oto speak` 的原样输出在 [docs/examples/speak-aiueo.txt](docs/examples/speak-aiueo.txt)：
 
 ```text
-分析 箸
+已写入 docs/examples/aiueo.wav
+引擎 voicevox
+署名 VOICEVOX:四国めたん
+使用了语音库，公开这段音频时请注明「VOICEVOX:四国めたん」。不要把角色音当成标准发音教师。
+```
+
+尾高的橋和平板的端，单独念都是「低高」。下降落在后面的助词上，所以三个词都带了「が」。[docs/examples/hashi-trio.png](docs/examples/hashi-trio.png) 里三条曲线不一样：箸が从高处落到低处，橋が先升再在助词上落下，端が升上去之后停在高处。大约 0.37 秒的凹口是「が」的辅音，不是用来把三条曲线对齐的。朱红字是教材型，没有贴到时间轴上。
+
+<p align="center">
+  <img src="docs/examples/hashi-trio.png" alt="VOICEVOX 合成的箸が、橋が、端が。三条基频不一样。朱红字是教材重音型。" width="100%">
+</p>
+
+中位只说明整段有多高，分不开这三型。Parselmouth 的数字写在 [docs/examples/f0-medians.txt](docs/examples/f0-medians.txt)：
+
+```text
+hashi-trio-箸が.wav  0.629s  sr 24000  浊音帧 23  中位 357.9 Hz
+hashi-trio-橋が.wav  0.629s  sr 24000  浊音帧 26  中位 365.1 Hz
+hashi-trio-端が.wav  0.629s  sr 24000  浊音帧 26  中位 389.9 Hz
+aiueo.wav            0.875s  sr 24000  浊音帧 58  中位 354.4 Hz
+```
+
+单独分析「箸が」。hatsuon 的 ONNX 是本机跑过一次 `hatsuon-export` 得到的（和 torch 的 argmax 一致率 1.000），放在缓存里，不进仓库。`oto analyze` 的原样输出：
+
+```text
+分析 箸が
 
 头高，核=1。单独：は↑ し↓。加「が」：は↑ し↓ が↓
-F0 后端 parselmouth，浊音帧 15，中位 392 Hz。
+F0 后端 parselmouth，浊音帧 23，中位 358 Hz。
 图 docs/examples/hashi-analysis.png
-hatsuon 未用：resampling from 48000 Hz needs: pip install 'hatsuon[audio]'
-
-提醒（看的是目标音，不是诊断）
-- し更接近「西」的声母，不是「思」。
-- 这是头高，全词只有一个下倾，不是每个字一个普通话声调。
+hatsuon 综合 71.6，准确 67.5，重音 100.0，信心 0.667。
+hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准。下面的数字是反馈，不是成绩，也不要据此给等级。
+  箸 ハシ 词分 53.5 重音结果 correct 核 1 ハ:mispronounced/6.9/预期H/音高ok シ:correct/100.0/预期L/音高ok
+  が ガ 词分 95.6 重音结果 unknown 核 None ガ:correct/95.6/预期L/音高—
 ```
 
 <p align="center">
-  <img src="docs/examples/hashi-analysis.png" alt="箸的波形、基频，以及分开画的头高型。" width="100%">
+  <img src="docs/examples/hashi-analysis.png" alt="箸が的波形、基频，以及分开画的头高型。" width="100%">
 </p>
 
-下面那一栏是教材的高低，不是从基频里对齐出来的。中文提醒也只看目标音里有哪些音，不诊断这条录音。开头那行 ONNX Runtime 警告来自 pyopenjtalk 的可选 nani 预测，没有装，也不影响上面的数字。
+下面那一栏是教材的高低，不是从基频里对齐出来的。ハ 被标成 mispronounced、6.9，シ 和 が 是 correct。综合 71.6，重音 100.0。这是反馈，不是成绩。
 
-あいうえお的图在 [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png)。OpenJTalk 把整串收成一个重音短语（中高，核 3）。那不是五个元音各自的声调。
+橋が和端が的拍级预期是对的。完整输出在 [docs/examples/analyze-hashi-橋.txt](docs/examples/analyze-hashi-橋.txt) 和 [docs/examples/analyze-hashi-端.txt](docs/examples/analyze-hashi-端.txt)：
+
+```text
+分析 橋が
+尾高，核=2。单独：は↓ し↑。加「が」：は↓ し↑ が↓
+hatsuon 综合 98.8，准确 98.8，重音 None，信心 0.833。
+  橋 ハシ 词分 98.2 重音结果 unknown 核 2 ハ:correct/96.5/预期L/音高— シ:correct/100.0/预期H/音高—
+  が ガ 词分 100.0 重音结果 unknown 核 None ガ:correct/100.0/预期L/音高—
+
+分析 端が
+平板，核=0。单独：は↓ し↑。加「が」：は↓ し↑ が↑
+hatsuon 综合 94.5，准确 94.5，重音 None，信心 0.667。
+  端 ハシ 词分 92.5 重音结果 unknown 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
+  が ガ 词分 98.6 重音结果 unknown 核 None ガ:correct/98.6/预期H/音高—
+```
+
+词级重音结果是 unknown，重音分是 None。hatsuon 把「が」收成下一个短语，尾高和平板的下降不在词短语里面，它就不打重音分。这个空分没有被填上。基频图才是「这两句被分开了」的证据：[docs/examples/hashi-analysis-橋.png](docs/examples/hashi-analysis-橋.png)、[docs/examples/hashi-analysis-端.png](docs/examples/hashi-analysis-端.png)。
+
+<p align="center">
+  <img src="docs/examples/hashi-analysis-橋.png" alt="橋が的波形和基频。教材栏是低、高、低。" width="48%">
+  <img src="docs/examples/hashi-analysis-端.png" alt="端が的波形和基频。教材栏是低、高、高。" width="48%">
+</p>
+
+あいうえお的原样输出在 [docs/examples/analyze-aiueo.txt](docs/examples/analyze-aiueo.txt)。综合 39.0，准确 60.0，重音 100.0。ア、ウ、オ 是 correct，イ 和 エ 被标成 deleted。注音把整串收成一个中高短语（核 3）。那不是五个元音各自的声调。图在 [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png)：音频和基频来自上面的 VOICEVOX wav，底栏的中高型来自 OpenJTalk 的短语切分。
+
+<p align="center">
+  <img src="docs/examples/aiueo-analysis.png" alt="あいうえお的波形、基频，以及中高型。" width="100%">
+</p>
+
+转写用的是 Kotoba-Whisper v2.0 的 CTranslate2 权重，`faster-whisper`，CPU int8，温度固定为 0。同一条音频解码两次，文本相同，但都不是目标句。[docs/examples/transcribe-hashi.txt](docs/examples/transcribe-hashi.txt) 把箸が写成了「歌詞は」。[docs/examples/transcribe-aiueo.txt](docs/examples/transcribe-aiueo.txt) 把あいうえお写成了「あゆえを」。转写能跑。这两条短合成音，它没有听对。
+
+Anki 包是这次导出的：[docs/examples/oto-n3.apkg](docs/examples/oto-n3.apkg)，352 张卡片，205018 字节。命令是 `oto export anki -o docs/examples/oto-n3.apkg --format apkg --all`。
 
 ## 发音引擎
 
 | 引擎 | 这次仓库里 | 没有它时 |
 |---|---|---|
-| pyopenjtalk-plus | 已合成上述 wav | `oto speak` 不可用 |
+| pyopenjtalk-plus | 注音、引擎重音对照。上面的 wav 不是它合成的 | 没有 VOICEVOX 时，`oto speak` 用它 |
 | praat-parselmouth | 上图的 F0 | 改用 numpy 自相关 |
-| hatsuon 0.1 | 包在，模型不在。调用停在重采样，没有分数 | 分析继续，只是没有 mora 分 |
-| VOICEVOX | 没下载运行时和声库 | 自动改用 OpenJTalk |
-| Kotoba-Whisper v2.0 | 没装 torch，没有跑 `--transcribe` | 不转写 |
+| hatsuon 0.1 | 模型已导出，打出了上面的 mora 分和重音分 | 分析继续，只是没有 mora 分 |
+| VOICEVOX CORE 0.17.1 CPU | 合成了上面的 wav | 自动改用 OpenJTalk |
+| Kotoba-Whisper v2.0（faster-whisper int8） | 跑了。两条短音都没有听对 | 不转写 |
+| jamdict + jamdict_data 1.5 | `oto lookup 手紙` 返回了上面的 JMdict 词条 | 只有课文和同形词 |
+| genanki | 写出了 `oto-n3.apkg` | 只有 CSV |
 
-hatsuon 只用母语者语料调过阈值。就算以后导出了模型，分数也只是反馈，不是成绩。模型要自己跑 `hatsuon-export`，不进这个仓库。
+hatsuon 只用母语者语料调过阈值，没有用学习者数据校准。分数是反馈，不是成绩，也不要据此给等级。模型自己跑 `hatsuon-export`（CPU 版 torch），不进这个仓库。24 kHz 的音频由 librosa / soxr 重采样；这一步失败时，Oto 用 numpy 重采样到 16 kHz 再试一次。重音只挂在词本身上。整句如果只有一个假名读音，不会抄到每一个词上，否则「が」会被吃掉。
 
-VOICEVOX 的核心库从 0.16 起是 MIT，声库不是。用了四国めたん就要署名 `VOICEVOX:四国めたん`。下载目录给 `OTO_VOICEVOX_DIR`，步骤在 `oto setup`。
+VOICEVOX 的核心库从 0.16 起是 MIT，声库不是。用了四国めたん就要署名 `VOICEVOX:四国めたん`。下载目录给 `OTO_VOICEVOX_DIR`。`oto setup` 会列出本机到底装了什么，这次的输出在 [docs/examples/setup.txt](docs/examples/setup.txt)。
 
 ## 复习
 
-默认是 FSRS-4.5 的公开初始权重，期望保持率 0.9。也可以在档案里把 `scheduler` 改成 `sm2`。Anki 导出是 CSV；装了 genanki 才能写 apkg。导出去之后由 Anki 自己安排，FSRS 的内部状态不会跟着走。
+默认是 FSRS-4.5 的公开初始权重，期望保持率 0.9。也可以在档案里把 `scheduler` 改成 `sm2`。Anki 导出默认是 CSV。装了 genanki 才能写 apkg，这次写出的就是上面的 352 张卡片。导出去之后由 Anki 自己安排，FSRS 的内部状态不会跟着走。
 
 ## 界限
 
 - 课文写到 N3。N2、N1 只有先修和一句说明。
 - 音高是东京音的教学型。写了 `accent` 的词用 OpenJTalk 对过；引擎和教材不一致时，课上以教材为准，并说明引擎不是 NHK 审定。
-- 没有学习者发音的校准分，也没有口型评分。
+- hatsuon 没有用学习者数据校准。尾高和平板带「が」时，词级重音分可以是空的。看基频图，不要把空分当成读对了或读错了。
+- 这次的短合成音，Kotoba-Whisper 没有听成目标句。
+- 没有口型评分。hatsuon 模型、VOICEVOX 声库、JMdict 数据库都不在仓库里，CI 也不安装。
 - 间隔按整天计算。
 - 这不是 JLPT 官方材料，也不能代替老师听你说话。
 
