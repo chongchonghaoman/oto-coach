@@ -172,8 +172,9 @@ aiueo.wav            0.875s  sr 24000  voiced frames 58  median 354.4 Hz
 头高，核=1。单独：は↑ し↓。加「が」：は↑ し↓ が↓
 F0 后端 parselmouth，浊音帧 23，中位 358 Hz。
 图 docs/examples/hashi-analysis.png
-hatsuon 综合 71.6，准确 67.5，重音 100.0，信心 0.667。
-  箸 ハシ 词分 53.5 重音结果 correct 核 1 ハ:mispronounced/6.9/预期H/音高ok シ:correct/100.0/预期L/音高ok
+hatsuon 综合 97.4，准确 97.0，重音 100.0，信心 0.667。
+hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准。下面的数字是反馈，不是成绩，也不要据此给等级。
+  箸 ハシ 词分 97.7 重音结果 correct 核 1 ハ:correct/95.4/预期H/音高ok シ:correct/100.0/预期L/音高ok
   が ガ 词分 95.6 重音结果 unknown 核 None ガ:correct/95.6/预期L/音高—
 ```
 
@@ -181,36 +182,57 @@ hatsuon 综合 71.6，准确 67.5，重音 100.0，信心 0.667。
   <img src="docs/examples/hashi-analysis.png" alt="Waveform and F0 of VOICEVOX 箸が, with the atamadaka pattern in a separate panel." width="100%">
 </p>
 
-The bottom panel is the textbook high/low pattern, not an alignment of the F0. ハ is marked mispronounced at 6.9. シ and が are correct. Overall 71.6, pitch 100.0. That is feedback, not a grade.
+The bottom panel is the textbook high/low pattern, not an alignment of the F0. ハ, シ, and が are correct. Overall 97.4, pitch 100.0. That is feedback, not a grade.
 
 橋が and 端が have the expected mora levels. Full output: [docs/examples/analyze-hashi-橋.txt](docs/examples/analyze-hashi-橋.txt), [docs/examples/analyze-hashi-端.txt](docs/examples/analyze-hashi-端.txt).
 
 ```text
 分析 橋が
 尾高，核=2。单独：は↓ し↑。加「が」：は↓ し↑ が↓
-hatsuon 综合 98.8，准确 98.8，重音 None，信心 0.833。
-  橋 ハシ 词分 98.2 重音结果 unknown 核 2 ハ:correct/96.5/预期L/音高— シ:correct/100.0/预期H/音高—
+hatsuon 综合 99.0，准确 98.8，重音 100.0，信心 0.833。
+  橋 ハシ 词分 98.2 重音结果 correct 核 2 ハ:correct/96.5/预期L/音高— シ:correct/100.0/预期H/音高—
   が ガ 词分 100.0 重音结果 unknown 核 None ガ:correct/100.0/预期L/音高—
 
 分析 端が
 平板，核=0。单独：は↓ し↑。加「が」：は↓ し↑ が↑
-hatsuon 综合 94.5，准确 94.5，重音 None，信心 0.667。
-  端 ハシ 词分 92.5 重音结果 unknown 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
+hatsuon 综合 95.2，准确 94.5，重音 100.0，信心 0.667。
+  端 ハシ 词分 92.5 重音结果 correct 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
   が ガ 词分 98.6 重音结果 unknown 核 None ガ:correct/98.6/预期H/音高—
 ```
 
-The word-level accent result is unknown and the pitch score is None. hatsuon puts が in the next phrase, so the odaka and heiban fall is outside the word phrase and is not scored. That blank was left blank. The F0 charts are the evidence the two utterances separate: [docs/examples/hashi-analysis-橋.png](docs/examples/hashi-analysis-橋.png), [docs/examples/hashi-analysis-端.png](docs/examples/hashi-analysis-端.png).
+The lexical word is accent correct and the pitch score is 100.0. The fall sits at the end of が, so the particle is included in the word pitch. The particle row stays unknown. F0 charts: [docs/examples/hashi-analysis-橋.png](docs/examples/hashi-analysis-橋.png), [docs/examples/hashi-analysis-端.png](docs/examples/hashi-analysis-端.png).
 
 <p align="center">
   <img src="docs/examples/hashi-analysis-橋.png" alt="橋が waveform and F0. Textbook panel is low, high, low." width="48%">
   <img src="docs/examples/hashi-analysis-端.png" alt="端が waveform and F0. Textbook panel is low, high, high." width="48%">
 </p>
 
-あいうえお is in [docs/examples/analyze-aiueo.txt](docs/examples/analyze-aiueo.txt). Overall 39.0, accuracy 60.0, pitch 100.0. ア, ウ, and オ are correct. イ and エ are marked deleted. The reading is one nakadaka phrase, nucleus 3, which is not a tone for each vowel. [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png) uses the VOICEVOX wav for the waveform and F0. The bottom bars come from OpenJTalk's phrase split.
+あいうえお is in [docs/examples/analyze-aiueo.txt](docs/examples/analyze-aiueo.txt). Overall 99.6, accuracy 99.6, pitch 100.0. All five morae are correct, and エ is 97.9. The reading is one nakadaka phrase, nucleus 3, which is not a tone for each vowel. [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png) uses the VOICEVOX wav for the waveform and F0. The bottom bars come from OpenJTalk's phrase split.
 
 <p align="center">
   <img src="docs/examples/aiueo-analysis.png" alt="Waveform and F0 of VOICEVOX あいうえお, with the nakadaka pattern in a separate panel." width="100%">
 </p>
+
+Same wavs, before and after. The before numbers are the CLI transcript that was already in this README.
+
+| Audio | Before overall | Before accuracy | Before pitch | Before | After overall | After accuracy | After pitch | After |
+|---|---:|---:|---:|---|---:|---:|---:|---|
+| あいうえお | 39.0 | 60.0 | 100.0 | イ and エ deleted | 99.6 | 99.6 | 100.0 | five morae correct, エ 97.9 |
+| 箸が | 71.6 | 67.5 | 100.0 | ハ mispronounced 6.9 | 97.4 | 97.0 | 100.0 | ハ correct 95.4 |
+| 橋が | 98.8 | 98.8 | None | word pitch unknown | 99.0 | 98.8 | 100.0 | word pitch correct |
+| 端が | 94.5 | 94.5 | None | word pitch unknown | 95.2 | 94.5 | 100.0 | word pitch correct |
+
+Each repair touches only the mora or the pitch that was wrong. Thresholds are unchanged.
+
+A run of four or more vowels is what the CTC model turns into a glide or a blank on short イ and エ. Only that kind of clip is time-stretched with librosa at 0.75, 0.6, and 0.5. The kept pass has no content mismatch, the fewest deletions, then the highest overall. あおい and いえ are shorter, so they are not stretched. Every mora is correct and accuracy is 100.0. No nucleus was passed, the engine dictionary does not match this VOICEVOX contour, and pitch is 0.0 (flat_for_accented).
+
+On 四国めたん, atamadaka ハ is one CTC frame labelled k when F0 is high. Only a ハ mora already marked mispronounced is rechecked four semitones lower, and only a correct score of at least 70 replaces that mora.
+
+The particle vowel is often about 20 ms. hatsuon then leaves pitch empty, or reads the consonant in the middle of が and calls a shallow fall heiban. When a word with a known nucleus is followed by a word that has no nucleus of its own, the last 60 ms of each mora is judged on the original audio: half a semitone of dead zone, and the fall may lag one mora. A decision writes the word pitch as correct (100) or wrong (0).
+
+Deliberate errors are still caught. The audio is VOICEVOX:四国めたん. 菓子が is also atamadaka (nucleus 1). Scored as 箸が, ハ stays mispronounced at 3.7 and overall is 71.9: [docs/examples/analyze-foil-菓子が.txt](docs/examples/analyze-foil-菓子が.txt). あゆうよ scored as あいうえお is overall 42.0, with イ and エ still deleted. 橋が synthesized heiban and scored as odaka is pitch 0.0: [docs/examples/analyze-foil-橋が-heiban.txt](docs/examples/analyze-foil-橋が-heiban.txt). 端が synthesized odaka and scored as heiban is pitch 0.0: [docs/examples/analyze-foil-端が-odaka.txt](docs/examples/analyze-foil-端が-odaka.txt).
+
+Six styles are in [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt): 四国めたん ノーマル, あまあま, and ツンツン, ずんだもん ノーマル, 春日部つむぎ, and 雨晴はう. 箸が, 橋が, and 端が are word pitch 100.0 on every style. あいうえお is five correct morae on every style except つむぎ, overall 91.9 to 99.6. On つむぎ the query gives ウ a vowel_length of 0.010 s. After the slowdown it is still mispronounced at 16.6, エ is correct at 35.9, overall is 61.7, and pitch is 0.0. That mora was left mispronounced.
 
 Transcription uses the CTranslate2 weights of Kotoba-Whisper v2.0 through faster-whisper, CPU int8, temperature fixed at 0. Decoding the same file twice produced the same text, and neither text is the target. [docs/examples/transcribe-hashi.txt](docs/examples/transcribe-hashi.txt) writes 箸が as 歌詞は. [docs/examples/transcribe-aiueo.txt](docs/examples/transcribe-aiueo.txt) writes あいうえお as あゆえを. The transcriber runs. On these short synthetic clips it did not hear the sentence.
 
@@ -228,7 +250,7 @@ The Anki package from this run is [docs/examples/oto-n3.apkg](docs/examples/oto-
 | jamdict + jamdict_data 1.5 | `oto lookup 手紙` returned the JMdict line above | Curriculum and false friends only |
 | genanki | Wrote `oto-n3.apkg` | CSV only |
 
-hatsuon is tuned on native speech, not on learner speech. A score is feedback, not a grade. Export the ONNX yourself with CPU torch and `hatsuon-export`. It is not in this repo. 24 kHz audio is resampled with librosa / soxr. If that import fails, Oto resamples to 16 kHz with NumPy and tries again. The accent dictionary is attached to the lexical word. A single kana reading is not copied onto every accent key, which would swallow が.
+hatsuon is tuned on native speech, not on learner speech. A score is feedback, not a grade. Export the ONNX yourself with CPU torch and `hatsuon-export`. It is not in this repo. 24 kHz audio is resampled with librosa / soxr. If that import fails, Oto resamples to 16 kHz with NumPy and tries again. The accent dictionary is attached to the lexical word. A single kana reading is not copied onto every accent key, which would swallow が. The word pitch score does include the following particle.
 
 VOICEVOX CORE 0.16+ is MIT. Voice models are not. Audio that uses 四国めたん must be credited `VOICEVOX:四国めたん`. Point `OTO_VOICEVOX_DIR` at the download. `oto setup` lists what this machine actually has: [docs/examples/setup.txt](docs/examples/setup.txt).
 
@@ -240,7 +262,7 @@ The default scheduler is FSRS-4.5 with the published initial weights and retenti
 
 - Lessons stop at N3. N2 and N1 are prerequisites and a sentence.
 - Pitch is a Tokyo teaching pattern. Items that carry `accent` were checked against OpenJTalk. On a disagreement the lesson keeps the curriculum value and says the engine is not an NHK dictionary.
-- hatsuon is not calibrated on learner speech. For odaka and heiban followed by が, the word-level pitch score can be empty. Read the F0 chart. An empty score is neither a pass nor a fail.
+- hatsuon is not calibrated on learner speech. The word pitch score now includes a following particle. On 春日部つむぎ, う in あいうえお is about 0.010 s and stays mispronounced at 16.6, overall 61.7.
 - Kotoba-Whisper did not recover the target on these short synthetic clips.
 - There is no viseme grade. The hatsuon model, the VOICEVOX voices, and the JMdict database are not in the repo, and CI does not install them.
 - Intervals are whole days.

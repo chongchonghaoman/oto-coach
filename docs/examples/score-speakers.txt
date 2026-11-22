@@ -1,0 +1,34 @@
+VOICEVOX style sweep. あいうえお is the bare vowel run. 箸/橋/端 carry が and the lexical nucleus.
+styles: metan=四国めたんノーマル, zunda=ずんだもんノーマル, tsumugi=春日部つむぎ, ama=四国めたんあまあま, tsun=四国めたんツンツン, hau=雨晴はう
+あいうえお metan    overall=99.6 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:97.9 オ:correct:100.0
+あいうえお zunda    overall=96.0 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:100.0 オ:correct:100.0
+あいうえお tsumugi  overall=61.7 pitch=0.0 ア:correct:100.0 イ:correct:100.0 ウ:mispronounced:16.6 エ:correct:35.9 オ:correct:100.0
+あいうえお ama      overall=98.0 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:88.6 オ:correct:99.8
+あいうえお tsun     overall=99.3 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:96.1 エ:correct:100.0 オ:correct:100.0
+あいうえお hau      overall=91.9 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:53.6 エ:correct:100.0 オ:correct:100.0
+箸が metan    overall=97.4 pitch=100.0 accent=correct ハ=correct/95.4
+橋が metan    overall=99.0 pitch=100.0 accent=correct ハ=correct/96.5
+端が metan    overall=95.2 pitch=100.0 accent=correct ハ=correct/85.0
+箸が zunda    overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+橋が zunda    overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+端が zunda    overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+箸が tsumugi  overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+橋が tsumugi  overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+端が tsumugi  overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+箸が ama      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+橋が ama      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+端が ama      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+箸が tsun     overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+橋が tsun     overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+端が tsun     overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+箸が hau      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+橋が hau      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
+端が hau      overall=95.2 pitch=100.0 accent=correct ハ=correct/83.6
+
+Shorter vowel runs are not stretched. Foils keep the error.
+あおい overall=88.0 accuracy=100.0 pitch=0.0 repairs=None ア:correct:100.0 オ:correct:100.0 イ:correct:100.0
+いえ overall=87.5 accuracy=100.0 pitch=0.0 repairs=None イ:correct:100.0 エ:correct:100.0
+あゆうよ as あいうえお overall=42.0 accuracy=60.0 pitch=100.0 repairs=None ア:correct:100.0 イ:deleted:0.0 ウ:correct:100.0 エ:deleted:0.0 オ:correct:100.0
+菓子が as 箸が overall=71.9 accuracy=67.9 pitch=100.0 repairs=['particle_pitch'] ハ:mispronounced:3.7 シ:correct:100.0 ガ:correct:100.0
+橋が heiban audio as odaka overall=82.7 accuracy=94.5 pitch=0.0 repairs=['particle_pitch'] ハ:correct:85.0 シ:correct:100.0 ガ:correct:98.6
+端が odaka audio as heiban overall=86.5 accuracy=98.8 pitch=0.0 repairs=['particle_pitch'] ハ:correct:96.5 シ:correct:100.0 ガ:correct:100.0

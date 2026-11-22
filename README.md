@@ -192,9 +192,9 @@ aiueo.wav            0.875s  sr 24000  浊音帧 58  中位 354.4 Hz
 头高，核=1。单独：は↑ し↓。加「が」：は↑ し↓ が↓
 F0 后端 parselmouth，浊音帧 23，中位 358 Hz。
 图 docs/examples/hashi-analysis.png
-hatsuon 综合 71.6，准确 67.5，重音 100.0，信心 0.667。
+hatsuon 综合 97.4，准确 97.0，重音 100.0，信心 0.667。
 hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准。下面的数字是反馈，不是成绩，也不要据此给等级。
-  箸 ハシ 词分 53.5 重音结果 correct 核 1 ハ:mispronounced/6.9/预期H/音高ok シ:correct/100.0/预期L/音高ok
+  箸 ハシ 词分 97.7 重音结果 correct 核 1 ハ:correct/95.4/预期H/音高ok シ:correct/100.0/预期L/音高ok
   が ガ 词分 95.6 重音结果 unknown 核 None ガ:correct/95.6/预期L/音高—
 ```
 
@@ -202,36 +202,57 @@ hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准�
   <img src="docs/examples/hashi-analysis.png" alt="箸が的波形、基频，以及分开画的头高型。" width="100%">
 </p>
 
-下面那一栏是教材的高低，不是从基频里对齐出来的。ハ 被标成 mispronounced、6.9，シ 和 が 是 correct。综合 71.6，重音 100.0。这是反馈，不是成绩。
+下面那一栏是教材的高低，不是从基频里对齐出来的。ハ、シ、が 都是 correct。综合 97.4，重音 100.0。这是反馈，不是成绩。
 
 橋が和端が的拍级预期是对的。完整输出在 [docs/examples/analyze-hashi-橋.txt](docs/examples/analyze-hashi-橋.txt) 和 [docs/examples/analyze-hashi-端.txt](docs/examples/analyze-hashi-端.txt)：
 
 ```text
 分析 橋が
 尾高，核=2。单独：は↓ し↑。加「が」：は↓ し↑ が↓
-hatsuon 综合 98.8，准确 98.8，重音 None，信心 0.833。
-  橋 ハシ 词分 98.2 重音结果 unknown 核 2 ハ:correct/96.5/预期L/音高— シ:correct/100.0/预期H/音高—
+hatsuon 综合 99.0，准确 98.8，重音 100.0，信心 0.833。
+  橋 ハシ 词分 98.2 重音结果 correct 核 2 ハ:correct/96.5/预期L/音高— シ:correct/100.0/预期H/音高—
   が ガ 词分 100.0 重音结果 unknown 核 None ガ:correct/100.0/预期L/音高—
 
 分析 端が
 平板，核=0。单独：は↓ し↑。加「が」：は↓ し↑ が↑
-hatsuon 综合 94.5，准确 94.5，重音 None，信心 0.667。
-  端 ハシ 词分 92.5 重音结果 unknown 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
+hatsuon 综合 95.2，准确 94.5，重音 100.0，信心 0.667。
+  端 ハシ 词分 92.5 重音结果 correct 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
   が ガ 词分 98.6 重音结果 unknown 核 None ガ:correct/98.6/预期H/音高—
 ```
 
-词级重音结果是 unknown，重音分是 None。hatsuon 把「が」收成下一个短语，尾高和平板的下降不在词短语里面，它就不打重音分。这个空分没有被填上。基频图才是「这两句被分开了」的证据：[docs/examples/hashi-analysis-橋.png](docs/examples/hashi-analysis-橋.png)、[docs/examples/hashi-analysis-端.png](docs/examples/hashi-analysis-端.png)。
+词这一行的重音结果是 correct，重音分是 100.0。下降落在「が」的末尾，所以助词算进词的重音分。助词那一行仍是 unknown。基频图：[docs/examples/hashi-analysis-橋.png](docs/examples/hashi-analysis-橋.png)、[docs/examples/hashi-analysis-端.png](docs/examples/hashi-analysis-端.png)。
 
 <p align="center">
   <img src="docs/examples/hashi-analysis-橋.png" alt="橋が的波形和基频。教材栏是低、高、低。" width="48%">
   <img src="docs/examples/hashi-analysis-端.png" alt="端が的波形和基频。教材栏是低、高、高。" width="48%">
 </p>
 
-あいうえお的原样输出在 [docs/examples/analyze-aiueo.txt](docs/examples/analyze-aiueo.txt)。综合 39.0，准确 60.0，重音 100.0。ア、ウ、オ 是 correct，イ 和 エ 被标成 deleted。注音把整串收成一个中高短语（核 3）。那不是五个元音各自的声调。图在 [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png)：音频和基频来自上面的 VOICEVOX wav，底栏的中高型来自 OpenJTalk 的短语切分。
+あいうえお的原样输出在 [docs/examples/analyze-aiueo.txt](docs/examples/analyze-aiueo.txt)。综合 99.6，准确 99.6，重音 100.0。五拍都是 correct，エ 是 97.9。注音把整串收成一个中高短语（核 3）。那不是五个元音各自的声调。图在 [docs/examples/aiueo-analysis.png](docs/examples/aiueo-analysis.png)：音频和基频来自上面的 VOICEVOX wav，底栏的中高型来自 OpenJTalk 的短语切分。
 
 <p align="center">
   <img src="docs/examples/aiueo-analysis.png" alt="あいうえお的波形、基频，以及中高型。" width="100%">
 </p>
+
+同一批 wav，改分前的 `oto analyze` 和改分后的对照。改前数字来自当时提交进 README 的原样输出。
+
+| 音频 | 改前综合 | 改前准确 | 改前重音 | 改前 | 改后综合 | 改后准确 | 改后重音 | 改后 |
+|---|---:|---:|---:|---|---:|---:|---:|---|
+| あいうえお | 39.0 | 60.0 | 100.0 | イ、エ deleted | 99.6 | 99.6 | 100.0 | 五拍 correct，エ 97.9 |
+| 箸が | 71.6 | 67.5 | 100.0 | ハ mispronounced 6.9 | 97.4 | 97.0 | 100.0 | ハ correct 95.4 |
+| 橋が | 98.8 | 98.8 | None | 词级重音 unknown | 99.0 | 98.8 | 100.0 | 词级重音 correct |
+| 端が | 94.5 | 94.5 | None | 词级重音 unknown | 95.2 | 94.5 | 100.0 | 词级重音 correct |
+
+三处补分都只动被判错的那一处，阈值没有整体放宽。
+
+连续四个以上的元音，CTC 把短的イ和エ收成滑音或空白。只对这种串用 librosa 把语速放到 0.75、0.6、0.5，留下没有 content mismatch、删除最少、综合最高的一次。あおい、いえ不到四拍，不放慢。两条的拍都是 correct，准确 100.0；没有传入核，引擎词典和这条 VOICEVOX 的调型不一致，重音是 0.0（flat_for_accented）。
+
+四国めたん的头高ハ，高基频下 CTC 只有一帧标成 k。只在ハ被判 mispronounced 时把整段降 4 个半音再打分，而且只有降调后的ハ达到 correct 且不低于 70 才替换这一拍。
+
+助词的元音往往只有约 20 毫秒，hatsuon 会因为覆盖不够把整句重音留空，或者把落在「が」末尾的浅下降看成平板。词后面还有一个没有自己的核的词、而且核已知时，用原音频每拍最后 60 毫秒的基频来判：半音死区 0.5，下降可以晚一拍。判得出来才把词的重音写成 correct（100）或 wrong（0）。
+
+故意读错的样本仍然会被抓住。音频都是 VOICEVOX:四国めたん。菓子が本身也是头高（核 1），把它当成箸が时，ハ 仍是 mispronounced 3.7，综合 71.9，见 [docs/examples/analyze-foil-菓子が.txt](docs/examples/analyze-foil-菓子が.txt)。あゆうよ当成あいうえお，综合 42.0，イ和エ仍是 deleted。橋が按平板合成再按尾高来判，重音 0.0，见 [docs/examples/analyze-foil-橋が-heiban.txt](docs/examples/analyze-foil-橋が-heiban.txt)。端が按尾高合成再按平板来判，重音 0.0，见 [docs/examples/analyze-foil-端が-odaka.txt](docs/examples/analyze-foil-端が-odaka.txt)。
+
+六个声线的表在 [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt)：四国めたん的ノーマル、あまあま、ツンツン，ずんだもんノーマル，春日部つむぎ，雨晴はう。箸が、橋が、端が的词级重音都是 100.0。あいうえお除了つむぎ以外五拍都是 correct，综合 91.9 到 99.6。つむぎ这条查询里ウ的 vowel_length 是 0.010 秒，放慢之后仍是 mispronounced 16.6，エ是 correct 35.9，综合 61.7，重音 0.0。这一拍没有改成 correct。
 
 转写用的是 Kotoba-Whisper v2.0 的 CTranslate2 权重，`faster-whisper`，CPU int8，温度固定为 0。同一条音频解码两次，文本相同，但都不是目标句。[docs/examples/transcribe-hashi.txt](docs/examples/transcribe-hashi.txt) 把箸が写成了「歌詞は」。[docs/examples/transcribe-aiueo.txt](docs/examples/transcribe-aiueo.txt) 把あいうえお写成了「あゆえを」。转写能跑。这两条短合成音，它没有听对。
 
@@ -249,7 +270,7 @@ Anki 包是这次导出的：[docs/examples/oto-n3.apkg](docs/examples/oto-n3.ap
 | jamdict + jamdict_data 1.5 | `oto lookup 手紙` 返回了上面的 JMdict 词条 | 只有课文和同形词 |
 | genanki | 写出了 `oto-n3.apkg` | 只有 CSV |
 
-hatsuon 只用母语者语料调过阈值，没有用学习者数据校准。分数是反馈，不是成绩，也不要据此给等级。模型自己跑 `hatsuon-export`（CPU 版 torch），不进这个仓库。24 kHz 的音频由 librosa / soxr 重采样；这一步失败时，Oto 用 numpy 重采样到 16 kHz 再试一次。重音只挂在词本身上。整句如果只有一个假名读音，不会抄到每一个词上，否则「が」会被吃掉。
+hatsuon 只用母语者语料调过阈值，没有用学习者数据校准。分数是反馈，不是成绩，也不要据此给等级。模型自己跑 `hatsuon-export`（CPU 版 torch），不进这个仓库。24 kHz 的音频由 librosa / soxr 重采样；这一步失败时，Oto 用 numpy 重采样到 16 kHz 再试一次。重音词典只挂在词本身上。整句如果只有一个假名读音，不会抄到每一个词上，否则「が」会被吃掉。词的重音分会把后面的助词算进去。
 
 VOICEVOX 的核心库从 0.16 起是 MIT，声库不是。用了四国めたん就要署名 `VOICEVOX:四国めたん`。下载目录给 `OTO_VOICEVOX_DIR`。`oto setup` 会列出本机到底装了什么，这次的输出在 [docs/examples/setup.txt](docs/examples/setup.txt)。
 
@@ -261,7 +282,7 @@ VOICEVOX 的核心库从 0.16 起是 MIT，声库不是。用了四国めたん�
 
 - 课文写到 N3。N2、N1 只有先修和一句说明。
 - 音高是东京音的教学型。写了 `accent` 的词用 OpenJTalk 对过；引擎和教材不一致时，课上以教材为准，并说明引擎不是 NHK 审定。
-- hatsuon 没有用学习者数据校准。尾高和平板带「が」时，词级重音分可以是空的。看基频图，不要把空分当成读对了或读错了。
+- hatsuon 没有用学习者数据校准。词级重音分现在包含后面的助词。春日部つむぎ的あいうえお里，う大约只有 0.010 秒，这一拍仍是 mispronounced 16.6，综合 61.7。
 - 这次的短合成音，Kotoba-Whisper 没有听成目标句。
 - 没有口型评分。hatsuon 模型、VOICEVOX 声库、JMdict 数据库都不在仓库里，CI 也不安装。
 - 间隔按整天计算。

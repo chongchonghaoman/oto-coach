@@ -3,9 +3,9 @@
 平板，核=0。单独：は↓ し↑。加「が」：は↓ し↑ が↑
 F0 后端 parselmouth，浊音帧 26，中位 390 Hz。
 图 docs/examples/hashi-analysis-端.png
-hatsuon 综合 94.5，准确 94.5，重音 None，信心 0.667。
+hatsuon 综合 95.2，准确 94.5，重音 100.0，信心 0.667。
 hatsuon 0.1 只用母语者语料调过阈值，没有用学习者数据校准。下面的数字是反馈，不是成绩，也不要据此给等级。
-  端 ハシ 词分 92.5 重音结果 unknown 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
+  端 ハシ 词分 92.5 重音结果 correct 核 0 ハ:correct/85.0/预期L/音高— シ:correct/100.0/预期H/音高—
   が ガ 词分 98.6 重音结果 unknown 核 None ガ:correct/98.6/预期H/音高—
 
 提醒（看的是目标音，不是诊断）
