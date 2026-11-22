@@ -1,0 +1,100 @@
+units:
+  - id: skill-n5
+    level: n5
+    domain: listening
+    order: 195
+    title_zh: N5 的听、说、读、写
+    title_ja: N5 の四技能
+    prerequisites: [gram-n5-particles]
+    summary_zh: 同一批句子，换一个技能入口。听的时候先不看字。
+    items:
+      - id: sk-listen-n5
+        kind: listening
+        jp: わたしは学生です。
+        reading: わたしはがくせいです。
+        zh: 我是学生。
+        prompt_zh: 听「わたしは学生です」。先写出助词，再说中文。不要看汉字。
+      - id: sk-speak-n5
+        kind: speaking
+        jp: わたしは李です。中国から来ました。
+        reading: わたしはりです。ちゅうごくからきました。
+        zh: 我是李。我从中国来。
+        prompt_zh: 用です・ます介绍自己的名字和国籍。先说，再看范句。
+      - id: sk-read-n5
+        kind: reading
+        jp: 今日は図書館で日本語を勉強します。
+        reading: きょうはとしょかんでにほんごをべんきょうします。
+        zh: 今天在图书馆学日语。
+        prompt_zh: 读出声，标出は、で、を，再说中文。
+      - id: sk-write-n5
+        kind: writing
+        jp: 水を飲みます。
+        reading: みずをのみます。
+        zh: 喝水。
+        prompt_zh: 默写「喝水」。写完再检查を在不在，动词是不是在最后。
+  - id: skill-n4
+    level: n4
+    domain: listening
+    order: 250
+    title_zh: N4 的四技能
+    title_ja: N4 の四技能
+    prerequisites: [gram-n4-voice]
+    summary_zh: 听方向，说建议，读自动和他动，写て形。
+    items:
+      - id: sk-listen-n4
+        kind: listening
+        jp: 妹がわたしに本をくれました。
+        reading: いもうとがわたしにほんをくれました。
+        zh: 妹妹给了我一本书。
+        prompt_zh: 听完说是谁给谁。先判断该用くれる还是あげる，再看字。
+      - id: sk-speak-n4
+        kind: speaking
+        jp: 早く寝たほうがいいです。
+        reading: はやくねたほうがいいです。
+        zh: 最好早点睡。
+        prompt_zh: 用たほうがいい给朋友一个建议。先说。
+      - id: sk-read-n4
+        kind: reading
+        jp: ドアが開いています。ドアを開けてください。
+        reading: ドアがあいています。ドアをあけてください。
+        zh: 门开着。请把门打开。
+        prompt_zh: 读两句，说出哪句是自动词，哪句是他动词。
+      - id: sk-write-n4
+        kind: writing
+        jp: 書いて、待って、読んで、行って。
+        reading: かいて、まって、よんで、いって。
+        zh: 四个て形。
+        prompt_zh: 默写書く、待つ、読む、行く的て形。行く不要写成行いて。
+  - id: skill-n3
+    level: n3
+    domain: listening
+    order: 350
+    title_zh: N3 的四技能
+    title_ja: N3 の四技能
+    prerequisites: [gram-n3-keigo]
+    summary_zh: 敬语只要求听得出方向，不要求自己会全套。
+    items:
+      - id: sk-listen-n3
+        kind: listening
+        jp: 先生がおっしゃいました。
+        reading: せんせいがおっしゃいました。
+        zh: 老师说了。
+        prompt_zh: 听这句话，判断动词是抬高对方还是放低自己。
+      - id: sk-speak-n3
+        kind: speaking
+        jp: わたしが申します。
+        reading: わたしがもうします。
+        zh: 我说。
+        prompt_zh: 用谦让语说「由我来说」。不要把申す用在老师身上。
+      - id: sk-read-n3
+        kind: reading
+        jp: 計画を検討します。
+        reading: けいかくをけんとうします。
+        zh: 研究这个计划。
+        prompt_zh: 读出声。说出検討在这里不是「检讨」。
+      - id: sk-write-n3
+        kind: writing
+        jp: 鍵はここに置いたはずです。
+        reading: かぎはここにおいたはずです。
+        zh: 钥匙应该放在这里。
+        prompt_zh: 默写这句话。写完说明はず和べき的差别。

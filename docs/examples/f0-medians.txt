@@ -1,0 +1,5 @@
+同一批 wav，Praat Parselmouth 的浊音中位 F0。
+hashi-trio-箸.wav  1.030s  浊音帧 15  中位 392.0 Hz
+hashi-trio-橋.wav  1.030s  浊音帧 16  中位 280.6 Hz
+hashi-trio-端.wav  1.030s  浊音帧 16  中位 280.6 Hz
+aiueo.wav  1.155s  浊音帧 47  中位 365.1 Hz

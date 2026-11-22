@@ -1,0 +1,14 @@
+Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
+Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
+分析 あいうえお
+
+中高，核=3。单独：あ↓ い↑ う↑ え↓ お↓。加「が」：あ↓ い↑ う↑ え↓ お↓ が↓
+F0 后端 parselmouth，浊音帧 47，中位 365 Hz。
+图 docs/examples/aiueo-analysis.png
+hatsuon 未用：resampling from 48000 Hz needs: pip install 'hatsuon[audio]'
+
+提醒（看的是目标音，不是诊断）
+- 出现了う。嘴唇不要撮圆，不要发成普通话的「乌」。
+- 这是中高，全词只有一个下倾，不是每个字一个普通话声调。
+
+F0 是这条例录音的基频。下面的拍型来自教材或引擎，画在另一栏，没有被假装成时间对齐。针对中文母语者的提醒只看目标音里有什么，不是从声波里诊断出来的错误。

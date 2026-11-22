@@ -1,0 +1,80 @@
+# 给中文母语者的音读线索。以汉音倾向为主，吴音会不同。用来猜，用来核对，不当成定律。
+rules:
+  - id: corr-ng-u
+    title_zh: 后鼻音 -ng，开口、合口常常对う段长音
+    summary_zh: 中古收 -ng、主要元音靠后的字，汉音里常变成おう、う。例：东→とう，公→こう，方→ほう，同→どう，光→こう。例外很多，京还有けい。
+    examples:
+      - {char: 東, jp: 東, reading: とう, zh: 东}
+      - {char: 公, jp: 公, reading: こう, zh: 公}
+      - {char: 方, jp: 方, reading: ほう, zh: 方}
+      - {char: 同, jp: 同, reading: どう, zh: 同}
+  - id: corr-ng-i
+    title_zh: 前元音后的 -ng 常常对えい、い
+    summary_zh: 梗摄一类字常读せい、けい。生→せい，青→せい，平→へい。京同时有けい和きょう，要按词记。
+    examples:
+      - {char: 生, jp: 生, reading: せい, zh: 生}
+      - {char: 青, jp: 青, reading: せい, zh: 青}
+      - {char: 平, jp: 平, reading: へい, zh: 平}
+      - {char: 京, jp: 京, reading: けい, zh: 京}
+  - id: corr-n
+    title_zh: 收 -n 对拨音ん
+    summary_zh: 山→さん，本→ほん，人→じん／にん，文→ぶん，天→てん，年→ねん，门→もん。这是最稳的一条，但人有两个音读。
+    examples:
+      - {char: 山, jp: 山, reading: さん, zh: 山}
+      - {char: 本, jp: 本, reading: ほん, zh: 本}
+      - {char: 人, jp: 人, reading: じん, zh: 人}
+      - {char: 文, jp: 文, reading: ぶん, zh: 文}
+      - {char: 天, jp: 天, reading: てん, zh: 天}
+      - {char: 年, jp: 年, reading: ねん, zh: 年}
+  - id: corr-k
+    title_zh: 入声 -k 对く或き
+    summary_zh: 学→がく，北→ほく，国→こく，白→はく，色→しょく／しき，力→りょく／りき，石→せき／しゃく。同一个字常有两个音读，词里才定。
+    examples:
+      - {char: 学, jp: 学, reading: がく, zh: 学}
+      - {char: 北, jp: 北, reading: ほく, zh: 北}
+      - {char: 国, jp: 国, reading: こく, zh: 国}
+      - {char: 力, jp: 力, reading: りょく, zh: 力}
+      - {char: 石, jp: 石, reading: せき, zh: 石}
+  - id: corr-t
+    title_zh: 入声 -t 对つ或ち
+    summary_zh: 一→いち／いつ，七→しち／しつ，八→はち，日→にち／じつ，月→げつ／がつ，出→しゅつ，铁→てつ，别→べつ。日期和汉字音不要混：一日的ついたち是训读。
+    examples:
+      - {char: 一, jp: 一, reading: いち, zh: 一}
+      - {char: 七, jp: 七, reading: しち, zh: 七}
+      - {char: 八, jp: 八, reading: はち, zh: 八}
+      - {char: 日, jp: 日, reading: にち, zh: 日}
+      - {char: 月, jp: 月, reading: げつ, zh: 月}
+      - {char: 出, jp: 出, reading: しゅつ, zh: 出}
+  - id: corr-p
+    title_zh: 入声 -p 常变成う段长音
+    summary_zh: 古 -p 在日语里多经过ふ，后来写成う段长音。十→じゅう，法→ほう，合→ごう，习→しゅう，立还有りゅう和りつ。这是倾向，立、集都要按词确认。
+    examples:
+      - {char: 十, jp: 十, reading: じゅう, zh: 十}
+      - {char: 法, jp: 法, reading: ほう, zh: 法}
+      - {char: 合, jp: 合, reading: ごう, zh: 合}
+      - {char: 習, jp: 習, reading: しゅう, zh: 习}
+  - id: corr-l
+    title_zh: 来母对ら行
+    summary_zh: 来→らい，力→りょく，六→ろく，里→り。声母是ら行闪音，不是普通话 l，但汉字类推仍然有用。
+    examples:
+      - {char: 来, jp: 来, reading: らい, zh: 来}
+      - {char: 六, jp: 六, reading: ろく, zh: 六}
+      - {char: 里, jp: 里, reading: り, zh: 里}
+  - id: corr-k-initial
+    title_zh: 见母、溪母多半对か行
+    summary_zh: 金→きん，高→こう，家→か，口→こう。中古浊音在汉音里常常清化，所以中文的浊声母不会自动变成日语浊音。
+    examples:
+      - {char: 金, jp: 金, reading: きん, zh: 金}
+      - {char: 高, jp: 高, reading: こう, zh: 高}
+      - {char: 家, jp: 家, reading: か, zh: 家}
+  - id: corr-go-on
+    title_zh: 同一个字的吴音和汉音
+    summary_zh: 不要只背一条。同→どう（吴）/ とう（汉，东的音类不同，这里只说明「一字两读」）。人→にん（吴）/ じん（汉），月→がち在正月一类词、げつ／がつ在月份。看到两个音读，用词来记，不用声母硬推。
+    examples:
+      - {char: 人, jp: 人間, reading: にんげん, zh: 人}
+      - {char: 人, jp: 日本人, reading: にほんじん, zh: 人}
+  - id: corr-rendaku
+    title_zh: 连浊不会从普通话推出来
+    summary_zh: 人＋口→人口（じんこう）不连浊，但鼻＋血一类复合词可能浊化。连浊看复合词，不看中文声母。初学先整词记。
+    examples:
+      - {char: 人, jp: 人口, reading: じんこう, zh: 人口}

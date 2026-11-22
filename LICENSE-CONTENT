@@ -1,0 +1,9 @@
+课程正文许可
+
+`data/curriculum/`、`data/placement.yaml`、`data/pitfalls/` 以及 README 里的课程说明，采用 Creative Commons Attribution-ShareAlike 4.0 International（CC BY-SA 4.0）。
+
+https://creativecommons.org/licenses/by-sa/4.0/
+
+代码、测试、命令行和品牌图形仍以仓库根目录的 MIT License 为准。
+
+本仓库不附带 JMdict、hatsuon 声学模型、VOICEVOX 声库或 OpenJTalk 的 HTS 声音。那些部分各自保留原许可，见 README 的第三方说明。

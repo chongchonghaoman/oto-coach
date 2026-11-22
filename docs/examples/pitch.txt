@@ -1,0 +1,4 @@
+Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
+Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
+已写入 docs/examples/hashi-trio.png
+引擎 OpenJTalk。曲线是合成音，不是学习者。

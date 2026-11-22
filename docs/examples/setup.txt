@@ -1,0 +1,33 @@
+后端
+  curriculum: True
+  pyopenjtalk: True
+  numpy: True
+  matplotlib: True
+  parselmouth: True
+  hatsuon_package: True
+  hatsuon_model_dir: /home/ubuntu/.cache/hatsuon/models/japanese-hubert-base-phoneme-ctc-v4
+  hatsuon_model_present: False
+  voicevox_core: False
+  voicevox_dir: /home/ubuntu/.cache/oto/voicevox
+  voicevox_models: False
+  transformers: False
+  torch: False
+  jamdict: False
+  genanki: False
+
+授权与边界
+  - 本仓库代码：MIT。课程正文：CC BY-SA 4.0。
+  - praat-parselmouth：GPL-3.0。装了 [praat] 才导入。不要把它和闭源分发绑在一起，除非你接受 GPL 义务。
+  - hatsuon：MIT，alpha，未用学习者数据校准。
+  - pyopenjtalk-plus：MIT。OpenJTalk 与 hts_engine 为修改版 BSD。HTS 音源 nitech_jp_atr503_m001 需保留名古屋工业大学署名。
+  - VOICEVOX CORE 0.16+：MIT。四国めたん等音源另有规约，公开音频须写「VOICEVOX:四国めたん」。
+  - Kotoba-Whisper v2.0：Apache-2.0。按需下载，不随包分发。
+  - JMdict：CC BY-SA 4.0（EDRDG）。jamdict 代码是 MIT。词典数据不进仓库。
+
+可选安装
+  pip install 'oto-coach[teach]'     # OpenJTalk、波形、图
+  pip install 'oto-coach[praat]'     # Parselmouth，GPL-3.0
+  pip install 'hatsuon[export]' && hatsuon-export
+  VOICEVOX：见 README 的 CPU 下载步骤，目录给 OTO_VOICEVOX_DIR
+  pip install 'oto-coach[asr]'       # Kotoba-Whisper 转写
+  pip install 'oto-coach[dict]'      # JMdict，CC BY-SA

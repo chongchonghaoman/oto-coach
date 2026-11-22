@@ -1,0 +1,6 @@
+Warning: ONNX Runtime is not installed. Nani prediction will be disabled.
+Please install ONNX Runtime by `pip install pyopenjtalk-plus[onnxruntime]`
+箸
+头高，核=1。单独：は↑ し↓。加「が」：は↑ し↓ が↓
+读音 はし · 来源 curriculum
+和桥、边组成最小对立。错误类型 pron-tone-transfer。

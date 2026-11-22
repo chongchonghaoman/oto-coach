@@ -1,0 +1,82 @@
+units:
+  - id: scenario-daily
+    level: n5
+    domain: scenario
+    order: 190
+    title_zh: 每天的一小段话
+    title_ja: 日常会話
+    prerequisites: [gram-n5-particles]
+    summary_zh: 先把招呼说完，再提出一个具体邀请。用です・ます。
+    items:
+      - id: sc-daily
+        jp: 朝のあいさつ
+        reading: あさのあいさつ
+        zh: 早晨打招呼并约咖啡
+        lines:
+          - {role: A, jp: おはようございます。今日は寒いですね。, reading: おはようございます。きょうはさむいですね。, zh: 早上好。今天真冷。}
+          - {role: B, jp: 本当に寒いですね。コーヒーでも飲みませんか。, reading: ほんとうにさむいですね。コーヒーでものみませんか。, zh: 真的很冷。要不要喝杯咖啡？}
+          - {role: A, jp: いいですね。どこに行きますか。, reading: いいですね。どこにいきますか。, zh: 好啊。去哪儿？}
+          - {role: B, jp: 駅の前の店はどうですか。, reading: えきのまえのみせはどうですか。, zh: 车站前面的店怎么样？}
+  - id: scenario-town
+    level: n4
+    domain: scenario
+    order: 240
+    title_zh: 出门办事
+    title_ja: 街
+    prerequisites: [gram-n4-core]
+    summary_zh: 车站、商店、餐馆。价钱和请求都用礼貌形。
+    items:
+      - id: sc-station
+        jp: 駅で
+        reading: えきで
+        zh: 问路、买票
+        lines:
+          - {role: A, jp: すみません。東京駅へはどう行きますか。, reading: すみません。とうきょうえきへはどういきますか。, zh: 劳驾。去东京站怎么走？}
+          - {role: B, jp: この電車に乗って、二つ目で降りてください。, reading: このでんしゃにのって、ふたつめでありてください。, zh: 坐这班电车，第二站下。}
+          - {role: A, jp: 切符はいくらですか。, reading: きっぷはいくらですか。, zh: 票多少钱？}
+          - {role: B, jp: 二百十円です。, reading: にひゃくじゅうえんです。, zh: 二百一十日元。}
+      - id: sc-shop
+        jp: 店で
+        reading: みせで
+        zh: 问价钱
+        lines:
+          - {role: A, jp: すみません、このシャツはいくらですか。, reading: すみません、このシャツはいくらですか。, zh: 劳驾，这件衬衫多少钱？}
+          - {role: B, jp: 四千二百円です。, reading: よんせんにひゃくえんです。, zh: 四千二百日元。}
+          - {role: A, jp: ちょっと高いですね。もっと安いのはありますか。, reading: ちょっとたかいですね。もっとやすいのはありますか。, zh: 有点贵。有更便宜的吗？}
+          - {role: B, jp: こちらは三千円です。, reading: こちらはさんぜんえんです。, zh: 这件三千日元。}
+      - id: sc-restaurant
+        jp: レストランで
+        reading: レストランで
+        zh: 点餐
+        lines:
+          - {role: 客, jp: すみません。メニューをお願いします。, reading: すみません。メニューをおねがいします。, zh: 劳驾。请给我菜单。}
+          - {role: 店, jp: はい。ご注文はお決まりですか。, reading: はい。ごちゅうもんはおきまりですか。, zh: 好的。决定点什么了吗？}
+          - {role: 客, jp: これをお願いします。, reading: これをおねがいします。, zh: 请给我这个。}
+          - {role: 店, jp: かしこまりました。少々お待ちください。, reading: かしこまりました。しょうしょうおまちください。, zh: 好的。请稍等。}
+      - id: sc-conveni
+        jp: コンビニで
+        reading: コンビニで
+        zh: 便利店
+        lines:
+          - {role: A, jp: おにぎりを二つと、お茶をください。, reading: おにぎりをふたつと、おちゃをください。, zh: 请给我两个饭团和茶。}
+          - {role: B, jp: おにぎりは温めますか。, reading: おにぎりはあたためますか。, zh: 饭团要加热吗？}
+          - {role: A, jp: 一つだけお願いします。, reading: ひとつだけおねがいします。, zh: 只加热一个。}
+          - {role: B, jp: 合わせて四百三十円です。, reading: あわせてよんひゃくさんじゅうえんです。, zh: 一共四百三十日元。}
+  - id: scenario-travel
+    level: n3
+    domain: scenario
+    order: 340
+    title_zh: 住和移动
+    title_ja: 旅
+    prerequisites: [gram-n3-keigo]
+    summary_zh: 旅馆前台会用敬语。客人用です・ます就够，不要把自己说成いらっしゃる。
+    items:
+      - id: sc-hotel
+        jp: ホテルで
+        reading: ホテルで
+        zh: 办理入住
+        lines:
+          - {role: 客, jp: 予約した李です。よろしくお願いします。, reading: よやくしたりです。よろしくおねがいします。, zh: 我是预约过的李。请多关照。}
+          - {role: フロント, jp: 李様ですね。パスポートをお願いします。, reading: りさまでね。パスポートをおねがいします。, zh: 是李先生／女士吧。请给我护照。}
+          - {role: 客, jp: はい、どうぞ。, reading: はい、どうぞ。, zh: 好的，请。}
+          - {role: フロント, jp: お部屋は五階でございます。エレベーターはあちらです。, reading: おへやはごかいでございます。エレベーターはあちらです。, zh: 您的房间在五楼。电梯在那边。}

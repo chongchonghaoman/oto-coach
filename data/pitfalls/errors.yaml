@@ -1,0 +1,116 @@
+# 中文母语者的常见错误。fix_zh 要具体，不写「多练习」。
+entries:
+  - id: pron-u
+    domain: pronunciation
+    title_zh: う的唇形
+    symptom_zh: 把う发成圆唇的「乌」。
+    fix_zh: 双唇放松，不要向前撮。舌位靠后，嘴角可以微微向两边，接近 [ɯ]。す、く、つ都受这个影响。
+    drill: [す, く, つ, う]
+  - id: pron-shi
+    domain: pronunciation
+    title_zh: し不是思
+    symptom_zh: 用普通话 si 发し。
+    fix_zh: 舌面贴向硬腭，像「西」的声母，再接短的い。不要用舌尖对上齿背。
+    drill: [し, さ, し, す]
+  - id: pron-chi
+    domain: pronunciation
+    title_zh: ち的送气
+    symptom_zh: 把ち发成送气的 ci 或 qi。
+    fix_zh: ち是 [tɕi]，气流弱。对比ち（弱）和普通话「七」（强）。不要带一个明显的气爆破。
+    drill: [ち, た, ち]
+  - id: pron-tsu
+    domain: pronunciation
+    title_zh: つ不是粗
+    symptom_zh: 圆唇并送气，发成 cu。
+    fix_zh: 先轻轻闭住，再放开成不圆唇的う。气流比「粗」弱，嘴唇不向前。
+    drill: [つ, す, つ]
+  - id: pron-ra
+    domain: pronunciation
+    title_zh: ら行闪音
+    symptom_zh: 用普通话 l 代替らりるれろ。
+    fix_zh: 舌尖在上齿龈后轻轻弹一下，不要让气流从舌头两边长时间流出。ら和来母的「拉」不是同一个音。
+    drill: [ら, り, る, れ, ろ]
+  - id: pron-long
+    domain: pronunciation
+    title_zh: 长音占一拍
+    symptom_zh: 把おう、うう、えい读短，おばさん和おばあさん不分。
+    fix_zh: 长音是独立的一拍。数拍：お・ば・さ・ん 四拍，お・ば・あ・さ・ん 五拍。拍数错了，词就错了。
+    drill: [おばさん, おばあさん, ゆき, ゆうき]
+  - id: pron-sokuon
+    domain: pronunciation
+    title_zh: 促音的时值
+    symptom_zh: 把っ读成重音，不给时间。
+    fix_zh: 在辅音之前闭住口腔，停满大约一拍再放开。来て是两拍，切手的きって是三拍。
+    drill: [きて, きって, かた, かった]
+  - id: pron-n
+    domain: pronunciation
+    title_zh: 拨音的时值
+    symptom_zh: 把ん当成韵尾一笔带过，不占拍。
+    fix_zh: ん自己是一拍。后面是ぱ行时靠近 [m]，后面是か行时靠近 [ŋ]，词尾可以是 [ɴ]。位置可以变，拍不能省。
+    drill: [ほん, ほんま, にほん]
+  - id: pron-voice
+    domain: pronunciation
+    title_zh: 浊音不是不送气
+    symptom_zh: がざだば只发成不送气清音，声带不振。
+    fix_zh: 普通话用送气区别 g/k。日语用浊音区别か/が。が行要让声带振动。可以摸喉结对比か和が。
+    drill: [か, が, た, だ, ぱ, ば]
+  - id: pron-devoice
+    domain: pronunciation
+    title_zh: 高元音无声化
+    symptom_zh: 把です、した、すき里的い和う读得又满又响。
+    fix_zh: 清辅音之间或词末的い、う常常只留下口型，声带不再响。です听起来接近 des。不要为了「读清楚」把每个元音都读满。
+    drill: [です, した, すき, きます]
+  - id: pron-tone-transfer
+    domain: pronunciation
+    title_zh: 把四声搬进重音
+    symptom_zh: 每个假名都给一个普通话声调，或者整词往下掉。
+    fix_zh: 东京话一个词通常只有一次由高到低。先标核，再画高低，不要给每拍设计升降调。平板要让后面的助词保持高。
+    drill: [はし, あめ, はな]
+  - id: gram-wa-ga
+    domain: grammar
+    title_zh: は和が
+    symptom_zh: 所有主语都用が，或所有都用は。
+    fix_zh: は提出话题，后面是对这个话题的说明。が用来回答「谁」或表示「就是这个」。わたしは学生です是介绍。だれが学生ですか才用が。
+    drill: []
+  - id: gram-particle-drop
+    domain: grammar
+    title_zh: 助词省略
+    symptom_zh: 写成「わたし学生です」「本読みます」。
+    fix_zh: 中文没有这类助词，所以会省。初学阶段を、に、で、は都要写出来。口语里成人会省一些，那是后面的事。
+    drill: []
+  - id: gram-sov
+    domain: grammar
+    title_zh: 宾语放在动词前
+    symptom_zh: 按「主谓宾」说成「食べますごはんを」。
+    fix_zh: 先把宾语和を放好，动词放在最后。わたしは毎日学校で日本語を勉強します。
+    drill: []
+  - id: gram-conjugation
+    domain: grammar
+    title_zh: 活用而不是加词
+    symptom_zh: 在辞书形后面加ます、了、た，比如食べるます、食べ了。
+    fix_zh: 时间不靠一个独立的「了」。要换词尾：食べる→食べます→食べました→食べて。先判断五段、一段还是する・来る。
+    drill: []
+  - id: gram-transitive
+    domain: grammar
+    title_zh: 自动词和他动词
+    symptom_zh: 开门、灯灭了，都用同一个动词。
+    fix_zh: 自己发生变化用自动词加が：ドアが開く。人去做用他动词加を：ドアを開ける。成对记，不要只记汉字。
+    drill: []
+  - id: gram-giving
+    domain: grammar
+    title_zh: 授受方向
+    symptom_zh: 用あげる表示别人给我。
+    fix_zh: 离开我方用あげる。进入我方用くれる。我作为接受者去领，用もらう。くれる的接收方必须是我或我这边的人。
+    drill: []
+  - id: gram-teki-no
+    domain: grammar
+    title_zh: 的不是一律换成の或的
+    symptom_zh: 说「私的本」「中国的文化」，或所有定语都加的。
+    fix_zh: 所属用の：わたしの本、中国の文化。的（てき）只用于「科学的な」这类形容动词。不要把的当成的。
+    drill: []
+  - id: gram-register
+    domain: grammar
+    title_zh: 礼貌层级
+    symptom_zh: 对店员、老师用辞书形，或把谦让语用在对方身上。
+    fix_zh: 陌生人、店员、老师先用です・ます。尊敬语抬高对方：先生がおっしゃる。谦让语放低自己：わたしが申す。老师不能「申す」。
+    drill: []

@@ -1,0 +1,312 @@
+units:
+  - id: vocab-greetings
+    level: zero
+    domain: vocab
+    order: 80
+    title_zh: 招呼和应答
+    title_ja: あいさつ
+    prerequisites: [kana-gojuon]
+    summary_zh: 先能开口。助词は在句子里读わ，这节的词本身还用不到。
+    items:
+      - id: v-konnichiwa
+        jp: こんにちは
+        reading: こんにちは
+        pos: 招呼
+        zh: 你好。白天用。
+        example: こんにちは。
+        example_reading: こんにちは。
+        example_zh: 你好。
+        note_zh: は读わ。书写仍写は。
+      - id: v-ohayou
+        jp: おはようございます
+        reading: おはようございます
+        pos: 招呼
+        zh: 早上好。对老师、店员用完整形。
+        example: おはようございます。
+        example_reading: おはようございます。
+        example_zh: 早上好。
+        note_zh: 对很熟的人可以缩短成おはよう，那是简体，不是这节的默认。
+      - id: v-konbanwa
+        jp: こんばんは
+        reading: こんばんは
+        pos: 招呼
+        zh: 晚上好。
+        example: こんばんは。
+        example_reading: こんばんは。
+        example_zh: 晚上好。
+        note_zh: は读わ。
+      - id: v-arigatou
+        jp: ありがとうございます
+        reading: ありがとうございます
+        pos: 招呼
+        zh: 谢谢。礼貌形。
+        example: ありがとうございます。
+        example_reading: ありがとうございます。
+        example_zh: 谢谢。
+      - id: v-sumimasen
+        jp: すみません
+        reading: すみません
+        pos: 招呼
+        zh: 对不起、劳驾、谢谢对方费心。
+        example: すみません。
+        example_reading: すみません。
+        example_zh: 劳驾。
+        note_zh: 叫人、道歉、收到帮助，三个场合都能用。
+      - id: v-hai
+        jp: はい
+        reading: はい
+        pos: 应答
+        zh: 是、我在听。
+        example: はい、李です。
+        example_reading: はい、りです。
+        example_zh: 是的，我是李。
+      - id: v-iie
+        jp: いいえ
+        reading: いいえ
+        pos: 应答
+        zh: 不。
+        example: いいえ、違います。
+        example_reading: いいえ、ちがいます。
+        example_zh: 不，不是。
+      - id: v-onegaishimasu
+        jp: お願いします
+        reading: おねがいします
+        pos: 表达
+        zh: 拜托了、请给我。
+        example: 水をお願いします。
+        example_reading: みずをおねがいします。
+        example_zh: 请给我水。
+  - id: vocab-numbers
+    level: zero
+    domain: vocab
+    order: 82
+    title_zh: 数字
+    title_ja: 数
+    prerequisites: [kana-gojuon]
+    summary_zh: 先记音读。人数、日期、个数以后用不同的数法，不要以为所有数都是いち、に、さん。
+    items:
+      - {id: v-ichi, jp: 一, reading: いち, pos: 数, zh: 一, example: 一です。, example_reading: いちです。, example_zh: 是一。}
+      - {id: v-ni, jp: 二, reading: に, pos: 数, zh: 二, example: 二です。, example_reading: にです。, example_zh: 是二。}
+      - {id: v-san, jp: 三, reading: さん, pos: 数, zh: 三, example: 三です。, example_reading: さんです。, example_zh: 是三。}
+      - {id: v-yon, jp: 四, reading: よん, pos: 数, zh: 四, example: 四です。, example_reading: よんです。, example_zh: 是四。, note_zh: 也有し。数东西时よん更清楚，因为し和死同音。}
+      - {id: v-go, jp: 五, reading: ご, pos: 数, zh: 五, example: 五です。, example_reading: ごです。, example_zh: 是五。}
+      - {id: v-roku, jp: 六, reading: ろく, pos: 数, zh: 六, example: 六です。, example_reading: ろくです。, example_zh: 是六。}
+      - {id: v-nana, jp: 七, reading: なな, pos: 数, zh: 七, example: 七です。, example_reading: ななです。, example_zh: 是七。, note_zh: 音读是しち。数数时なな不容易听错。}
+      - {id: v-hachi, jp: 八, reading: はち, pos: 数, zh: 八, example: 八です。, example_reading: はちです。, example_zh: 是八。}
+      - {id: v-kyu, jp: 九, reading: きゅう, pos: 数, zh: 九, example: 九です。, example_reading: きゅうです。, example_zh: 是九。, note_zh: 也有く。}
+      - {id: v-juu, jp: 十, reading: じゅう, pos: 数, zh: 十, example: 十です。, example_reading: じゅうです。, example_zh: 是十。}
+      - {id: v-hyaku, jp: 百, reading: ひゃく, pos: 数, zh: 百, example: 百円です。, example_reading: ひゃくえんです。, example_zh: 一百日元。, note_zh: 三百是さんびゃく，八百是はっぴゃく。先记住有音变，不必一次背完。}
+      - {id: v-en, jp: 円, reading: えん, pos: 名词, zh: 日元, example: 百円です。, example_reading: ひゃくえんです。, example_zh: 一百日元。}
+  - id: vocab-n5-people
+    level: n5
+    domain: vocab
+    order: 100
+    title_zh: 人、时间和地点
+    title_ja: 人・時間・場所
+    prerequisites: [vocab-greetings]
+    summary_zh: 先能介绍自己、说今天、说在哪里。
+    items:
+      - {id: v-watashi, jp: 私, reading: わたし, accent: 0, pos: 代词, zh: 我, example: わたしは学生です。, example_reading: わたしはがくせいです。, example_zh: 我是学生。, note_zh: 平板。女性也常用わたし。ぼく、おれ是后面的语体问题。}
+      - {id: v-anata, jp: あなた, reading: あなた, accent: 2, pos: 代词, zh: 你, example: あなたは学生ですか。, example_reading: あなたはがくせいですか。, example_zh: 你是学生吗？, note_zh: 尾高。对老师、陌生人少用你，用名字加さん。}
+      - {id: v-gakusei, jp: 学生, reading: がくせい, accent: 0, pos: 名词, zh: 学生, example: わたしは学生です。, example_reading: わたしはがくせいです。, example_zh: 我是学生。}
+      - {id: v-sensei, jp: 先生, reading: せんせい, accent: 3, pos: 名词, zh: 老师, example: 先生は日本人です。, example_reading: せんせいはにほんじんです。, example_zh: 老师是日本人。, note_zh: 中高，核在第三拍。医生也常叫先生。}
+      - {id: v-nihongo, jp: 日本語, reading: にほんご, accent: 0, pos: 名词, zh: 日语, example: 日本語を勉強します。, example_reading: にほんごをべんきょうします。, example_zh: 学日语。}
+      - {id: v-nihon, jp: 日本, reading: にほん, accent: 2, pos: 名词, zh: 日本, example: 日本へ行きます。, example_reading: にほんへいきます。, example_zh: 去日本。, note_zh: 词典里常见中高。平板也能听到。这里记中高。}
+      - {id: v-kyou, jp: 今日, reading: きょう, accent: 1, pos: 名词, zh: 今天, example: 今日は月曜日です。, example_reading: きょうはげつようびです。, example_zh: 今天是星期一。}
+      - {id: v-ima, jp: 今, reading: いま, accent: 1, pos: 名词, zh: 现在, example: 今、七時です。, example_reading: いま、しちじです。, example_zh: 现在七点。, note_zh: 头高。口语里也能听到平板，课文按头高。}
+      - {id: v-ashita, jp: 明日, reading: あした, accent: 3, pos: 名词, zh: 明天, example: 明日、学校へ行きます。, example_reading: あした、がっこうへいきます。, example_zh: 明天去学校。, note_zh: 尾高。あしたが，助词下降。}
+      - {id: v-kinou, jp: 昨日, reading: きのう, pos: 名词, zh: 昨天, example: 昨日は雨でした。, example_reading: きのうはあめでした。, example_zh: 昨天是雨天。}
+      - {id: v-gakkou, jp: 学校, reading: がっこう, pos: 名词, zh: 学校, example: 学校で勉強します。, example_reading: がっこうでべんきょうします。, example_zh: 在学校学习。}
+      - {id: v-ie, jp: 家, reading: いえ, pos: 名词, zh: 家、房屋, example: 家へ帰ります。, example_reading: いえへかえります。, example_zh: 回家。, note_zh: 自己家也常说うち。}
+      - {id: v-tokyo, jp: 東京, reading: とうきょう, accent: 0, pos: 名词, zh: 东京, example: 東京は大きいです。, example_reading: とうきょうはおおきいです。, example_zh: 东京很大。}
+  - id: vocab-n5-daily
+    level: n5
+    domain: vocab
+    order: 110
+    title_zh: 日常名词
+    title_ja: 毎日のことば
+    prerequisites: [vocab-n5-people]
+    summary_zh: 吃、喝、买东西时最先用到的名词。带同形词的，看对照里的陷阱。
+    items:
+      - {id: v-mizu, jp: 水, reading: みず, accent: 0, pos: 名词, zh: 水, example: 水を飲みます。, example_reading: みずをのみます。, example_zh: 喝水。}
+      - {id: v-gohan, jp: ごはん, reading: ごはん, pos: 名词, zh: 饭, example: ごはんを食べます。, example_reading: ごはんをたべます。, example_zh: 吃饭。}
+      - {id: v-ocha, jp: お茶, reading: おちゃ, pos: 名词, zh: 茶, example: お茶を飲みます。, example_reading: おちゃをのみます。, example_zh: 喝茶。}
+      - {id: v-koohii, jp: コーヒー, reading: コーヒー, pos: 名词, zh: 咖啡, example: コーヒーを飲みます。, example_reading: コーヒーをのみます。, example_zh: 喝咖啡。}
+      - {id: v-pan, jp: パン, reading: パン, pos: 名词, zh: 面包, example: パンを食べます。, example_reading: パンをたべます。, example_zh: 吃面包。}
+      - {id: v-hon, jp: 本, reading: ほん, pos: 名词, zh: 书, example: 本を読みます。, example_reading: ほんをよみます。, example_zh: 看书。}
+      - {id: v-shinbun, jp: 新聞, reading: しんぶん, accent: 0, pos: 名词, zh: 报纸, example: 新聞を読みます。, example_reading: しんぶんをよみます。, example_zh: 看报纸。, note_zh: 不是「新闻」。新闻内容说ニュース。}
+      - {id: v-denwa, jp: 電話, reading: でんわ, accent: 0, pos: 名词, zh: 电话, example: 電話をします。, example_reading: でんわをします。, example_zh: 打电话。}
+      - {id: v-kuruma, jp: 車, reading: くるま, pos: 名词, zh: 车, example: 車で行きます。, example_reading: くるまでいきます。, example_zh: 坐车去。, note_zh: 汽车不要说成汽車。}
+      - {id: v-densha, jp: 電車, reading: でんしゃ, accent: 0, pos: 名词, zh: 电车、列车, example: 電車で行きます。, example_reading: でんしゃでいきます。, example_zh: 坐电车去。}
+      - {id: v-eki, jp: 駅, reading: えき, pos: 名词, zh: 车站, example: 駅で降ります。, example_reading: えきでおります。, example_zh: 在车站下车。}
+      - {id: v-yama, jp: 山, reading: やま, accent: 2, pos: 名词, zh: 山, example: 山が高いです。, example_reading: やまがたかいです。, example_zh: 山很高。}
+      - {id: v-kawa, jp: 川, reading: かわ, accent: 2, pos: 名词, zh: 河, example: 川が長いです。, example_reading: かわがながいです。, example_zh: 河很长。}
+      - id: v-inu
+        jp: 犬
+        reading: いぬ
+        accent: 2
+        pos: 名词
+        zh: 狗
+        example: 犬がいます。
+        example_reading: いぬがいます。
+        example_zh: 有狗。
+      - id: v-neko
+        jp: 猫
+        reading: ねこ
+        accent: 1
+        pos: 名词
+        zh: 猫
+        example: 猫がいます。
+        example_reading: ねこがいます。
+        example_zh: 有猫。
+        note_zh: 头高。
+  - id: vocab-traps
+    level: n5
+    domain: vocab
+    order: 115
+    title_zh: 第一批同形词
+    title_ja: 同形語
+    prerequisites: [vocab-n5-daily]
+    summary_zh: 汉字看起来眼熟，意思却不能直译。这节只处理最容易在生活里用错的几个。
+    items:
+      - id: v-tegami
+        jp: 手紙
+        reading: てがみ
+        accent: 0
+        pos: 名词
+        zh: 信
+        example: 手紙を書きます。
+        example_reading: てがみをかきます。
+        example_zh: 写信。
+        note_zh: 卫生纸是トイレットペーパー。
+      - id: v-benkyou
+        jp: 勉強
+        reading: べんきょう
+        accent: 0
+        pos: 名词・动词
+        zh: 学习
+        example: 日本語を勉強します。
+        example_reading: にほんごをべんきょうします。
+        example_zh: 学日语。
+      - id: v-daijoubu
+        jp: 大丈夫
+        reading: だいじょうぶ
+        accent: 3
+        pos: 形容动词
+        zh: 没关系、不用了
+        example: 大丈夫です。
+        example_reading: だいじょうぶです。
+        example_zh: 没关系。／不用了。
+        note_zh: 别人让你再吃一点，说大丈夫です常常是婉拒。
+      - id: v-joubu
+        jp: 丈夫
+        reading: じょうぶ
+        accent: 1
+        pos: 形容动词
+        zh: 结实
+        example: この靴は丈夫です。
+        example_reading: このくつはじょうぶです。
+        example_zh: 这双鞋结实。
+      - id: v-kisha
+        jp: 汽車
+        reading: きしゃ
+        pos: 名词
+        zh: 蒸汽火车
+        example: 汽車はもう走りません。
+        example_reading: きしゃはもうはしりません。
+        example_zh: 蒸汽火车已经不开了。
+      - id: v-hashiru
+        jp: 走る
+        reading: はしる
+        pos: 动词
+        zh: 跑
+        example: 公園を走ります。
+        example_reading: こうえんをはしります。
+        example_zh: 在公园跑步。
+        note_zh: 走是歩く。
+      - id: v-yasai
+        jp: 野菜
+        reading: やさい
+        accent: 0
+        pos: 名词
+        zh: 蔬菜
+        example: 野菜を食べます。
+        example_reading: やさいをたべます。
+        example_zh: 吃蔬菜。
+      - id: v-kitte
+        jp: 切手
+        reading: きって
+        pos: 名词
+        zh: 邮票
+        example: 切手を買います。
+        example_reading: きってをかいます。
+        example_zh: 买邮票。
+  - id: vocab-n5-verbs
+    level: n5
+    domain: vocab
+    order: 120
+    title_zh: N5 动词和形容词
+    title_ja: 動詞と形容詞
+    prerequisites: [vocab-n5-daily]
+    summary_zh: 先记辞书形和礼貌形。组别在语法课里展开。
+    items:
+      - {id: v-taberu, jp: 食べる, reading: たべる, pos: 一段动词, zh: 吃, example: パンを食べます。, example_reading: パンをたべます。, example_zh: 吃面包。}
+      - {id: v-nomu, jp: 飲む, reading: のむ, pos: 五段动词, zh: 喝, example: 水を飲みます。, example_reading: みずをのみます。, example_zh: 喝水。}
+      - {id: v-miru, jp: 見る, reading: みる, pos: 一段动词, zh: 看, example: 映画を見ます。, example_reading: えいがをみます。, example_zh: 看电影。}
+      - {id: v-kiku, jp: 聞く, reading: きく, pos: 五段动词, zh: 听；问, example: 音楽を聞きます。, example_reading: おんがくをききます。, example_zh: 听音乐。, note_zh: 问也是聞く：先生に聞きます。}
+      - {id: v-yomu, jp: 読む, reading: よむ, pos: 五段动词, zh: 读, example: 本を読みます。, example_reading: ほんをよみます。, example_zh: 看书。}
+      - {id: v-kaku, jp: 書く, reading: かく, pos: 五段动词, zh: 写, example: 名前を書きます。, example_reading: なまえをかきます。, example_zh: 写名字。}
+      - {id: v-iku, jp: 行く, reading: いく, pos: 五段动词, zh: 去, example: 学校へ行きます。, example_reading: がっこうへいきます。, example_zh: 去学校。, note_zh: て形是行って，不是行いて。}
+      - {id: v-kuru, jp: 来る, reading: くる, pos: 不规则动词, zh: 来, example: 明日来ます。, example_reading: あしたきます。, example_zh: 明天来。}
+      - {id: v-suru, jp: する, reading: する, pos: 不规则动词, zh: 做, example: 勉強します。, example_reading: べんきょうします。, example_zh: 学习。}
+      - {id: v-au, jp: 会う, reading: あう, pos: 五段动词, zh: 见面, example: 友達に会います。, example_reading: ともだちにあいます。, example_zh: 见朋友。, note_zh: 见面的对象用に。}
+      - {id: v-takai, jp: 高い, reading: たかい, pos: い形容词, zh: 高；贵, example: この本は高いです。, example_reading: このほんはたかいです。, example_zh: 这本书贵。}
+      - {id: v-yasui, jp: 安い, reading: やすい, pos: い形容词, zh: 便宜, example: これは安いです。, example_reading: これはやすいです。, example_zh: 这个便宜。, note_zh: 中文「便宜」对的是安い，不是便宜（べんぎ）。}
+      - {id: v-ookii, jp: 大きい, reading: おおきい, pos: い形容词, zh: 大, example: 東京は大きいです。, example_reading: とうきょうはおおきいです。, example_zh: 东京很大。}
+      - {id: v-chiisai, jp: 小さい, reading: ちいさい, pos: い形容词, zh: 小, example: この犬は小さいです。, example_reading: このいぬはちいさいです。, example_zh: 这只狗小。}
+      - {id: v-shizuka, jp: 静か, reading: しずか, pos: な形容词, zh: 安静, example: 図書館は静かです。, example_reading: としょかんはしずかです。, example_zh: 图书馆很安静。}
+  - id: vocab-n4
+    level: n4
+    domain: vocab
+    order: 200
+    title_zh: N4 词汇
+    title_ja: N4 のことば
+    prerequisites: [vocab-n5-verbs]
+    summary_zh: 能把一天的行动说完整的一批词。
+    items:
+      - {id: v-toru, jp: 取る, reading: とる, pos: 五段动词, zh: 拿、取得, example: 切符を取ります。, example_reading: きっぷをとります。, example_zh: 买票、取票。}
+      - {id: v-okuru, jp: 送る, reading: おくる, pos: 五段动词, zh: 送、寄, example: 友達を駅まで送る。, example_reading: ともだちをえきまでおくる。, example_zh: 把朋友送到车站。, note_zh: 例句是简体，用来认辞书形。对站员仍用送ります。}
+      - {id: v-oshieru, jp: 教える, reading: おしえる, pos: 一段动词, zh: 教、告诉, example: 道を教えてください。, example_reading: みちをおしえてください。, example_zh: 请告诉我路。}
+      - {id: v-narau, jp: 習う, reading: ならう, pos: 五段动词, zh: 学习（跟老师学）, example: ピアノを習います。, example_reading: ピアノをならいます。, example_zh: 学钢琴。, note_zh: 習う偏跟老师学。勉強偏自己学。}
+      - {id: v-tsukau, jp: 使う, reading: つかう, pos: 五段动词, zh: 使用, example: はしを使います。, example_reading: はしをつかいます。, example_zh: 用筷子。, note_zh: 这里的はし按筷子理解时是头高。句子里引擎可能选错词，要自己指定。}
+      - {id: v-matsu, jp: 待つ, reading: まつ, pos: 五段动词, zh: 等, example: 駅で友達を待ちます。, example_reading: えきでともだちをまちます。, example_zh: 在车站等朋友。}
+      - {id: v-sumu, jp: 住む, reading: すむ, pos: 五段动词, zh: 住, example: 東京に住んでいます。, example_reading: とうきょうにすんでいます。, example_zh: 住在东京。, note_zh: 住的地方用に。}
+      - {id: v-omou, jp: 思う, reading: おもう, pos: 五段动词, zh: 想、觉得, example: いいと思います。, example_reading: いいとおもいます。, example_zh: 我觉得好。}
+      - {id: v-shiru, jp: 知る, reading: しる, pos: 五段动词, zh: 知道, example: 知っています。, example_reading: しっています。, example_zh: 我知道。, note_zh: 状态用知っている，不用知ります表示「已经知道」。}
+      - {id: v-hajimeru, jp: 始める, reading: はじめる, pos: 一段动词, zh: 开始（他动）, example: 仕事を始めます。, example_reading: しごとをはじめます。, example_zh: 开始工作。}
+      - {id: v-owaru, jp: 終わる, reading: おわる, pos: 五段动词, zh: 结束, example: 授業が終わります。, example_reading: じゅぎょうがおわります。, example_zh: 课结束。, note_zh: 结束不要说成結束。}
+      - {id: v-ryokou, jp: 旅行, reading: りょこう, pos: 名词, zh: 旅行, example: 旅行に行きます。, example_reading: りょこうにいきます。, example_zh: 去旅行。}
+      - {id: v-yoyaku, jp: 予約, reading: よやく, pos: 名词・动词, zh: 预约, example: ホテルを予約します。, example_reading: ホテルをよやくします。, example_zh: 订旅馆。}
+      - {id: v-yakusoku, jp: 約束, reading: やくそく, pos: 名词, zh: 约定, example: 約束を守ります。, example_reading: やくそくをまもります。, example_zh: 守约。}
+      - {id: v-shinpai, jp: 心配, reading: しんぱい, pos: 名词・な形容词, zh: 担心, example: 試験が心配です。, example_reading: しけんがしんぱいです。, example_zh: 担心考试。}
+  - id: vocab-n3
+    level: n3
+    domain: vocab
+    order: 300
+    title_zh: N3 词汇
+    title_ja: N3 のことば
+    prerequisites: [vocab-n4]
+    summary_zh: 能谈理由、经验和态度的一批词。敬语动词放在语法课。
+    items:
+      - {id: v-keiken, jp: 経験, reading: けいけん, pos: 名词, zh: 经验, example: いい経験をしました。, example_reading: いいけいけんをしました。, example_zh: 是一次好的经历。}
+      - {id: v-iken, jp: 意見, reading: いけん, pos: 名词, zh: 意见、看法, example: 意見を言います。, example_reading: いけんをいいます。, example_zh: 说出看法。, note_zh: 中性。不一定是批评。}
+      - {id: v-riyuu, jp: 理由, reading: りゆう, pos: 名词, zh: 理由, example: 理由を説明します。, example_reading: りゆうをせつめいします。, example_zh: 说明理由。}
+      - {id: v-setsumei, jp: 説明, reading: せつめい, pos: 名词, zh: 说明, example: もう一度説明してください。, example_reading: もういちどせつめいしてください。, example_zh: 请再说明一次。}
+      - {id: v-junbi, jp: 準備, reading: じゅんび, pos: 名词, zh: 准备, example: 旅行の準備をします。, example_reading: りょこうのじゅんびをします。, example_zh: 做旅行的准备。}
+      - {id: v-renraku, jp: 連絡, reading: れんらく, pos: 名词, zh: 联系, example: あとで連絡します。, example_reading: あとでれんらくします。, example_zh: 回头联系。}
+      - {id: v-seikatsu, jp: 生活, reading: せいかつ, pos: 名词, zh: 生活, example: 日本の生活に慣れました。, example_reading: にほんのせいかつになれました。, example_zh: 习惯了在日本的生活。}
+      - {id: v-shakai, jp: 社会, reading: しゃかい, pos: 名词, zh: 社会, example: 社会の問題です。, example_reading: しゃかいのもんだいです。, example_zh: 是社会问题。}
+      - {id: v-kenkyuu, jp: 研究, reading: けんきゅう, pos: 名词, zh: 研究, example: 日本語を研究しています。, example_reading: にほんごをけんきゅうしています。, example_zh: 在研究日语。}
+      - {id: v-kentou, jp: 検討, reading: けんとう, pos: 名词, zh: 审议、考虑, example: 計画を検討します。, example_reading: けいかくをけんとうします。, example_zh: 研究这个计划。, note_zh: 不是自我批评。}
+      - {id: v-keiyaku, jp: 契約, reading: けいやく, pos: 名词, zh: 合同, example: 契約を読みます。, example_reading: けいやくをよみます。, example_zh: 看合同。, note_zh: 中文「合同」对契約，不对合同（ごうどう）。}
+      - {id: v-seikaku, jp: 正確, reading: せいかく, pos: な形容词, zh: 正确、准确, example: 正確に読んでください。, example_reading: せいかくによんでください。, example_zh: 请读准确。}

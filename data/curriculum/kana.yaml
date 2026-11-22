@@ -1,0 +1,890 @@
+units:
+- id: kana-gojuon
+  level: zero
+  domain: kana
+  order: 10
+  title_zh: 清音五十音
+  title_ja: 五十音
+  prerequisites: []
+  summary_zh: 平假名和片假名一起记。目标是拍，不是普通话的音节。ゐ、ゑ只作历史知识，不进这张表。
+  items:
+  - id: kana-a
+    jp: あ
+    katakana: ア
+    reading: あ
+    romaji: a
+    zh: 嘴自然张开，比「啊」更短、更轻。不要拖长。
+    row: あ
+  - id: kana-i
+    jp: い
+    katakana: イ
+    reading: い
+    romaji: i
+    zh: 嘴角向两边，比普通话「衣」更紧、更短。
+    row: い
+  - id: kana-u
+    jp: う
+    katakana: ウ
+    reading: う
+    romaji: u
+    zh: 不圆唇。不要发成「乌」。双唇放松。
+    row: う
+  - id: kana-e
+    jp: え
+    katakana: エ
+    reading: え
+    romaji: e
+    zh: 介于「诶」和「哎」之间，口型稳定，不要滑向い。
+    row: え
+  - id: kana-o
+    jp: お
+    katakana: オ
+    reading: お
+    romaji: o
+    zh: 嘴唇圆，但比普通话「欧」短。不要收成う。
+    row: お
+  - id: kana-ka
+    jp: か
+    katakana: カ
+    reading: か
+    romaji: ka
+    zh: か行。气流比普通话 k 弱。
+    row: か
+  - id: kana-ki
+    jp: き
+    katakana: キ
+    reading: き
+    romaji: ki
+    zh: き。い的口型加上弱的 k。后面接清音时，い可能几乎不响。
+    row: き
+  - id: kana-ku
+    jp: く
+    katakana: ク
+    reading: く
+    romaji: ku
+    zh: く。う不圆唇，所以く也不要撮嘴。
+    row: く
+  - id: kana-ke
+    jp: け
+    katakana: ケ
+    reading: け
+    romaji: ke
+    zh: け。え的口型要稳定。
+    row: け
+  - id: kana-ko
+    jp: こ
+    katakana: コ
+    reading: こ
+    romaji: ko
+    zh: こ。お短而圆。
+    row: こ
+  - id: kana-sa
+    jp: さ
+    katakana: サ
+    reading: さ
+    romaji: sa
+    zh: さ。舌尖靠近上齿龈，气流摩擦，不要发成英语 th。
+    row: さ
+  - id: kana-shi
+    jp: し
+    katakana: シ
+    reading: し
+    romaji: shi
+    zh: 接近「西」，不是「思」。不要用舌尖音 si。
+    row: し
+  - id: kana-su
+    jp: す
+    katakana: ス
+    reading: す
+    romaji: su
+    zh: す。嘴唇不圆。不要发成「苏」。
+    row: す
+  - id: kana-se
+    jp: せ
+    katakana: セ
+    reading: せ
+    romaji: se
+    zh: せ。摩擦弱而短。
+    row: せ
+  - id: kana-so
+    jp: そ
+    katakana: ソ
+    reading: そ
+    romaji: so
+    zh: そ。注意片假名ソ和ン的方向不同。
+    row: そ
+  - id: kana-ta
+    jp: た
+    katakana: タ
+    reading: た
+    romaji: ta
+    zh: た。不送气，气流比普通话 t 弱。
+    row: た
+  - id: kana-chi
+    jp: ち
+    katakana: チ
+    reading: ち
+    romaji: chi
+    zh: ち。不送气的 [tɕi]，不要发成送气的「吃」或 ci。
+    row: ち
+  - id: kana-tsu
+    jp: つ
+    katakana: ツ
+    reading: つ
+    romaji: tsu
+    zh: つ。不圆唇，气流比「粗」弱。片假名ツ比シ多一笔方向要分开。
+    row: つ
+  - id: kana-te
+    jp: て
+    katakana: テ
+    reading: て
+    romaji: te
+    zh: て。短。
+    row: て
+  - id: kana-to
+    jp: と
+    katakana: ト
+    reading: と
+    romaji: to
+    zh: と。片假名ト和汉语「卜」不同。
+    row: と
+  - id: kana-na
+    jp: な
+    katakana: ナ
+    reading: な
+    romaji: na
+    zh: な行是鼻音加元音，舌尖贴上齿龈。
+    row: な
+  - id: kana-ni
+    jp: に
+    katakana: ニ
+    reading: に
+    romaji: ni
+    zh: に。
+    row: に
+  - id: kana-nu
+    jp: ぬ
+    katakana: ヌ
+    reading: ぬ
+    romaji: nu
+    zh: ぬ。う不圆唇。平假名ぬ和め要分开。
+    row: ぬ
+  - id: kana-ne
+    jp: ね
+    katakana: ネ
+    reading: ね
+    romaji: ne
+    zh: ね。
+    row: ね
+  - id: kana-no
+    jp: の
+    katakana: ノ
+    reading: の
+    romaji: 'no'
+    zh: の。片假名ノ只有一笔。
+    row: の
+  - id: kana-ha
+    jp: は
+    katakana: ハ
+    reading: は
+    romaji: ha
+    zh: 词首是 h。作助词时读わ。这里先记词首的 ha。
+    row: は
+  - id: kana-hi
+    jp: ひ
+    katakana: ヒ
+    reading: ひ
+    romaji: hi
+    zh: ひ。摩擦在口腔后部，不是英语 he 那么靠前。
+    row: ひ
+  - id: kana-fu
+    jp: ふ
+    katakana: フ
+    reading: ふ
+    romaji: fu
+    zh: 双唇靠近但不咬唇，没有英语 f 的齿唇摩擦。不要发成「夫」的圆唇。
+    row: ふ
+  - id: kana-he
+    jp: へ
+    katakana: ヘ
+    reading: へ
+    romaji: he
+    zh: 词首是 he。作助词时读え。
+    row: へ
+  - id: kana-ho
+    jp: ほ
+    katakana: ホ
+    reading: ほ
+    romaji: ho
+    zh: ほ。
+    row: ほ
+  - id: kana-ma
+    jp: ま
+    katakana: マ
+    reading: ま
+    romaji: ma
+    zh: ま行。双唇鼻音。
+    row: ま
+  - id: kana-mi
+    jp: み
+    katakana: ミ
+    reading: み
+    romaji: mi
+    zh: み。
+    row: み
+  - id: kana-mu
+    jp: む
+    katakana: ム
+    reading: む
+    romaji: mu
+    zh: む。う不圆唇。
+    row: む
+  - id: kana-me
+    jp: め
+    katakana: メ
+    reading: め
+    romaji: me
+    zh: め。平假名め和ぬ要对照着写。
+    row: め
+  - id: kana-mo
+    jp: も
+    katakana: モ
+    reading: も
+    romaji: mo
+    zh: も。
+    row: も
+  - id: kana-ya
+    jp: や
+    katakana: ヤ
+    reading: や
+    romaji: ya
+    zh: や行只有や、ゆ、よ。没有 yi、ye。
+    row: や
+  - id: kana-yu
+    jp: ゆ
+    katakana: ユ
+    reading: ゆ
+    romaji: yu
+    zh: ゆ。嘴唇不要收成普通话 ü。
+    row: ゆ
+  - id: kana-yo
+    jp: よ
+    katakana: ヨ
+    reading: よ
+    romaji: yo
+    zh: よ。
+    row: よ
+  - id: kana-ra
+    jp: ら
+    katakana: ラ
+    reading: ら
+    romaji: ra
+    zh: 舌尖轻弹上齿龈，不是普通话 l，也不是英语 r。
+    row: ら
+  - id: kana-ri
+    jp: り
+    katakana: リ
+    reading: り
+    romaji: ri
+    zh: り。同样是闪音。平假名り不要写成汉语的「了」。
+    row: り
+  - id: kana-ru
+    jp: る
+    katakana: ル
+    reading: る
+    romaji: ru
+    zh: る。不圆唇。
+    row: る
+  - id: kana-re
+    jp: れ
+    katakana: レ
+    reading: れ
+    romaji: re
+    zh: れ。
+    row: れ
+  - id: kana-ro
+    jp: ろ
+    katakana: ロ
+    reading: ろ
+    romaji: ro
+    zh: ろ。片假名ロ是方框，不要和口搞混。
+    row: ろ
+  - id: kana-wa
+    jp: わ
+    katakana: ワ
+    reading: わ
+    romaji: wa
+    zh: わ。嘴唇圆度比英语 w 小。
+    row: わ
+  - id: kana-wo
+    jp: を
+    katakana: ヲ
+    reading: を
+    romaji: o（助词を）
+    zh: 现代日语里读お，和お相同。主要用作助词を。
+    row: を
+  - id: kana-n
+    jp: ん
+    katakana: ン
+    reading: ん
+    romaji: n
+    zh: 单独一拍。不是前一个音节的韵尾装饰。
+    row: ん
+- id: kana-dakuon
+  level: zero
+  domain: kana
+  order: 20
+  title_zh: 浊音和半浊音
+  title_ja: 濁音・半濁音
+  prerequisites:
+  - kana-gojuon
+  summary_zh: 点点是浊音，圆圈是半浊音。浊音要声带振动，不要只用普通话的不送气来代替。
+  items:
+  - id: kana-ga
+    jp: が
+    katakana: ガ
+    reading: が
+    romaji: ga
+    zh: 浊音。声带要振动，不是只把 ka 的送气去掉。
+    row: が
+  - id: kana-gi
+    jp: ぎ
+    katakana: ギ
+    reading: ぎ
+    romaji: gi
+    zh: ぎ。浊音。
+    row: ぎ
+  - id: kana-gu
+    jp: ぐ
+    katakana: グ
+    reading: ぐ
+    romaji: gu
+    zh: ぐ。う不圆唇，同时声带振动。
+    row: ぐ
+  - id: kana-ge
+    jp: げ
+    katakana: ゲ
+    reading: げ
+    romaji: ge
+    zh: げ。
+    row: げ
+  - id: kana-go
+    jp: ご
+    katakana: ゴ
+    reading: ご
+    romaji: go
+    zh: ご。
+    row: ご
+  - id: kana-za
+    jp: ざ
+    katakana: ザ
+    reading: ざ
+    romaji: za
+    zh: ざ。浊摩擦。
+    row: ざ
+  - id: kana-ji
+    jp: じ
+    katakana: ジ
+    reading: じ
+    romaji: ji
+    zh: じ。和ぢ在现代共通语里几乎同音，词里再分开。
+    row: じ
+  - id: kana-zu
+    jp: ず
+    katakana: ズ
+    reading: ず
+    romaji: zu
+    zh: ず。和づ在现代共通语里几乎同音。
+    row: ず
+  - id: kana-ze
+    jp: ぜ
+    katakana: ゼ
+    reading: ぜ
+    romaji: ze
+    zh: ぜ。
+    row: ぜ
+  - id: kana-zo
+    jp: ぞ
+    katakana: ゾ
+    reading: ぞ
+    romaji: zo
+    zh: ぞ。
+    row: ぞ
+  - id: kana-da
+    jp: だ
+    katakana: ダ
+    reading: だ
+    romaji: da
+    zh: だ。真浊音。
+    row: だ
+  - id: kana-di
+    jp: ぢ
+    katakana: ヂ
+    reading: ぢ
+    romaji: ji
+    zh: ぢ。鼻音后面会用到，比如鼻血（はなぢ）。读音和じ相同。
+    row: ぢ
+  - id: kana-du
+    jp: づ
+    katakana: ヅ
+    reading: づ
+    romaji: zu
+    zh: づ。续く、つづく一类词里见到。读音和ず相同。
+    row: づ
+  - id: kana-de
+    jp: で
+    katakana: デ
+    reading: で
+    romaji: de
+    zh: で。
+    row: で
+  - id: kana-do
+    jp: ど
+    katakana: ド
+    reading: ど
+    romaji: do
+    zh: ど。
+    row: ど
+  - id: kana-ba
+    jp: ば
+    katakana: バ
+    reading: ば
+    romaji: ba
+    zh: ば。浊音。和ぱ、は成对记。
+    row: ば
+  - id: kana-bi
+    jp: び
+    katakana: ビ
+    reading: び
+    romaji: bi
+    zh: び。
+    row: び
+  - id: kana-bu
+    jp: ぶ
+    katakana: ブ
+    reading: ぶ
+    romaji: bu
+    zh: ぶ。
+    row: ぶ
+  - id: kana-be
+    jp: べ
+    katakana: ベ
+    reading: べ
+    romaji: be
+    zh: べ。
+    row: べ
+  - id: kana-bo
+    jp: ぼ
+    katakana: ボ
+    reading: ぼ
+    romaji: bo
+    zh: ぼ。
+    row: ぼ
+  - id: kana-pa
+    jp: ぱ
+    katakana: パ
+    reading: ぱ
+    romaji: pa
+    zh: 半浊音。有一股清楚的气流，比は更像英语 p。
+    row: ぱ
+  - id: kana-pi
+    jp: ぴ
+    katakana: ピ
+    reading: ぴ
+    romaji: pi
+    zh: ぴ。
+    row: ぴ
+  - id: kana-pu
+    jp: ぷ
+    katakana: プ
+    reading: ぷ
+    romaji: pu
+    zh: ぷ。
+    row: ぷ
+  - id: kana-pe
+    jp: ぺ
+    katakana: ペ
+    reading: ぺ
+    romaji: pe
+    zh: ぺ。
+    row: ぺ
+  - id: kana-po
+    jp: ぽ
+    katakana: ポ
+    reading: ぽ
+    romaji: po
+    zh: ぽ。
+    row: ぽ
+- id: kana-yoon
+  level: zero
+  domain: kana
+  order: 30
+  title_zh: 拗音
+  title_ja: 拗音
+  prerequisites:
+  - kana-dakuon
+  summary_zh: 小ゃゅょ和前面的假名合成一拍。
+  items:
+  - id: kana-kya
+    jp: きゃ
+    katakana: キャ
+    reading: きゃ
+    romaji: kya
+    zh: きゃ是一拍，不是き再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-kyu
+    jp: きゅ
+    katakana: キュ
+    reading: きゅ
+    romaji: kyu
+    zh: きゅ是一拍，不是き再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-kyo
+    jp: きょ
+    katakana: キョ
+    reading: きょ
+    romaji: kyo
+    zh: きょ是一拍，不是き再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-sha
+    jp: しゃ
+    katakana: シャ
+    reading: しゃ
+    romaji: sha
+    zh: しゃ是一拍，不是し再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-shu
+    jp: しゅ
+    katakana: シュ
+    reading: しゅ
+    romaji: shu
+    zh: しゅ是一拍，不是し再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-sho
+    jp: しょ
+    katakana: ショ
+    reading: しょ
+    romaji: sho
+    zh: しょ是一拍，不是し再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-cha
+    jp: ちゃ
+    katakana: チャ
+    reading: ちゃ
+    romaji: cha
+    zh: ちゃ是一拍，不是ち再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-chu
+    jp: ちゅ
+    katakana: チュ
+    reading: ちゅ
+    romaji: chu
+    zh: ちゅ是一拍，不是ち再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-cho
+    jp: ちょ
+    katakana: チョ
+    reading: ちょ
+    romaji: cho
+    zh: ちょ是一拍，不是ち再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-nya
+    jp: にゃ
+    katakana: ニャ
+    reading: にゃ
+    romaji: nya
+    zh: にゃ是一拍，不是に再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-nyu
+    jp: にゅ
+    katakana: ニュ
+    reading: にゅ
+    romaji: nyu
+    zh: にゅ是一拍，不是に再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-nyo
+    jp: にょ
+    katakana: ニョ
+    reading: にょ
+    romaji: nyo
+    zh: にょ是一拍，不是に再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-hya
+    jp: ひゃ
+    katakana: ヒャ
+    reading: ひゃ
+    romaji: hya
+    zh: ひゃ是一拍，不是ひ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-hyu
+    jp: ひゅ
+    katakana: ヒュ
+    reading: ひゅ
+    romaji: hyu
+    zh: ひゅ是一拍，不是ひ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-hyo
+    jp: ひょ
+    katakana: ヒョ
+    reading: ひょ
+    romaji: hyo
+    zh: ひょ是一拍，不是ひ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-mya
+    jp: みゃ
+    katakana: ミャ
+    reading: みゃ
+    romaji: mya
+    zh: みゃ是一拍，不是み再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-myu
+    jp: みゅ
+    katakana: ミュ
+    reading: みゅ
+    romaji: myu
+    zh: みゅ是一拍，不是み再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-myo
+    jp: みょ
+    katakana: ミョ
+    reading: みょ
+    romaji: myo
+    zh: みょ是一拍，不是み再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-rya
+    jp: りゃ
+    katakana: リャ
+    reading: りゃ
+    romaji: rya
+    zh: りゃ是一拍，不是り再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-ryu
+    jp: りゅ
+    katakana: リュ
+    reading: りゅ
+    romaji: ryu
+    zh: りゅ是一拍，不是り再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-ryo
+    jp: りょ
+    katakana: リョ
+    reading: りょ
+    romaji: ryo
+    zh: りょ是一拍，不是り再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-gya
+    jp: ぎゃ
+    katakana: ギャ
+    reading: ぎゃ
+    romaji: gya
+    zh: ぎゃ是一拍，不是ぎ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-gyu
+    jp: ぎゅ
+    katakana: ギュ
+    reading: ぎゅ
+    romaji: gyu
+    zh: ぎゅ是一拍，不是ぎ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-gyo
+    jp: ぎょ
+    katakana: ギョ
+    reading: ぎょ
+    romaji: gyo
+    zh: ぎょ是一拍，不是ぎ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-ja
+    jp: じゃ
+    katakana: ジャ
+    reading: じゃ
+    romaji: ja
+    zh: じゃ是一拍，不是じ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-ju
+    jp: じゅ
+    katakana: ジュ
+    reading: じゅ
+    romaji: ju
+    zh: じゅ是一拍，不是じ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-jo
+    jp: じょ
+    katakana: ジョ
+    reading: じょ
+    romaji: jo
+    zh: じょ是一拍，不是じ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-bya
+    jp: びゃ
+    katakana: ビャ
+    reading: びゃ
+    romaji: bya
+    zh: びゃ是一拍，不是び再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-byu
+    jp: びゅ
+    katakana: ビュ
+    reading: びゅ
+    romaji: byu
+    zh: びゅ是一拍，不是び再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-byo
+    jp: びょ
+    katakana: ビョ
+    reading: びょ
+    romaji: byo
+    zh: びょ是一拍，不是び再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-pya
+    jp: ぴゃ
+    katakana: ピャ
+    reading: ぴゃ
+    romaji: pya
+    zh: ぴゃ是一拍，不是ぴ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-pyu
+    jp: ぴゅ
+    katakana: ピュ
+    reading: ぴゅ
+    romaji: pyu
+    zh: ぴゅ是一拍，不是ぴ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+  - id: kana-pyo
+    jp: ぴょ
+    katakana: ピョ
+    reading: ぴょ
+    romaji: pyo
+    zh: ぴょ是一拍，不是ぴ再加や。小写的ゃゅょ不单独占拍。
+    row: 拗音
+- id: kana-timing
+  level: zero
+  domain: kana
+  order: 40
+  title_zh: 促音、长音、拨音
+  title_ja: 促音・長音・撥音
+  prerequisites:
+  - kana-yoon
+  summary_zh: 这三样决定拍数。中文母语者最容易在时间上省掉它们。
+  items:
+  - id: kana-sokuon
+    jp: っ
+    katakana: ッ
+    reading: っ
+    romaji: （促音）
+    zh: 促音独占一拍。きて（来て）两拍，きって（切手）三拍。写小，并且靠右、靠下。
+    note_zh: 它不是重读符号。闭住气流，停满一拍。
+  - id: kana-choon
+    jp: おう
+    katakana: オー
+    reading: おう
+    romaji: ō
+    zh: 长音再给一拍。平假名里おう、おお常表示长 o，えい常表示长 e。片假名用ー。
+    note_zh: おばさん四拍，おばあさん五拍。拍数变了，词就变了。
+  - id: kana-hatsuon
+    jp: ん
+    katakana: ン
+    reading: ん
+    romaji: n
+    zh: 拨音是一拍。位置随后面的音变化：ぱ前接近 m，か前接近 ng，词尾可以是成音节的 n。
+    note_zh: 不要把它写成前一个汉字的韵尾就结束。ほん是两拍。
+  - id: kana-yoon-concept
+    jp: しゃ
+    katakana: シャ
+    reading: しゃ
+    romaji: sha
+    zh: 拗音是一拍。小ゃ、ゅ、ょ贴在前一个假名上。写的时候比正常假名小。
+    note_zh: きょう是两拍：きょ、う。不是三拍。
+- id: kana-loan
+  level: zero
+  domain: kana
+  order: 50
+  title_zh: 外来语里的片假名
+  title_ja: 外来語の片仮名
+  prerequisites:
+  - kana-timing
+  summary_zh: 小写ア行贴在别的假名后面，仍然是一拍。先认最常见的一组。
+  items:
+  - id: kana-loan-fa
+    jp: ファ
+    katakana: ファ
+    reading: ファ
+    romaji: fa
+    zh: ふ加上小ァ。外来语里的 fa。仍是一拍。
+  - id: kana-loan-fi
+    jp: フィ
+    katakana: フィ
+    reading: フィ
+    romaji: fi
+    zh: ふ加上小ィ。
+  - id: kana-loan-fe
+    jp: フェ
+    katakana: フェ
+    reading: フェ
+    romaji: fe
+    zh: ふ加上小ェ。
+  - id: kana-loan-fo
+    jp: フォ
+    katakana: フォ
+    reading: フォ
+    romaji: fo
+    zh: ふ加上小ォ。
+  - id: kana-loan-ti
+    jp: ティ
+    katakana: ティ
+    reading: ティ
+    romaji: ti
+    zh: て加上小ィ。party 的 ti，不是ち。
+  - id: kana-loan-di
+    jp: ディ
+    katakana: ディ
+    reading: ディ
+    romaji: di
+    zh: で加上小ィ。
+  - id: kana-loan-wi
+    jp: ウィ
+    katakana: ウィ
+    reading: ウィ
+    romaji: wi
+    zh: う加上小ィ。
+  - id: kana-loan-we
+    jp: ウェ
+    katakana: ウェ
+    reading: ウェ
+    romaji: we
+    zh: う加上小ェ。
+  - id: kana-loan-wo
+    jp: ウォ
+    katakana: ウォ
+    reading: ウォ
+    romaji: wo
+    zh: う加上小ォ。
+  - id: kana-loan-va
+    jp: ヴァ
+    katakana: ヴァ
+    reading: ヴァ
+    romaji: va
+    zh: ヴ加上小ァ。外来语。不要咬成英语 v 那么紧。
+  - id: kana-loan-che
+    jp: チェ
+    katakana: チェ
+    reading: チェ
+    romaji: che
+    zh: ち加上小ェ。
+  - id: kana-loan-she
+    jp: シェ
+    katakana: シェ
+    reading: シェ
+    romaji: she
+    zh: し加上小ェ。
+  - id: kana-loan-je
+    jp: ジェ
+    katakana: ジェ
+    reading: ジェ
+    romaji: je
+    zh: じ加上小ェ。
+  - id: kana-loan-tsa
+    jp: ツァ
+    katakana: ツァ
+    reading: ツァ
+    romaji: tsa
+    zh: つ加上小ァ。

@@ -1,0 +1,21 @@
+units:
+  - id: scaffold-n2
+    level: n2
+    domain: grammar
+    order: 400
+    status: scaffold
+    title_zh: N2 路径
+    title_ja: N2
+    prerequisites: [gram-n3-keigo]
+    summary_zh: 结构留在这里。后续按同一格式加敬语细化、书面语接续和长篇阅读。现在没有课文，计划里不会假装已经上过。
+    items: []
+  - id: scaffold-n1
+    level: n1
+    domain: grammar
+    order: 410
+    status: scaffold
+    title_zh: N1 路径
+    title_ja: N1
+    prerequisites: [scaffold-n2]
+    summary_zh: 结构留在这里。近义辨析和评论阅读还没有条目。
+    items: []

@@ -1,0 +1,525 @@
+units:
+  - id: gram-n5-copula
+    level: n5
+    domain: grammar
+    order: 150
+    title_zh: です和疑问
+    title_ja: です・か
+    prerequisites: [vocab-greetings]
+    summary_zh: 先把「A 是 B」说稳。は是话题，读わ。
+    items:
+      - id: g-desu
+        jp: 〜は〜です
+        reading: はです
+        zh: 礼貌地判断「是」。
+        produce_zh: 用「は」和「です」介绍自己是学生。
+        example: わたしは学生です。
+        example_reading: わたしはがくせいです。
+        example_zh: 我是学生。
+        contrast_zh: 中文的「是」不必有话题标记。这里は把「我」提出来当话题，后面说明他是学生。介绍自己用は，不用が。は读わ，字仍写は。
+        errors: [gram-wa-ga, gram-particle-drop]
+      - id: g-janai
+        jp: 〜じゃありません
+        reading: じゃありません
+        zh: 礼貌的否定。
+        produce_zh: 说「我不是老师」。
+        example: わたしは先生じゃありません。
+        example_reading: わたしはせんせいじゃありません。
+        example_zh: 我不是老师。
+        contrast_zh: 更郑重的说法是ではありません。不要在です后面加不。
+        errors: [gram-conjugation]
+      - id: g-deshita
+        jp: 〜でした
+        reading: でした
+        zh: 礼貌的过去。
+        produce_zh: 说「昨天是雨」。
+        example: 昨日は雨でした。
+        example_reading: きのうはあめでした。
+        example_zh: 昨天是雨天。
+        contrast_zh: 过去写在です上，变成でした。不要说「です了」。
+      - id: g-ka
+        jp: 〜か
+        reading: か
+        zh: 疑问。句尾升调，加か。
+        produce_zh: 问「你是学生吗」。
+        example: あなたは学生ですか。
+        example_reading: あなたはがくせいですか。
+        example_zh: 你是学生吗？
+        contrast_zh: か已经表示疑问，不必再加吗的汉字。对老师少用あなた，用姓加さん。
+  - id: gram-n5-particles
+    level: n5
+    domain: grammar
+    order: 160
+    title_zh: 基本助词
+    title_ja: 助詞
+    prerequisites: [gram-n5-copula]
+    summary_zh: 一次只学一个助词。中文没有这些标记，所以最容易整个省掉。
+    items:
+      - id: g-ga
+        jp: 〜が
+        reading: が
+        zh: 指出主语，尤其是未知的、要强调的那个。
+        produce_zh: 问「谁是学生」，再用が回答。
+        example: だれが学生ですか。
+        example_reading: だれががくせいですか。
+        example_zh: 谁是学生？
+        contrast_zh: が用来回答「谁／哪一个」，或表示「就是这个」。わたしは学生です是介绍话题。わたしが学生です是在一群人里指出「学生是我」。
+        errors: [gram-wa-ga]
+      - id: g-wo
+        jp: 〜を
+        reading: を
+        zh: 宾语标记。动词在它后面。
+        produce_zh: 说「喝水」。
+        example: 水を飲みます。
+        example_reading: みずをのみます。
+        example_zh: 喝水。
+        contrast_zh: を读お。中文没有宾语标记，很容易写成「水飲みます」。初学不要省。语序是宾语在动词前。
+        errors: [gram-particle-drop, gram-sov]
+      - id: g-ni
+        jp: 〜に
+        reading: に
+        zh: 时间点、存在的地点、到达点。
+        produce_zh: 说「七点起床」。
+        example: 七時に起きます。
+        example_reading: しちじにおきます。
+        example_zh: 七点起床。
+        contrast_zh: 存在用に：図書館に本があります。动作发生的场所不用に，用で。到达可以用に，也可以用へ。
+        errors: [gram-particle-drop]
+      - id: g-de
+        jp: 〜で
+        reading: で
+        zh: 动作发生的场所，或手段。
+        produce_zh: 说「在图书馆看书」。
+        example: 図書館で本を読みます。
+        example_reading: としょかんでほんをよみます。
+        example_zh: 在图书馆看书。
+        contrast_zh: 人在图书馆：図書館にいます。在图书馆读书：図書館で読みます。で也表示手段：ペンで書きます。
+        errors: [gram-particle-drop]
+      - id: g-he
+        jp: 〜へ
+        reading: へ
+        zh: 方向。
+        produce_zh: 说「去车站」。
+        example: 駅へ行きます。
+        example_reading: えきへいきます。
+        example_zh: 去车站。
+        contrast_zh: へ读え。和に都能标到达，へ更强调方向。字写へ，不要写成え。
+      - id: g-no
+        jp: 〜の
+        reading: の
+        zh: 所属、定语。
+        produce_zh: 说「我的书」。
+        example: これはわたしの本です。
+        example_reading: これはわたしのほんです。
+        example_zh: 这是我的书。
+        contrast_zh: 中文的「的」在所属这里用の，不用的（てき）。中国の文化，不是中国的文化。的只留在科学的な这种词里。
+        errors: [gram-teki-no]
+      - id: g-mo
+        jp: 〜も
+        reading: も
+        zh: 也。替换は或が的位置，不叠在它们后面。
+        produce_zh: 说「我也是学生」。
+        example: わたしも学生です。
+        example_reading: わたしもがくせいです。
+        example_zh: 我也是学生。
+        contrast_zh: はも、がも这种叠用不出现在这句型里。も代替は。
+      - id: g-to
+        jp: 〜と
+        reading: と
+        zh: 和；一起。
+        produce_zh: 说「和朋友说话」。
+        example: 友達と話します。
+        example_reading: ともだちとはなします。
+        example_zh: 和朋友说话。
+        contrast_zh: 并列名词也用と：パンと卵。引用内容用と：行くと言いました。这节只要求「和某人」。
+  - id: gram-n5-verbs
+    level: n5
+    domain: grammar
+    order: 170
+    title_zh: 动词组和礼貌形
+    title_ja: 動詞
+    prerequisites: [gram-n5-particles]
+    summary_zh: 先分组，再变形式。不要在辞书形后面直接加ます。
+    items:
+      - id: g-groups
+        jp: 動詞のグループ
+        reading: どうしのグループ
+        zh: 五段、一段、する和来る。
+        produce_zh: 把食べる、書く、する、来る分进三组。
+        example: 食べます。書きます。します。来ます。
+        example_reading: たべます。かきます。します。きます。
+        example_zh: 吃。写。做。来。
+        contrast_zh: 五段词尾是う段，ます形先变成い段：書く→書きます。一段去掉る：食べる→食べます。する→します，来る→来ます，单独记。中文动词不变形，所以不能写食べるます。
+        errors: [gram-conjugation]
+        table:
+          - {辞书: 書く, 组: 五段, ます: 書きます}
+          - {辞书: 食べる, 组: 一段, ます: 食べます}
+          - {辞书: する, 组: 不规则, ます: します}
+          - {辞书: 来る, 组: 不规则, ます: 来ます}
+      - id: g-te
+        jp: て形
+        reading: てけい
+        zh: て形是后面许多句型的入口。
+        produce_zh: 写出書く、待つ、読む、行く、食べる的て形。
+        example: 書いて、待って、読んで、行って、食べて。
+        example_reading: かいて、まって、よんで、いって、たべて。
+        example_zh: 写、等、读、去、吃的て形。
+        contrast_zh: う・つ・る变成って，ぶ・む・ぬ变成んで，く变成いて，ぐ变成いで，す变成して。行く例外，是行って，不是行いて。一段去掉る加て。
+        errors: [gram-conjugation]
+        table:
+          - {書く: 書いて, 泳ぐ: 泳いで, 話す: 話して}
+          - {待つ: 待って, 読む: 読んで, 買う: 買って}
+          - {行く: 行って, 食べる: 食べて, する: して, 来る: 来て}
+      - id: g-ta
+        jp: た形
+        reading: たけい
+        zh: 过去、完成。和て形同一套音变，只是て／で换成た／だ。
+        produce_zh: 说「昨天看了书」。
+        example: 昨日、本を読みました。
+        example_reading: きのう、ほんをよみました。
+        example_zh: 昨天看了书。
+        contrast_zh: 礼貌过去是ました，不是ますた。简体过去才是た：読んだ。中文的「了」没有单独对应的助词。
+        errors: [gram-conjugation]
+      - id: g-nai
+        jp: ない形
+        reading: ないけい
+        zh: 简体否定。
+        produce_zh: 把「不吃」说成简体否定。
+        example: 朝は食べません。
+        example_reading: あさはたべません。
+        example_zh: 早上不吃。
+        contrast_zh: 礼貌否定是ません。简体是否定词尾：書かない、食べない、しない、来ない（こない）。不要加一个独立的不。
+        errors: [gram-conjugation]
+      - id: g-teiru
+        jp: 〜ている
+        reading: ている
+        zh: 正在做，或结果还留着。
+        produce_zh: 分别说「正在下雨」和「窗开着」。
+        example: 今、雨が降っています。
+        example_reading: いま、あめがふっています。
+        example_zh: 现在正在下雨。
+        contrast_zh: 窓が開いています是窗开着，这个状态还在，不是「正在被打开」的过程。中文「在」和「着」在这里合成了一个形式。礼貌形是ています。
+        note_zh: 第二句：窓が開いています。窗开着。
+      - id: g-tai
+        jp: 〜たい
+        reading: たい
+        zh: 想做。接在ます词干后面。
+        produce_zh: 说「想喝水」。
+        example: 水が飲みたいです。
+        example_reading: みずがのみたいです。
+        example_zh: 想喝水。
+        contrast_zh: たい表示自己的愿望。对象常用が，も用を。问别人时要缓和：飲みたいですか，比直接问隐私更常见的是飲みませんか。
+      - id: g-mashou
+        jp: 〜ましょう／ませんか
+        reading: ましょう
+        zh: 提议。
+        produce_zh: 邀请对方一起吃饭。
+        example: 一緒に食べませんか。
+        example_reading: いっしょにたべませんか。
+        example_zh: 要不要一起吃？
+        contrast_zh: ましょう是「我们做吧」。ませんか把决定权交给对方，更适合邀请。否定疑问在这里不是真的否定。
+  - id: gram-n5-adjectives
+    level: n5
+    domain: grammar
+    order: 180
+    title_zh: 形容词和指示词
+    title_ja: 形容詞・こそあど
+    prerequisites: [gram-n5-copula]
+    summary_zh: い形容词自己变形。な形容词借用です。
+    items:
+      - id: g-i-adj
+        jp: い形容詞
+        reading: いけいようし
+        zh: い形容词的现在、否定、过去。
+        produce_zh: 说「这本书不贵」。
+        example: この本は高くないです。
+        example_reading: このほんはたかくないです。
+        example_zh: 这本书不贵。
+        contrast_zh: 去掉い再加くない。过去是高かったです。不要说高いじゃない。礼貌说法也有高くありません。
+        table:
+          - {现在: 高いです, 否定: 高くないです, 过去: 高かったです}
+      - id: g-na-adj
+        jp: な形容詞
+        reading: なけいようし
+        zh: な形容词修饰名词时加な，结句时用です。
+        produce_zh: 说「安静的图书馆」。
+        example: 静かな図書館です。
+        example_reading: しずかなとしょかんです。
+        example_zh: 是安静的图书馆。
+        contrast_zh: 结句：図書館は静かです。否定：静かじゃありません。修饰名词一定有な。不要说静かい。
+      - id: g-kore
+        jp: これ／この
+        reading: これ
+        zh: 指示事物和指示修饰。
+        produce_zh: 指着自己身边的书说「这是书」。
+        example: これは本です。
+        example_reading: これはほんです。
+        example_zh: 这是书。
+        contrast_zh: これ独自成词。この后面必须有名词：この本。それ、あれ、どれ和この、その、あの、どの同一套距离：近我、近你、远、疑问。
+        note_zh: 场所用ここ、そこ、あそこ、どこ。
+  - id: gram-n4-core
+    level: n4
+    domain: grammar
+    order: 220
+    title_zh: N4 句型
+    title_ja: N4 の文型
+    prerequisites: [gram-n5-verbs]
+    summary_zh: 每个句型只要求会用一个意思。条件形尤其不要互相替换。
+    items:
+      - id: g-potential
+        jp: 可能形
+        reading: かのうけい
+        zh: 能够。
+        produce_zh: 说「能读汉字」。
+        example: 漢字が読めます。
+        example_reading: かんじがよめます。
+        example_zh: 能读汉字。
+        contrast_zh: 五段把う段改成え段加る：読む→読める。一段是食べられる。口语里有ら抜き（食べれる），课文先用食べられる。对象常用が。
+      - id: g-tara
+        jp: 〜たら
+        reading: たら
+        zh: 假定之后的个别情况。
+        produce_zh: 说「如果有时间就去」。
+        example: 時間があったら、行きます。
+        example_reading: じかんがあったら、いきます。
+        example_zh: 有时间的话就去。
+        contrast_zh: たら接在た形后面。它谈的是一次具体的假设。自然规律不要优先用たら，用と。
+      - id: g-to-cond
+        jp: 〜と
+        reading: と
+        zh: 一发生就必然发生。
+        produce_zh: 说「一到春天，樱花就开」。
+        example: 春になると、桜が咲きます。
+        example_reading: はるになると、さくらがさきます。
+        example_zh: 一到春天樱花就开。
+        contrast_zh: と前面用辞书形。后面通常是自然结果或习惯，不放意志、命令。想说「如果有空我想去」用たら，不用と。
+      - id: g-ba
+        jp: 〜ば
+        reading: ば
+        zh: 一般条件。
+        produce_zh: 说「如果便宜就买」。
+        example: 安ければ買います。
+        example_reading: やすければかいます。
+        example_zh: 便宜的话就买。
+        contrast_zh: い形容词把い换成ければ。五段用え段加ば：書く→書けば。
+      - id: g-nara
+        jp: 〜なら
+        reading: なら
+        zh: 承接对方刚说的话题。
+        produce_zh: 对方说要去日本，你建议春天去。
+        example: 日本へ行くなら、春がいいです。
+        example_reading: にほんへいくなら、はるがいいです。
+        example_zh: 要去日本的话，春天好。
+        contrast_zh: なら把对方的话接过来再给建议。它不是「一……就……」。
+      - id: g-sou
+        jp: そうです
+        reading: そうです
+        zh: 样态和传闻要分开。
+        produce_zh: 分别造「看上去要下雨」和「听说要下雨」。
+        example: 雨が降りそうです。
+        example_reading: あめがふりそうです。
+        example_zh: 看上去要下雨。
+        contrast_zh: ます词干加そうです是样态：降りそうです。辞书形加そうです是传闻：降るそうです。差在一个る。不要混。
+        note_zh: 传闻的例子：雨が降るそうです。听说要下雨。
+      - id: g-tsumori
+        jp: 〜つもりです
+        reading: つもりです
+        zh: 打算。
+        produce_zh: 说「打算明年去日本」。
+        example: 来年、日本へ行くつもりです。
+        example_reading: らいねん、にほんへいくつもりです。
+        example_zh: 打算明年去日本。
+        contrast_zh: つもり是说话时的打算，不表示已经成行。前面用辞书形。
+      - id: g-hougaii
+        jp: 〜たほうがいい
+        reading: たほうがいい
+        zh: 建议。
+        produce_zh: 建议对方早点睡。
+        example: 早く寝たほうがいいです。
+        example_reading: はやくねたほうがいいです。
+        example_zh: 最好早点睡。
+        contrast_zh: 建议常用た形，不是辞书形。否定建议用ないほうがいい。这是建议，不是命令。
+      - id: g-yasui-nikui
+        jp: 〜やすい／にくい
+        reading: やすい
+        zh: 容易做、难做。接ます词干。
+        produce_zh: 说「这个词典好用」。
+        example: この辞書は使いやすいです。
+        example_reading: このじしょはつかいやすいです。
+        example_zh: 这本词典好用。
+        contrast_zh: やすい不是安い。便宜是安い。难读说読みにくい。
+      - id: g-teshimau
+        jp: 〜てしまう
+        reading: てしまう
+        zh: 做完，或带着遗憾做了。
+        produce_zh: 说「把护照弄忘了」。
+        example: パスポートを忘れてしまいました。
+        example_reading: パスポートをわすれてしまいました。
+        example_zh: 把护照忘了。
+        contrast_zh: 全部食べてしまいました可以只是「吃完了」。忘れてしまいました则有后悔。礼貌形是てしまいました，口语缩成ちゃった。
+      - id: g-teoku
+        jp: 〜ておく
+        reading: ておく
+        zh: 事先做好。
+        produce_zh: 说「出发前先买好票」。
+        example: 出発の前に切符を買っておきます。
+        example_reading: しゅっぱつのまえにきっぷをかっておきます。
+        example_zh: 出发前先把票买好。
+        contrast_zh: おく表示这个动作为后面做准备。不是把东西「放在」某处，除非动词本身是置く。
+      - id: g-nagara
+        jp: 〜ながら
+        reading: ながら
+        zh: 同时做。主要动作在后面。
+        produce_zh: 说「一边听音乐一边走」。
+        example: 音楽を聞きながら歩きます。
+        example_reading: おんがくをききながらあるきます。
+        example_zh: 一边听音乐一边走。
+        contrast_zh: ながら接ます词干。前面是伴随，后面是主要动作。两个都是长时段的意志动作时，日语常常不这么用，走路、听这种搭配是稳的。
+      - id: g-ndesu
+        jp: 〜んです
+        reading: んです
+        zh: 说明情况、寻求理解。
+        produce_zh: 解释自己迟到是因为电车。
+        example: 電車が遅れたんです。
+        example_reading: でんしゃがおくれたんです。
+        example_zh: 是电车晚点了。
+        contrast_zh: んです把句子变成解释。前面用简体：遅れた、痛い。礼貌是んです，更郑重是のです。它不表示过去。
+  - id: gram-n4-voice
+    level: n4
+    domain: grammar
+    order: 230
+    title_zh: 授受和自他
+    title_ja: 授受・自他
+    prerequisites: [gram-n4-core]
+    summary_zh: 这两类是中文母语者最容易整组用反的。一次看完方向，再单独练。
+    items:
+      - id: g-juju
+        jp: あげる／くれる／もらう
+        reading: あげる
+        zh: 给和接受的方向。
+        produce_zh: 用三句分清：我给妹妹、妹妹给我、我从妹妹那里收到。
+        example: わたしは妹に本をあげます。
+        example_reading: わたしはいもうとにほんをあげます。
+        example_zh: 我给妹妹书。
+        contrast_zh: 中文「给」不编码方向。东西离开我方用あげる。别人给我方用くれる。我作为接受者说もらう。くれる的接收者必须是我或我这边的人。不能说「老师给我」用あげる。
+        note_zh: 妹がわたしに本をくれます。わたしは妹に本をもらいます。
+        errors: [gram-giving]
+      - id: g-jitado
+        jp: 自動詞・他動詞
+        reading: じどうし
+        zh: 自动词用が，他动词用を。
+        produce_zh: 分别说「门开着」和「我开门」。
+        example: ドアが開きます。
+        example_reading: ドアがあきます。
+        example_zh: 门开。
+        contrast_zh: 开く（あく）是自动词。開ける（あける）是他动词：ドアを開けます。电灯也一样：電気がつきます，電気をつけます。中文常常一个动词两边用，日语要分成一对。
+        note_zh: 他动的例子：ドアを開けます。
+        errors: [gram-transitive]
+  - id: gram-n3-voice
+    level: n3
+    domain: grammar
+    order: 320
+    title_zh: 被动、使役和判断
+    title_ja: 受身・使役
+    prerequisites: [gram-n4-voice]
+    summary_zh: 不要用「被」「让」「应该」一对一翻译。先看谁吃亏，谁发出动作。
+    items:
+      - id: g-passive
+        jp: 受身
+        reading: うけみ
+        zh: 被动，常带受害。
+        produce_zh: 说「蛋糕被弟弟吃了」，并带上不高兴。
+        example: 弟にケーキを食べられました。
+        example_reading: おとうとにケーキをたべられました。
+        example_zh: 弟弟把蛋糕吃了（我吃了亏）。
+        contrast_zh: 动作的来源用に。五段是あ段加れる：書く→書かれる。一段是食べられる。中文「被」可以很客观，这句日语是受害。客观的「这本书被很多人读」说この本は多くの人に読まれています。
+      - id: g-causative
+        jp: 使役
+        reading: しえき
+        zh: 让某人做，或允许某人做。
+        produce_zh: 说「妈妈让孩子吃蔬菜」。
+        example: 母は子どもに野菜を食べさせます。
+        example_reading: はははこどもにやさいをたべさせます。
+        example_zh: 妈妈让孩子吃蔬菜。
+        contrast_zh: 被使役的人用に（他动词时）。一段是させ：食べさせる。五段是あ段加せる：書く→書かせる。这不是被动。
+      - id: g-caus-pass
+        jp: 使役受身
+        reading: しえきうけみ
+        zh: 被迫做。
+        produce_zh: 说「孩子被迫吃蔬菜」。
+        example: 子どもは母に野菜を食べさせられます。
+        example_reading: こどもはははにやさいをたべさせられます。
+        example_zh: 孩子被妈妈逼着吃蔬菜。
+        contrast_zh: させられる是「被要求做」，通常不情愿。不要和食べられる（被吃、能吃，要看上下文）混成一个。
+      - id: g-youni
+        jp: 〜ようにする／ようになる
+        reading: ようにする
+        zh: 有意识地做成习惯，或变化已经发生。
+        produce_zh: 说「我尽量每天写汉字」和「变得能说日语了」。
+        example: 毎日漢字を書くようにしています。
+        example_reading: まいにちかんじをかくようにしています。
+        example_zh: 我尽量每天写汉字。
+        contrast_zh: ようにする是自己在努力维持。ようになる是结果已经出现：日本語が話せるようになりました。一个是行动，一个是变化。
+        note_zh: 变化的例子：日本語が話せるようになりました。
+      - id: g-wake
+        jp: 〜わけだ
+        reading: わけだ
+        zh: 按已知情况得出的结论。
+        produce_zh: 已知对方坐了夜车，说出「那你困是当然的」。
+        example: 夜行バスだから、眠いわけですね。
+        example_reading: やこうバスだから、ねむいわけですね。
+        example_zh: 因为坐了夜行巴士，所以困，这就说得通了。
+        contrast_zh: わけ是从已有事实往下推。它不是「原因」本身，原因用から或ので。
+      - id: g-hazu
+        jp: 〜はずだ
+        reading: はずだ
+        zh: 按理应当如此。
+        produce_zh: 说「钥匙应该放在这里」。
+        example: 鍵はここに置いたはずです。
+        example_reading: かぎはここにおいたはずです。
+        example_zh: 钥匙应该是放在这里的。
+        contrast_zh: はず是根据记忆或逻辑的预期。道义上的「应该」用べき，不用はず。
+      - id: g-bakari
+        jp: 〜ばかり
+        reading: ばかり
+        zh: 刚刚；净是。
+        produce_zh: 说「刚吃过午饭」和「净吃甜的」。
+        example: 今、昼ごはんを食べたばかりです。
+        example_reading: いま、ひるごはんをたべたばかりです。
+        example_zh: 刚吃过午饭。
+        contrast_zh: たばかり是刚做完。名词或动词辞书形加ばかり是「净是、只有」：甘いものばかり食べます。两个意思不要用一个中文「只」盖住。
+        note_zh: 净是的例子：甘いものばかり食べています。
+  - id: gram-n3-keigo
+    level: n3
+    domain: grammar
+    order: 330
+    title_zh: 敬语的第一层
+    title_ja: 敬語の入口
+    prerequisites: [gram-n3-voice]
+    summary_zh: 只建立方向。尊敬抬高对方，谦让放低自己。这不是商务敬语全表，N2 再展开。
+    items:
+      - id: g-keigo-dir
+        jp: 尊敬語・謙譲語
+        reading: そんけいご
+        zh: 敬语的方向不能反。
+        produce_zh: 分别用对的动词说「老师说了」和「我说了」。
+        example: 先生がおっしゃいました。
+        example_reading: せんせいがおっしゃいました。
+        example_zh: 老师说了。
+        contrast_zh: おっしゃる抬高对方。申す放低自己：わたしが申します。先生が申しました是错的，把老师放低了。わたしがいらっしゃいます也是错的，把自己抬高了。です・ます只是礼貌，还不是这层敬语。
+        errors: [gram-register]
+        note_zh: 自己说：わたしが申します。
+      - id: g-keigo-verbs
+        jp: 敬語の動詞
+        reading: けいごのどうし
+        zh: 先记最常用的一组对应。
+        produce_zh: 把「去、吃、看」各说一个尊敬语和一个谦让语。
+        example: 先生は明日いらっしゃいます。
+        example_reading: せんせいはあしたいらっしゃいます。
+        example_zh: 老师明天来。
+        contrast_zh: 尊敬：行く・来る・いる→いらっしゃる，食べる・飲む→召し上がる，見る→ご覧になる，する→なさる，くれる→くださる。谦让：行く・来る→参る，食べる・飲む→いただく，する→いたす，見る→拝見する。不知道对应时，退回です・ます，不要自造。
+        table:
+          - {普通: 言う, 尊敬: おっしゃる, 谦让: 申す}
+          - {普通: 行く, 尊敬: いらっしゃる, 谦让: 参る}
+          - {普通: 食べる, 尊敬: 召し上がる, 谦让: いただく}
+          - {普通: 見る, 尊敬: ご覧になる, 谦让: 拝見する}
