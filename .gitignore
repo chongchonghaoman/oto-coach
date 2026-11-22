@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.oto/
+*.tmp
+.DS_Store
+models/
+.cache/
+docs/examples/learner.yaml

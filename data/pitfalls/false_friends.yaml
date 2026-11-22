@@ -1,0 +1,327 @@
+# 中日同形异义词。ja_zh 是日语里要教的意思，zh_zh 是中文母语者容易带进来的意思。
+entries:
+  - id: ff-tegami
+    jp: 手紙
+    reading: てがみ
+    accent: 0
+    ja_zh: 信
+    zh_zh: 卫生纸
+    trap_zh: 卫生纸说トイレットペーパー。不要在邮局或别人家里把「手紙」理解成纸。
+    severity: high
+  - id: ff-benkyou
+    jp: 勉強
+    reading: べんきょう
+    accent: 0
+    ja_zh: 学习
+    zh_zh: 勉强、不得不、凑合
+    trap_zh: 「日本語を勉強する」是学习。中文「勉强别人」不是这个词。
+    severity: high
+  - id: ff-joubu
+    jp: 丈夫
+    reading: じょうぶ
+    accent: 1
+    ja_zh: 结实、耐用、身体结实
+    zh_zh: 丈夫
+    trap_zh: 丈夫是夫（おっと）。「この椅子は丈夫です」是椅子结实。
+    severity: high
+  - id: ff-daijoubu
+    jp: 大丈夫
+    reading: だいじょうぶ
+    accent: 3
+    ja_zh: 没关系、可以、不用了
+    zh_zh: 大丈夫、真男人
+    trap_zh: 「大丈夫です」常用来拒绝：不用了。它不夸别人是男子汉。
+    severity: high
+  - id: ff-ooya
+    jp: 大家
+    reading: おおや / たいか
+    also: []
+    ja_zh: おおや是房东；たいか是大师、权威
+    zh_zh: 大家、所有人
+    trap_zh: 「大家さん」是房东。所有人是みんな。たいか的「大家」才接近「权威」，仍然不是「各位」。
+    severity: high
+  - id: ff-kisha
+    jp: 汽車
+    reading: きしゃ
+    also: [汽车]
+    ja_zh: 蒸汽火车
+    zh_zh: 汽车
+    trap_zh: 汽车是車（くるま）或自動車。车站里的汽車不是轿车。
+    severity: high
+  - id: ff-densha
+    jp: 電車
+    reading: でんしゃ
+    accent: 0
+    also: [电车]
+    ja_zh: 电气化铁路上的列车，城市里默认的「火车」
+    zh_zh: 有轨电车，有时也指电动车
+    trap_zh: 在日本坐通勤列车就说電車。中文的「电车」范围更窄。
+    severity: medium
+  - id: ff-hashiru
+    jp: 走る
+    reading: はしる
+    ja_zh: 跑
+    zh_zh: 「走」在普通话里是步行
+    trap_zh: 步行是歩く。让初学者用「走」组词时，先问他是走还是跑。
+    severity: high
+  - id: ff-aijin
+    jp: 愛人
+    reading: あいじん
+    ja_zh: 情人，常指婚外关系
+    zh_zh: 爱人、配偶
+    trap_zh: 介绍配偶不要说愛人。用夫、妻、配偶者。这个错会冒犯人。
+    severity: high
+  - id: ff-shinbun
+    jp: 新聞
+    reading: しんぶん
+    accent: 0
+    ja_zh: 报纸
+    zh_zh: 新闻
+    trap_zh: 新闻内容更常说ニュース。買った新聞是买到的那份报纸。
+    severity: medium
+  - id: ff-jochuu
+    jp: 女中
+    reading: じょちゅう
+    ja_zh: 女佣，旧称，现在听着失礼
+    zh_zh: 女人当中；旧语里也有女仆
+    trap_zh: 现代日语不要用来称呼人。家务帮手说お手伝いさん，仍要注意场合。
+    severity: high
+  - id: ff-sasuga
+    jp: 流石
+    reading: さすが
+    ja_zh: 不愧是、到底是，带着佩服
+    zh_zh: 不能按「流」和「石」猜
+    trap_zh: 这是借字。平时多写平假名さすが。看到汉字不要译成一种石头。
+    severity: medium
+  - id: ff-musume
+    jp: 娘
+    reading: むすめ
+    ja_zh: 女儿；也指年轻女子
+    zh_zh: 妈妈、姑娘
+    trap_zh: 妈妈是母（はは）或お母さん。称别人女儿可以用娘さん，但是自己的母亲绝不能叫娘。
+    severity: high
+  - id: ff-kekkou
+    jp: 結構
+    reading: けっこう
+    ja_zh: 够了、不用了、相当
+    zh_zh: 结构
+    trap_zh: 别人添饭时说「結構です」，多半是婉拒。结构是構造。
+    severity: high
+  - id: ff-kentou
+    jp: 検討
+    reading: けんとう
+    ja_zh: 讨论、研究、加以考虑
+    zh_zh: 检讨、自我批评
+    trap_zh: 会议上「検討します」是会去研究，不是让谁做检讨。
+    severity: high
+  - id: ff-kessoku
+    jp: 結束
+    reading: けっそく
+    ja_zh: 团结、绑在一起
+    zh_zh: 结束
+    trap_zh: 结束是終わる或終了。「プロジェクトが結束した」不是项目结束了。
+    severity: high
+  - id: ff-koukou
+    jp: 高校
+    reading: こうこう
+    ja_zh: 高中
+    zh_zh: 大学、高等学校
+    trap_zh: 大学是大学。日本的高校生是高中生。
+    severity: high
+  - id: ff-sagyou
+    jp: 作業
+    reading: さぎょう
+    ja_zh: 作业、操作、一项工作
+    zh_zh: 家庭作业、学校功课
+    trap_zh: 学生的功课是宿題。工場で作業する是在干活。
+    severity: high
+  - id: ff-ninjin
+    jp: 人参
+    reading: にんじん
+    ja_zh: 胡萝卜
+    zh_zh: 人参
+    trap_zh: 人参说朝鮮人参或高麗人参。便利店的人参是胡萝卜。
+    severity: high
+  - id: ff-heta
+    jp: 下手
+    reading: へた
+    ja_zh: 不擅长、笨拙
+    zh_zh: 下手、开始做
+    trap_zh: 读へた，不读したて。「字が下手です」是字写得不好。
+    severity: high
+  - id: ff-jouzu
+    jp: 上手
+    reading: じょうず
+    ja_zh: 擅长、做得好
+    zh_zh: 上手、上风、开始
+    trap_zh: 读じょうず。「日本語が上手ですね」是夸日语好，回答时常先谦虚一下。
+    severity: high
+  - id: ff-rouba
+    jp: 老婆
+    reading: ろうば
+    ja_zh: 老太婆
+    zh_zh: 老婆、妻子
+    trap_zh: 妻子是妻（つま）或奥さん。老婆用来称自己的妻子会冒犯。
+    severity: high
+  - id: ff-shinjuu
+    jp: 心中
+    reading: しんじゅう / しんちゅう
+    ja_zh: しんじゅう是情死；しんちゅう是心中、内心
+    zh_zh: 心里
+    trap_zh: 两个读音意思完全不同。没把握时不要用这个汉字词，改说心の中。
+    severity: high
+  - id: ff-yuka
+    jp: 床
+    reading: ゆか
+    ja_zh: 地板
+    zh_zh: 床
+    trap_zh: 睡觉的床是ベッド或布団。「床に座る」是坐在地板上。
+    severity: high
+  - id: ff-yu
+    jp: 湯
+    reading: ゆ
+    ja_zh: 热水
+    zh_zh: 汤
+    trap_zh: 喝的汤是スープ或汁。お風呂の湯是洗澡水。
+    severity: high
+  - id: ff-jama
+    jp: 邪魔
+    reading: じゃま
+    ja_zh: 妨碍、打扰
+    zh_zh: 邪魔、妖魔
+    trap_zh: 「お邪魔します」是进别人家时的客套。不是在说屋子里有妖魔。
+    severity: high
+  - id: ff-kaoiro
+    jp: 顔色
+    reading: かおいろ
+    ja_zh: 脸色
+    zh_zh: 颜色
+    trap_zh: 颜色是色（いろ）。「顔色が悪い」是脸色不好。
+    severity: medium
+  - id: ff-kaidan
+    jp: 階段
+    reading: かいだん
+    ja_zh: 楼梯
+    zh_zh: 阶段
+    trap_zh: 阶段是段階。车站里的階段是要走的楼梯。
+    severity: high
+  - id: ff-kega
+    jp: 怪我
+    reading: けが
+    ja_zh: 受伤
+    zh_zh: 责备我
+    trap_zh: 这是借字，读けが。「怪我をしました」是受伤了。
+    severity: high
+  - id: ff-kakugo
+    jp: 覚悟
+    reading: かくご
+    ja_zh: 做好心理准备，常面对不好的结果
+    zh_zh: 觉悟、醒悟
+    trap_zh: 「覚悟してください」分量很重，不是普通的「你要有觉悟提高认识」。
+    severity: medium
+  - id: ff-iken
+    jp: 意見
+    reading: いけん
+    ja_zh: 意见、看法，中性
+    zh_zh: 意见，常带批评
+    trap_zh: 日语里可以说「意見を聞かせてください」，不一定是在挨批。批评更明确时有文句。
+    severity: medium
+  - id: ff-kanbyou
+    jp: 看病
+    reading: かんびょう
+    ja_zh: 照顾病人
+    zh_zh: 看病、就医
+    trap_zh: 去医院看病是医者に見てもらう。看病する是在床边照料。
+    severity: high
+  - id: ff-anzan
+    jp: 暗算
+    reading: あんざん
+    ja_zh: 心算
+    zh_zh: 暗中算计
+    trap_zh: 算术课上的暗算是心算。算计人不是这个词。
+    severity: medium
+  - id: ff-kufuu
+    jp: 工夫
+    reading: くふう
+    ja_zh: 想办法、下功夫改进
+    zh_zh: 工夫、时间、功夫
+    trap_zh: 「工夫する」是动脑筋改进做法。时间说時間。武术的功夫也不是这个词。
+    severity: medium
+  - id: ff-yasai
+    jp: 野菜
+    reading: やさい
+    accent: 0
+    ja_zh: 蔬菜
+    zh_zh: 野菜、野生的菜
+    trap_zh: 超市里的野菜就是普通蔬菜。不要理解成只有野菜。
+    severity: medium
+  - id: ff-muri
+    jp: 無理
+    reading: むり
+    ja_zh: 做不到、勉强、别硬来
+    zh_zh: 无理、蛮横
+    trap_zh: 「無理しないで」是别硬撑。蛮横更接近無茶或乱暴。
+    severity: medium
+  - id: ff-majime
+    jp: 真面目
+    reading: まじめ
+    ja_zh: 认真、正经
+    zh_zh: 真面目、本来面目
+    trap_zh: 读まじめ，不读しんめんもく。「真面目な人」是认真的人。
+    severity: medium
+  - id: ff-hijou
+    jp: 非常
+    reading: ひじょう
+    ja_zh: 非常、紧急；非常に是程度高
+    zh_zh: 很
+    trap_zh: 非常口是紧急出口，不是「很出口」。程度用法「非常に高い」则接近「很」。
+    severity: medium
+  - id: ff-kitte
+    jp: 切手
+    reading: きって
+    ja_zh: 邮票
+    zh_zh: 切手、切手指
+    trap_zh: 邮局的切手是邮票。和「切」的字面没有关系。
+    severity: high
+  - id: ff-kenbutsu
+    jp: 見物
+    reading: けんぶつ
+    ja_zh: 游览、看热闹
+    zh_zh: 看见东西
+    trap_zh: 「京都を見物する」是游览京都。看见用見る。
+    severity: low
+  - id: ff-bengi
+    jp: 便宜
+    reading: べんぎ
+    ja_zh: 方便、权宜、给别人行个方便
+    zh_zh: 便宜、价格低
+    trap_zh: 价格低是安い。中文「方便」更接近日语便利（べんり），不是便宜。
+    severity: high
+  - id: ff-houben
+    jp: 方便
+    reading: ほうべん
+    ja_zh: 权宜之计；お方便是上厕所的委婉说法
+    zh_zh: 方便
+    trap_zh: 生活里说「方便」请用便利。ほうべん很书面，お方便不要随便拿来用。
+    severity: high
+  - id: ff-juubun
+    jp: 十分
+    reading: じゅうぶん / じっぷん
+    ja_zh: じゅうぶん是足够；じっぷん是十分钟
+    zh_zh: 很、十分、一百分里的十分
+    trap_zh: 听到じっぷん先想时间。「十分ですね」若读じゅうぶん，是够了，不是「非常」。
+    severity: high
+  - id: ff-goudou
+    jp: 合同
+    reading: ごうどう
+    ja_zh: 联合、合并
+    zh_zh: 合同
+    trap_zh: 合同是契約。「合同会社」是一种公司形式，不是「合同公司」的字面。
+    severity: high
+  - id: ff-yudan
+    jp: 油断
+    reading: ゆだん
+    ja_zh: 疏忽、大意
+    zh_zh: 容易按「断油」去猜
+    trap_zh: 「油断しないで」是别大意。和石油没有关系。
+    severity: low

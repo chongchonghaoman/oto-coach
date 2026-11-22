@@ -1,0 +1,5 @@
+VOICEVOX:四国めたん。Praat Parselmouth 浊音中位 F0。
+hashi-trio-箸が.wav  0.629s  sr 24000  浊音帧 23  中位 357.9 Hz
+hashi-trio-橋が.wav  0.629s  sr 24000  浊音帧 26  中位 365.1 Hz
+hashi-trio-端が.wav  0.629s  sr 24000  浊音帧 26  中位 389.9 Hz
+aiueo.wav  0.875s  sr 24000  浊音帧 58  中位 354.4 Hz

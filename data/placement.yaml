@@ -1,0 +1,128 @@
+# 分班只决定起点。假名题失败就留在 zero，不管后面的语法题对了几道。
+questions:
+  - id: k1
+    section: kana
+    prompt_zh: 「a」的平假名和片假名是哪一组？
+    choices:
+      - {id: a, text: あ / ア}
+      - {id: b, text: お / オ}
+      - {id: c, text: う / ウ}
+    answer: a
+    explain_zh: a 是 あ / ア。口张开，比普通话的「啊」更短。
+  - id: k2
+    section: kana
+    prompt_zh: 发「う」时，嘴唇应该怎样？
+    choices:
+      - {id: a, text: 向前撮圆，像「乌」}
+      - {id: b, text: 放松，不要圆唇}
+      - {id: c, text: 咬住下唇，像英语 v}
+    answer: b
+    explain_zh: 日语う是不圆唇的 [ɯ]。撮成「乌」是中文母语者最常见的口型迁移。
+  - id: k3
+    section: kana
+    prompt_zh: 「し」更接近普通话里的哪个声母？
+    choices:
+      - {id: a, text: 「思」的 s}
+      - {id: b, text: 「西」的 x，而不是「思」}
+      - {id: c, text: 「吃」的 ch}
+    answer: b
+    explain_zh: し是腭化的 [ɕi]，不是舌尖的 si。つ也不是「粗」。
+  - id: k4
+    section: kana
+    prompt_zh: 促音「っ」在「きて」和「きって」之间做了什么？
+    choices:
+      - {id: a, text: 只是把辅音读重一点，不占时间}
+      - {id: b, text: 独占一拍，闭住气流}
+      - {id: c, text: 把前面的元音变成普通话第三声}
+    answer: b
+    explain_zh: っ是一拍的闭塞。来て（きて）和切手（きって）差在这一拍上。
+  - id: n5a
+    section: n5
+    prompt_zh: 「我是学生」最普通的礼貌说法是？
+    choices:
+      - {id: a, text: わたしが学生です}
+      - {id: b, text: わたしは学生です}
+      - {id: c, text: 学生はわたしです，而且这是唯一正确的语序}
+    answer: b
+    explain_zh: 介绍自己用「は」。「が」是在指出「是我，不是别人」。
+  - id: n5b
+    section: n5
+    prompt_zh: 日语的「手紙」是什么？
+    choices:
+      - {id: a, text: 信}
+      - {id: b, text: 卫生纸}
+      - {id: c, text: 手套}
+    answer: a
+    explain_zh: 手紙（てがみ）是信。卫生纸是トイレットペーパー。这是同形词，不是礼貌问题。
+  - id: n5c
+    section: n5
+    prompt_zh: 「食べる」的礼貌现在・将来形是？
+    choices:
+      - {id: a, text: 食べます}
+      - {id: b, text: 食べるます}
+      - {id: c, text: 食べった}
+    answer: a
+    explain_zh: 一段动词去掉る再加ます。不要在辞书形后面直接加ます。
+  - id: n5d
+    section: n5
+    prompt_zh: 「我吃饭」的语序更接近哪句？
+    choices:
+      - {id: a, text: わたしは食べますごはんを}
+      - {id: b, text: ごはんを食べます}
+      - {id: c, text: 食べますごはん}
+    answer: b
+    explain_zh: 日语是宾语在动词前。助词を不能省。
+  - id: n4a
+    section: n4
+    prompt_zh: 「门开着」和「我开门」，哪一组动词对？
+    choices:
+      - {id: a, text: ドアが開く / ドアを開ける}
+      - {id: b, text: ドアを開く / ドアが開ける}
+      - {id: c, text: 两个都用開ける}
+    answer: a
+    explain_zh: 開く（あく）是自动词，用が。開ける（あける）是他动词，用を。
+  - id: n4b
+    section: n4
+    prompt_zh: 妹妹把书给我，我这边要说？
+    choices:
+      - {id: a, text: 妹がわたしに本をあげます}
+      - {id: b, text: 妹がわたしに本をくれます}
+      - {id: c, text: 妹がわたしに本をもらいます}
+    answer: b
+    explain_zh: 别人给我方用くれる。あげる是从我方给出去。もらう是我收取。
+  - id: n4c
+    section: n4
+    prompt_zh: 「雨が降りそうです」是什么意思？
+    choices:
+      - {id: a, text: 听说要下雨}
+      - {id: b, text: 看上去要下雨}
+      - {id: c, text: 希望下雨}
+    answer: b
+    explain_zh: ます词干＋そうです是样态。听说是「降るそうです」，辞书形接そう。
+  - id: n3a
+    section: n3
+    prompt_zh: 提到老师「说」的时候，较稳妥的尊敬语是？
+    choices:
+      - {id: a, text: 先生が申しました}
+      - {id: b, text: 先生がおっしゃいました}
+      - {id: c, text: 先生がいらっしゃいました，用来表示「说」}
+    answer: b
+    explain_zh: おっしゃる是「言う」的尊敬语。申す是谦让语，用来降低自己，不能安在老师身上。
+  - id: n3b
+    section: n3
+    prompt_zh: 日语「検討する」最接近哪个中文？
+    choices:
+      - {id: a, text: 检讨、做自我批评}
+      - {id: b, text: 讨论、研究、加以考虑}
+      - {id: c, text: 检查身体}
+    answer: b
+    explain_zh: 検討（けんとう）是审议、考虑。中文「检讨」的自我批评意思对不上。
+  - id: n3c
+    section: n3
+    prompt_zh: 「弟にケーキを食べられました」更准确的语感是？
+    choices:
+      - {id: a, text: 只是客观地说蛋糕被吃了}
+      - {id: b, text: 弟弟把蛋糕吃了，说话人吃了亏}
+      - {id: c, text: 我让弟弟吃了蛋糕}
+    answer: b
+    explain_zh: 这是受害被动。让别人做是使役「食べさせる」，不是吃られる。

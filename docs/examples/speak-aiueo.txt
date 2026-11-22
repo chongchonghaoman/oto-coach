@@ -1,0 +1,4 @@
+已写入 docs/examples/aiueo.wav
+引擎 voicevox
+署名 VOICEVOX:四国めたん
+使用了语音库，公开这段音频时请注明「VOICEVOX:四国めたん」。不要把角色音当成标准发音教师。

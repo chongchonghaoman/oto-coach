@@ -1,0 +1,43 @@
+levels:
+  - id: zero
+    name_zh: 零基础
+    name_ja: 入門前
+    jlpt: null
+    status: active
+    next: n5
+    summary_zh: 不假设认识假名。先建立拍、清浊和五十音，再进入单词。
+  - id: n5
+    name_zh: N5
+    name_ja: N5
+    jlpt: N5
+    status: active
+    next: n4
+    summary_zh: です・ます、基本助词、一段和五段动词的礼貌形，以及大约一套生活词汇。
+  - id: n4
+    name_zh: N4
+    name_ja: N4
+    jlpt: N4
+    status: active
+    next: n3
+    summary_zh: て形的用法、授受、自他动词、条件形和简短说明。
+  - id: n3
+    name_zh: N3
+    name_ja: N3
+    jlpt: N3
+    status: active
+    next: n2
+    summary_zh: 被动、使役、はず・わけ，以及敬语的第一层。到这里为止课文是写实的。
+  - id: n2
+    name_zh: N2
+    name_ja: N2
+    jlpt: N2
+    status: scaffold
+    next: n1
+    summary_zh: 路径已留出。敬语细化、书面语和长篇阅读还没有课文，不要假装已经覆盖。
+  - id: n1
+    name_zh: N1
+    name_ja: N1
+    jlpt: N1
+    status: scaffold
+    next: null
+    summary_zh: 路径已留出。近义辨析和评论性阅读还没有课文。

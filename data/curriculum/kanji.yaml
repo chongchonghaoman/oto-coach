@@ -1,0 +1,541 @@
+units:
+  - id: kanji-n5-core
+    level: n5
+    domain: kanji
+    order: 130
+    title_zh: N5 汉字：数字、人、自然
+    title_ja: N5 漢字 1
+    prerequisites: [kana-timing]
+    summary_zh: 每个字同时记音读和训读。音读用来读汉字词，训读用来读和语词。不要只用中文的读音去代替。
+    items:
+      - id: kj-nichi
+        jp: 日
+        reading: にち
+        on: [ニチ, ジツ]
+        kun: [ひ, か]
+        zh: 日、太阳、一天
+        compounds:
+          - {jp: 日本, reading: にほん, zh: 日本}
+          - {jp: 日曜日, reading: にちようび, zh: 星期日}
+        note_zh: 今天是きょう，不是にち。一日有两个读法：一日（いちにち）一整天，一日（ついたち）一号。
+      - id: kj-getsu
+        jp: 月
+        reading: げつ
+        on: [ゲツ, ガツ]
+        kun: [つき]
+        zh: 月、月亮
+        compounds:
+          - {jp: 月曜日, reading: げつようび, zh: 星期一}
+          - {jp: 一月, reading: いちがつ, zh: 一月}
+        note_zh: 月份用がつ。月光、一月的「一」仍读いち。
+      - id: kj-ichi
+        jp: 一
+        reading: いち
+        on: [イチ, イツ]
+        kun: [ひと]
+        zh: 一
+        compounds:
+          - {jp: 一つ, reading: ひとつ, zh: 一个}
+          - {jp: 一人, reading: ひとり, zh: 一个人}
+        note_zh: ひとつ、ひとり是训读，不是いちつ。入声线索可以想到いつ，如一律。
+      - id: kj-hito
+        jp: 人
+        reading: ひと
+        on: [ジン, ニン]
+        kun: [ひと]
+        zh: 人
+        compounds:
+          - {jp: 日本人, reading: にほんじん, zh: 日本人}
+          - {jp: 一人, reading: ひとり, zh: 一个人}
+        note_zh: にん是吴音倾向，じん是汉音倾向。用人来记，不用规则硬推每一个词。
+      - id: kj-nen
+        jp: 年
+        reading: ねん
+        on: [ネン]
+        kun: [とし]
+        zh: 年
+        compounds:
+          - {jp: 今年, reading: ことし, zh: 今年}
+          - {jp: 来年, reading: らいねん, zh: 明年}
+        note_zh: 今年读ことし，不读こんねん。
+      - id: kj-hon
+        jp: 本
+        reading: ほん
+        on: [ホン]
+        kun: [もと]
+        zh: 书；本源；细长物的量词
+        compounds:
+          - {jp: 日本, reading: にほん, zh: 日本}
+          - {jp: 本, reading: ほん, zh: 书}
+        note_zh: 三本是さんぼん，读音会变。量词的音变以后单开。
+      - id: kj-yama
+        jp: 山
+        reading: やま
+        on: [サン]
+        kun: [やま]
+        zh: 山
+        compounds:
+          - {jp: 山, reading: やま, zh: 山}
+          - {jp: 火山, reading: かざん, zh: 火山}
+      - id: kj-kawa
+        jp: 川
+        reading: かわ
+        on: [セン]
+        kun: [かわ]
+        zh: 河
+        compounds:
+          - {jp: 川, reading: かわ, zh: 河}
+          - {jp: 河川, reading: かせん, zh: 河川}
+      - id: kj-mizu
+        jp: 水
+        reading: みず
+        on: [スイ]
+        kun: [みず]
+        zh: 水
+        compounds:
+          - {jp: 水, reading: みず, zh: 水}
+          - {jp: 水曜日, reading: すいようび, zh: 星期三}
+      - id: kj-hi
+        jp: 火
+        reading: ひ
+        on: [カ]
+        kun: [ひ]
+        zh: 火
+        compounds:
+          - {jp: 火, reading: ひ, zh: 火}
+          - {jp: 火曜日, reading: かようび, zh: 星期二}
+        note_zh: 火山的火读カ，和单独的ひ不同。
+      - id: kj-ki
+        jp: 木
+        reading: き
+        on: [モク, ボク]
+        kun: [き]
+        zh: 树、木头
+        compounds:
+          - {jp: 木, reading: き, zh: 树}
+          - {jp: 木曜日, reading: もくようび, zh: 星期四}
+      - id: kj-kin
+        jp: 金
+        reading: きん
+        on: [キン]
+        kun: [かね]
+        zh: 金；钱
+        compounds:
+          - {jp: お金, reading: おかね, zh: 钱}
+          - {jp: 金曜日, reading: きんようび, zh: 星期五}
+      - id: kj-tsuchi
+        jp: 土
+        reading: つち
+        on: [ド, ト]
+        kun: [つち]
+        zh: 土
+        compounds:
+          - {jp: 土, reading: つち, zh: 土}
+          - {jp: 土曜日, reading: どようび, zh: 星期六}
+      - id: kj-ten
+        jp: 天
+        reading: てん
+        on: [テン]
+        kun: [あま]
+        zh: 天
+        compounds:
+          - {jp: 天気, reading: てんき, zh: 天气}
+          - {jp: 天国, reading: てんごく, zh: 天国}
+  - id: kanji-n5-life
+    level: n5
+    domain: kanji
+    order: 140
+    title_zh: N5 汉字：动作和日常
+    title_ja: N5 漢字 2
+    prerequisites: [kanji-n5-core]
+    summary_zh: 动词的汉字常常只写词干，后面的假名是送假名。食べる的べる不要写进汉字。
+    items:
+      - id: kj-gaku
+        jp: 学
+        reading: がく
+        on: [ガク]
+        kun: [まな]
+        zh: 学
+        compounds:
+          - {jp: 学生, reading: がくせい, zh: 学生}
+          - {jp: 学校, reading: がっこう, zh: 学校}
+        note_zh: 入声 -k 的线索。训读在学ぶ（まなぶ）。
+      - id: kj-sei
+        jp: 生
+        reading: せい
+        on: [セイ, ショウ]
+        kun: [い, う, なま]
+        zh: 生
+        compounds:
+          - {jp: 学生, reading: がくせい, zh: 学生}
+          - {jp: 先生, reading: せんせい, zh: 老师}
+        note_zh: 生きる读いきる，生まれる读うまれる。音读不能代替这些训读。
+      - id: kj-sen
+        jp: 先
+        reading: せん
+        on: [セン]
+        kun: [さき]
+        zh: 先、前面
+        compounds:
+          - {jp: 先生, reading: せんせい, zh: 老师}
+          - {jp: 先, reading: さき, zh: 前面、将来}
+      - id: kj-taberu
+        jp: 食
+        reading: しょく
+        on: [ショク]
+        kun: [た]
+        zh: 吃、食物
+        compounds:
+          - {jp: 食べる, reading: たべる, zh: 吃}
+          - {jp: 食事, reading: しょくじ, zh: 吃饭}
+      - id: kj-nomu
+        jp: 飲
+        reading: いん
+        on: [イン]
+        kun: [の]
+        zh: 喝
+        compounds:
+          - {jp: 飲む, reading: のむ, zh: 喝}
+          - {jp: 飲食, reading: いんしょく, zh: 饮食}
+      - id: kj-miru
+        jp: 見
+        reading: けん
+        on: [ケン]
+        kun: [み]
+        zh: 看
+        compounds:
+          - {jp: 見る, reading: みる, zh: 看}
+          - {jp: 意見, reading: いけん, zh: 意见}
+      - id: kj-iku
+        jp: 行
+        reading: こう
+        on: [コウ, ギョウ]
+        kun: [い, おこな]
+        zh: 去；做；行
+        compounds:
+          - {jp: 行く, reading: いく, zh: 去}
+          - {jp: 銀行, reading: ぎんこう, zh: 银行}
+        note_zh: 行う读おこなう。一个字三条路，用词来记。
+      - id: kj-kuru
+        jp: 来
+        reading: らい
+        on: [ライ]
+        kun: [く]
+        zh: 来
+        compounds:
+          - {jp: 来る, reading: くる, zh: 来}
+          - {jp: 来年, reading: らいねん, zh: 明年}
+      - id: kj-kai
+        jp: 会
+        reading: かい
+        on: [カイ]
+        kun: [あ]
+        zh: 会、见面
+        compounds:
+          - {jp: 会う, reading: あう, zh: 见面}
+          - {jp: 会社, reading: かいしゃ, zh: 公司}
+      - id: kj-hanasu
+        jp: 話
+        reading: わ
+        on: [ワ]
+        kun: [はな]
+        zh: 说、话
+        compounds:
+          - {jp: 話す, reading: はなす, zh: 说}
+          - {jp: 電話, reading: でんわ, zh: 电话}
+      - id: kj-den
+        jp: 電
+        reading: でん
+        on: [デン]
+        kun: []
+        zh: 电
+        compounds:
+          - {jp: 電話, reading: でんわ, zh: 电话}
+          - {jp: 電車, reading: でんしゃ, zh: 电车}
+      - id: kj-sha
+        jp: 車
+        reading: しゃ
+        on: [シャ]
+        kun: [くるま]
+        zh: 车
+        compounds:
+          - {jp: 車, reading: くるま, zh: 车}
+          - {jp: 電車, reading: でんしゃ, zh: 电车}
+      - id: kj-eki
+        jp: 駅
+        reading: えき
+        on: [エキ]
+        kun: []
+        zh: 车站
+        compounds:
+          - {jp: 駅, reading: えき, zh: 车站}
+          - {jp: 東京駅, reading: とうきょうえき, zh: 东京站}
+        note_zh: 新字体。简体是驿，不要写进日语。
+      - id: kj-ji
+        jp: 時
+        reading: じ
+        on: [ジ]
+        kun: [とき]
+        zh: 时
+        compounds:
+          - {jp: 時間, reading: じかん, zh: 时间}
+          - {jp: 時, reading: とき, zh: 时候}
+      - id: kj-ma
+        jp: 間
+        reading: かん
+        on: [カン, ケン]
+        kun: [あいだ, ま]
+        zh: 间、之间
+        compounds:
+          - {jp: 時間, reading: じかん, zh: 时间}
+          - {jp: 人間, reading: にんげん, zh: 人、人类}
+      - id: kj-kaku
+        jp: 書
+        reading: しょ
+        on: [ショ]
+        kun: [か]
+        zh: 写、书
+        compounds:
+          - {jp: 書く, reading: かく, zh: 写}
+          - {jp: 図書館, reading: としょかん, zh: 图书馆}
+      - id: kj-yomu
+        jp: 読
+        reading: よ
+        on: [ドク]
+        kun: [よ]
+        zh: 读
+        compounds:
+          - {jp: 読む, reading: よむ, zh: 读}
+          - {jp: 音読, reading: おんどく, zh: 出声读}
+        note_zh: 新字体読。不要写成简体读。
+  - id: kanji-n4
+    level: n4
+    domain: kanji
+    order: 210
+    title_zh: N4 汉字
+    title_ja: N4 漢字
+    prerequisites: [kanji-n5-life]
+    summary_zh: 开始出现书面语复合词。先确认音读，再看有没有训读动词。
+    items:
+      - id: kj-kai-open
+        jp: 開
+        reading: ひら
+        on: [カイ]
+        kun: [あ, ひら]
+        zh: 开
+        compounds:
+          - {jp: 開ける, reading: あける, zh: 打开（他动）}
+          - {jp: 開く, reading: あく, zh: 开着（自动）}
+        note_zh: 送假名决定是自动还是他动。あく没有ける。
+      - id: kj-shi-close
+        jp: 閉
+        reading: し
+        on: [ヘイ]
+        kun: [し]
+        zh: 关
+        compounds:
+          - {jp: 閉める, reading: しめる, zh: 关上（他动）}
+          - {jp: 閉まる, reading: しまる, zh: 关上（自动）}
+      - id: kj-de
+        jp: 出
+        reading: で
+        on: [シュツ]
+        kun: [で, だ]
+        zh: 出
+        compounds:
+          - {jp: 出る, reading: でる, zh: 出去}
+          - {jp: 出発, reading: しゅっぱつ, zh: 出发}
+        note_zh: 出発的发是新字体発。
+      - id: kj-hairu
+        jp: 入
+        reading: はい
+        on: [ニュウ]
+        kun: [はい, い]
+        zh: 入
+        compounds:
+          - {jp: 入る, reading: はいる, zh: 进入}
+          - {jp: 入学, reading: にゅうがく, zh: 入学}
+      - id: kj-yasumu
+        jp: 休
+        reading: やす
+        on: [キュウ]
+        kun: [やす]
+        zh: 休息
+        compounds:
+          - {jp: 休む, reading: やすむ, zh: 休息}
+          - {jp: 休日, reading: きゅうじつ, zh: 休息日}
+      - id: kj-takai
+        jp: 高
+        reading: たか
+        on: [コウ]
+        kun: [たか]
+        zh: 高
+        compounds:
+          - {jp: 高い, reading: たかい, zh: 高、贵}
+          - {jp: 高校, reading: こうこう, zh: 高中}
+        note_zh: 高校不是大学。
+      - id: kj-yasui
+        jp: 安
+        reading: やす
+        on: [アン]
+        kun: [やす]
+        zh: 安、便宜
+        compounds:
+          - {jp: 安い, reading: やすい, zh: 便宜}
+          - {jp: 安心, reading: あんしん, zh: 安心}
+      - id: kj-atarashii
+        jp: 新
+        reading: あたら
+        on: [シン]
+        kun: [あたら]
+        zh: 新
+        compounds:
+          - {jp: 新しい, reading: あたらしい, zh: 新}
+          - {jp: 新聞, reading: しんぶん, zh: 报纸}
+        note_zh: 新聞是报纸。
+      - id: kj-mae
+        jp: 前
+        reading: まえ
+        on: [ゼン]
+        kun: [まえ]
+        zh: 前
+        compounds:
+          - {jp: 前, reading: まえ, zh: 前面}
+          - {jp: 午前, reading: ごぜん, zh: 上午}
+      - id: kj-ato
+        jp: 後
+        reading: あと
+        on: [ゴ, コウ]
+        kun: [あと, うし]
+        zh: 后
+        compounds:
+          - {jp: 後ろ, reading: うしろ, zh: 后面}
+          - {jp: 午後, reading: ごご, zh: 下午}
+      - id: kj-migi
+        jp: 右
+        reading: みぎ
+        on: [ウ]
+        kun: [みぎ]
+        zh: 右
+        compounds:
+          - {jp: 右, reading: みぎ, zh: 右边}
+          - {jp: 右折, reading: うせつ, zh: 右转}
+      - id: kj-hidari
+        jp: 左
+        reading: ひだり
+        on: [サ]
+        kun: [ひだり]
+        zh: 左
+        compounds:
+          - {jp: 左, reading: ひだり, zh: 左边}
+          - {jp: 左折, reading: させつ, zh: 左转}
+  - id: kanji-n3
+    level: n3
+    domain: kanji
+    order: 310
+    title_zh: N3 汉字
+    title_ja: N3 漢字
+    prerequisites: [kanji-n4]
+    summary_zh: 这一组用来读说明和简短新闻。每个字只要求两个复合词能读出来。
+    items:
+      - id: kj-setsumei
+        jp: 説
+        reading: せつ
+        on: [セツ]
+        kun: [と]
+        zh: 说明
+        compounds:
+          - {jp: 説明, reading: せつめい, zh: 说明}
+          - {jp: 小説, reading: しょうせつ, zh: 小说}
+      - id: kj-mei
+        jp: 明
+        reading: めい
+        on: [メイ, ミョウ]
+        kun: [あか]
+        zh: 明亮
+        compounds:
+          - {jp: 説明, reading: せつめい, zh: 说明}
+          - {jp: 明日, reading: あした, zh: 明天}
+        note_zh: 明日的训读是あした，音读みょうにち也用，但是另一套词。
+      - id: kj-ken
+        jp: 験
+        reading: けん
+        on: [ケン, ゲン]
+        kun: []
+        zh: 检验、效验
+        compounds:
+          - {jp: 経験, reading: けいけん, zh: 经验}
+          - {jp: 試験, reading: しけん, zh: 考试}
+      - id: kj-gi
+        jp: 議
+        reading: ぎ
+        on: [ギ]
+        kun: []
+        zh: 议论
+        compounds:
+          - {jp: 会議, reading: かいぎ, zh: 会议}
+          - {jp: 議論, reading: ぎろん, zh: 讨论}
+      - id: kj-kei
+        jp: 経
+        reading: けい
+        on: [ケイ, キョウ]
+        kun: [へ]
+        zh: 经
+        compounds:
+          - {jp: 経済, reading: けいざい, zh: 经济}
+          - {jp: 経験, reading: けいけん, zh: 经验}
+        note_zh: 新字体経。
+      - id: kj-sai
+        jp: 済
+        reading: さい
+        on: [サイ]
+        kun: [す]
+        zh: 完成、救济
+        compounds:
+          - {jp: 経済, reading: けいざい, zh: 经济}
+          - {jp: 済む, reading: すむ, zh: 完结、过得去}
+      - id: kj-kenkyuu
+        jp: 究
+        reading: きゅう
+        on: [キュウ]
+        kun: [きわ]
+        zh: 探究
+        compounds:
+          - {jp: 研究, reading: けんきゅう, zh: 研究}
+          - {jp: 究める, reading: きわめる, zh: 钻研}
+      - id: kj-mondai
+        jp: 題
+        reading: だい
+        on: [ダイ]
+        kun: []
+        zh: 题目
+        compounds:
+          - {jp: 問題, reading: もんだい, zh: 问题}
+          - {jp: 題名, reading: だいめい, zh: 标题}
+      - id: kj-bun
+        jp: 問
+        reading: もん
+        on: [モン]
+        kun: [と]
+        zh: 问
+        compounds:
+          - {jp: 質問, reading: しつもん, zh: 问题、提问}
+          - {jp: 問題, reading: もんだい, zh: 问题}
+      - id: kj-bunka
+        jp: 文
+        reading: ぶん
+        on: [ブン, モン]
+        kun: [ふみ]
+        zh: 文
+        compounds:
+          - {jp: 文化, reading: ぶんか, zh: 文化}
+          - {jp: 文学, reading: ぶんがく, zh: 文学}
+      - id: kj-ka
+        jp: 化
+        reading: か
+        on: [カ, ケ]
+        kun: [ば]
+        zh: 变化
+        compounds:
+          - {jp: 文化, reading: ぶんか, zh: 文化}
+          - {jp: 化学, reading: かがく, zh: 化学}

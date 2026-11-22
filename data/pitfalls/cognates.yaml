@@ -1,0 +1,17 @@
+# 可以放心借用的同形词。每条仍有一句边界，避免学成「凡是汉字都能直译」。
+entries:
+  - {id: cg-gakusei, jp: 学生, zh: 学生, note_zh: 可直接借用。大学生是大学生，高校生才是高中生。}
+  - {id: cg-daigaku, jp: 大学, zh: 大学, note_zh: 可直接借用。不要把高校当成大学。}
+  - {id: cg-sensei, jp: 先生, zh: 老师, note_zh: 老师可用。医生、律师、议员也常被叫先生，范围比中文宽。}
+  - {id: cg-keizai, jp: 経済, zh: 经济, note_zh: 可直接借用。读けいざい。}
+  - {id: cg-bunka, jp: 文化, zh: 文化, note_zh: 可直接借用。}
+  - {id: cg-denwa, jp: 電話, zh: 电话, note_zh: 可直接借用。读でんわ，平板。}
+  - {id: cg-tenki, jp: 天気, zh: 天气, note_zh: 可直接借用。}
+  - {id: cg-kazoku, jp: 家族, zh: 家人、家族, note_zh: 意思接近。家庭的「气氛」有时用家庭。}
+  - {id: cg-jikan, jp: 時間, zh: 时间, note_zh: 可直接借用。一小时是一時間。}
+  - {id: cg-hitsuyou, jp: 必要, zh: 必要, note_zh: 可直接借用。「必要がある」。}
+  - {id: cg-kanou, jp: 可能, zh: 可能, note_zh: 可直接借用。}
+  - {id: cg-kantan, jp: 簡単, zh: 简单, note_zh: 可直接借用。不要写成简単。}
+  - {id: cg-benri, jp: 便利, zh: 方便、便利, note_zh: 这才是中文「方便」的日常对译。日语方便（ほうべん）是另一个词。}
+  - {id: cg-tomodachi, jp: 友達, zh: 朋友, note_zh: 可直接借用。读ともだち。}
+  - {id: cg-mizu, jp: 水, zh: 水, note_zh: 训读みず就是水。音读スイ出现在水道、水曜日。}

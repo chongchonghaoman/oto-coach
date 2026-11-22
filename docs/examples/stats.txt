@@ -1,0 +1,20 @@
+课程规模
+  units: 35
+  scaffold_units: 2
+  kana: 122
+  vocab: 98
+  pronunciation: 14
+  kanji: 54
+  grammar: 46
+  scenario: 6
+  listening: 3
+  speaking: 3
+  reading: 3
+  writing: 3
+  items: 352
+  false_friends: 45
+  errors: 19
+  correspondences: 10
+  shinjitai: 42
+  cognates: 15
+校验通过。

@@ -1,0 +1,100 @@
+units:
+  - id: pron-chinese
+    level: zero
+    domain: pronunciation
+    order: 85
+    title_zh: 中文母语者的发音陷阱
+    title_ja: 中国語話者の発音
+    prerequisites: [kana-gojuon]
+    summary_zh: 先把最容易从普通话搬过来的几件事说清楚。这不是全部语音学，是开口之前必须知道的几条。
+    items:
+      - id: pron-u-item
+        jp: う
+        reading: う
+        zh: う不圆唇。
+        note_zh: 对照す、く、つ。嘴唇不要向前撮。错误类型 pron-u。
+        errors: [pron-u]
+      - id: pron-shichitsu
+        jp: しつ
+        reading: しつ
+        zh: し、ち、つ分别对上「西、不送气的ち、不圆唇的つ」，不是 si、ci、cu。
+        note_zh: 三个音分开练。错误类型 pron-shi、pron-chi、pron-tsu。
+        errors: [pron-shi, pron-chi, pron-tsu]
+      - id: pron-ra-item
+        jp: らりるれろ
+        reading: らりるれろ
+        zh: ら行是舌尖轻弹，不是 l。
+        note_zh: 来母可以帮你猜音读，但不能帮你猜这个辅音。
+        errors: [pron-ra]
+      - id: pron-voice-item
+        jp: かがあ
+        reading: かがあ
+        zh: か／が是清浊，不是送气／不送气。
+        note_zh: 摸着喉结练。が的时候声带要响。
+        errors: [pron-voice]
+      - id: pron-devoice-item
+        jp: です
+        reading: です
+        zh: です、した、すき里的い和う常常不响。
+        note_zh: 口型还在，声带可以停。不要为了清楚把每个元音读满。
+        errors: [pron-devoice]
+  - id: pron-pitch
+    level: n5
+    domain: pronunciation
+    order: 86
+    title_zh: 东京重音的最小对立
+    title_ja: アクセント
+    prerequisites: [kana-timing]
+    summary_zh: 一个词通常只有一次由高到低。平板和尾高要加助词才分得开。不要把普通话的四声安到每一拍上。
+    items:
+      - id: pitch-hashi-1
+        jp: 箸
+        reading: はし
+        accent: 1
+        zh: 筷子。头高。はしが是高低低。
+        note_zh: 和桥、边组成最小对立。错误类型 pron-tone-transfer。
+        errors: [pron-tone-transfer]
+      - id: pitch-hashi-2
+        jp: 橋
+        reading: はし
+        accent: 2
+        zh: 桥。尾高。はしが是低高低。
+        note_zh: 单独听和「端」很像，必须听后面的助词。
+      - id: pitch-hashi-0
+        jp: 端
+        reading: はし
+        accent: 0
+        zh: 端、边。平板。はしが是低高高。
+        note_zh: 助词が保持高。
+      - id: pitch-ame-1
+        jp: 雨
+        reading: あめ
+        accent: 1
+        zh: 雨。头高。
+        note_zh: 关西重音常常相反。这里只教东京。
+      - id: pitch-ame-0
+        jp: 飴
+        reading: あめ
+        accent: 0
+        zh: 糖。平板。
+        note_zh: あめが，助词高。
+      - id: pitch-hana-2
+        jp: 花
+        reading: はな
+        accent: 2
+        zh: 花。尾高。はなが是低高低。
+      - id: pitch-hana-0
+        jp: 鼻
+        reading: はな
+        accent: 0
+        zh: 鼻子。平板。はなが是低高高。
+      - id: pitch-kami-1
+        jp: 神
+        reading: かみ
+        accent: 1
+        zh: 神。头高。
+      - id: pitch-kami-2
+        jp: 紙
+        reading: かみ
+        accent: 2
+        zh: 纸。尾高。髪在东京词典里也常是尾高，不能靠重音和纸分开。
