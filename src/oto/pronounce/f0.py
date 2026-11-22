@@ -34,13 +34,14 @@ def _parselmouth(samples: np.ndarray, sample_rate: int):
     import parselmouth
 
     sound = parselmouth.Sound(samples.astype(float), sampling_frequency=sample_rate)
-    pitch = sound.to_pitch(time_step=0.01, pitch_floor=70.0, pitch_ceiling=450.0)
+    # 450 Hz folds ずんだもん / つむぎ / はう, whose vowels sit near 480 Hz, down an octave.
+    pitch = sound.to_pitch(time_step=0.01, pitch_floor=70.0, pitch_ceiling=550.0)
     times = np.asarray(pitch.xs(), dtype=np.float64)
     freqs = np.asarray(pitch.selected_array["frequency"], dtype=np.float64)
     return times, freqs
 
 
-def _autocorr(samples: np.ndarray, sample_rate: int, fmin: float = 70.0, fmax: float = 400.0):
+def _autocorr(samples: np.ndarray, sample_rate: int, fmin: float = 70.0, fmax: float = 550.0):
     data = np.asarray(samples, dtype=np.float64).reshape(-1)
     peak = np.max(np.abs(data)) or 1.0
     data = data / peak

@@ -244,7 +244,9 @@ hatsuon 综合 95.2，准确 94.5，重音 100.0，信心 0.667。
 
 三处补分都只动被判错的那一处，阈值没有整体放宽。
 
-连续四个以上的元音，CTC 把短的イ和エ收成滑音或空白。只对这种串用 librosa 把语速放到 0.75、0.6、0.5，留下没有 content mismatch、删除最少、综合最高的一次。あおい、いえ不到四拍，不放慢。两条的拍都是 correct，准确 100.0；没有传入核，引擎词典和这条 VOICEVOX 的调型不一致，重音是 0.0（flat_for_accented）。
+连续四个以上的元音，CTC 把短的イ和エ收成滑音或空白。只对这种串用 librosa 把语速放到 0.75、0.6、0.5，留下没有 content mismatch、删除最少、综合最高的一次。春日部つむぎ的う在查询里只有 0.010 秒。整段放慢之后这一拍已经对上，但分数只有 16.6。再只把这一拍和旁边短于 0.12 秒的拍拉到大约 0.30–0.42 秒，而且原来 correct 的拍必须还是 correct。同一条音频综合 99.2，五拍都是 correct，う是 95.7。被删掉的拍没有时间范围，不拉长，所以あゆうよ当成あいうえお仍然是イ和エ deleted，综合 42.0。
+
+没传核时用 OpenJTalk 的核来判重音。基频停在死区里就记 unknown，重音分留空，不记 0。四国めたん的あおい核是 2，重音 100.0。四国めたん的いえ核是 1，基频几乎是平的，重音是 None。把いえ按平板合成再按头高来判，重音 0.0。
 
 四国めたん的头高ハ，高基频下 CTC 只有一帧标成 k。只在ハ被判 mispronounced 时把整段降 4 个半音再打分，而且只有降调后的ハ达到 correct 且不低于 70 才替换这一拍。
 
@@ -252,7 +254,7 @@ hatsuon 综合 95.2，准确 94.5，重音 100.0，信心 0.667。
 
 故意读错的样本仍然会被抓住。音频都是 VOICEVOX:四国めたん。菓子が本身也是头高（核 1），把它当成箸が时，ハ 仍是 mispronounced 3.7，综合 71.9，见 [docs/examples/analyze-foil-菓子が.txt](docs/examples/analyze-foil-菓子が.txt)。あゆうよ当成あいうえお，综合 42.0，イ和エ仍是 deleted。橋が按平板合成再按尾高来判，重音 0.0，见 [docs/examples/analyze-foil-橋が-heiban.txt](docs/examples/analyze-foil-橋が-heiban.txt)。端が按尾高合成再按平板来判，重音 0.0，见 [docs/examples/analyze-foil-端が-odaka.txt](docs/examples/analyze-foil-端が-odaka.txt)。
 
-六个声线的表在 [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt)：四国めたん的ノーマル、あまあま、ツンツン，ずんだもんノーマル，春日部つむぎ，雨晴はう。箸が、橋が、端が的词级重音都是 100.0。あいうえお除了つむぎ以外五拍都是 correct，综合 91.9 到 99.6。つむぎ这条查询里ウ的 vowel_length 是 0.010 秒，放慢之后仍是 mispronounced 16.6，エ是 correct 35.9，综合 61.7，重音 0.0。这一拍没有改成 correct。
+六个声线的表在 [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt)：四国めたん的ノーマル、あまあま、ツンツン，ずんだもんノーマル，春日部つむぎ，雨晴はう。箸が、橋が、端が的词级重音都是 100.0。あいうえお六条都是五拍 correct，综合 91.9 到 99.6，つむぎ是 99.2。あおい有五条重音 100.0；ずんだもん这条没有落在核后面的下降，重音是 None。いえ里，ツンツン和雨晴はう是 100.0，四国めたん、ずんだもん、春日部つむぎ是 None。
 
 转写用的是 Kotoba-Whisper v2.0 的 CTranslate2 权重，`faster-whisper`，CPU int8，温度固定为 0。同一条音频解码两次，文本相同，但都不是目标句。[docs/examples/transcribe-hashi.txt](docs/examples/transcribe-hashi.txt) 把箸が写成了「歌詞は」。[docs/examples/transcribe-aiueo.txt](docs/examples/transcribe-aiueo.txt) 把あいうえお写成了「あゆえを」。转写能跑。这两条短合成音，它没有听对。
 
@@ -282,7 +284,7 @@ VOICEVOX 的核心库从 0.16 起是 MIT，声库不是。用了四国めたん�
 
 - 课文写到 N3。N2、N1 只有先修和一句说明。
 - 音高是东京音的教学型。写了 `accent` 的词用 OpenJTalk 对过；引擎和教材不一致时，课上以教材为准，并说明引擎不是 NHK 审定。
-- hatsuon 没有用学习者数据校准。词级重音分现在包含后面的助词。春日部つむぎ的あいうえお里，う大约只有 0.010 秒，这一拍仍是 mispronounced 16.6，综合 61.7。
+- hatsuon 没有用学习者数据校准。词级重音分现在包含后面的助词。没有核、或者基频停在死区里时，重音分是空的，不是 0。
 - 这次的短合成音，Kotoba-Whisper 没有听成目标句。
 - 没有口型评分。hatsuon 模型、VOICEVOX 声库、JMdict 数据库都不在仓库里，CI 也不安装。
 - 间隔按整天计算。

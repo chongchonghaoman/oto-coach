@@ -224,7 +224,9 @@ Same wavs, before and after. The before numbers are the CLI transcript that was 
 
 Each repair touches only the mora or the pitch that was wrong. Thresholds are unchanged.
 
-A run of four or more vowels is what the CTC model turns into a glide or a blank on short イ and エ. Only that kind of clip is time-stretched with librosa at 0.75, 0.6, and 0.5. The kept pass has no content mismatch, the fewest deletions, then the highest overall. あおい and いえ are shorter, so they are not stretched. Every mora is correct and accuracy is 100.0. No nucleus was passed, the engine dictionary does not match this VOICEVOX contour, and pitch is 0.0 (flat_for_accented).
+A run of four or more vowels is what the CTC model turns into a glide or a blank on short イ and エ. Only that kind of clip is time-stretched with librosa at 0.75, 0.6, and 0.5. The kept pass has no content mismatch, the fewest deletions, then the highest overall. On 春日部つむぎ the query gives う 0.010 s. After that slowdown the mora is aligned but scores 16.6. Only that span, plus neighboring morae shorter than 0.12 s, is lengthened to about 0.30–0.42 s, and a mora that was already correct has to stay correct. The same clip is then overall 99.2, five morae correct, う 95.7. A deleted mora has no span and is not stretched, so あゆうよ scored as あいうえお still has イ and エ deleted, overall 42.0.
+
+When no nucleus is passed, OpenJTalk supplies one. A contour that stays inside the dead zone is unknown and the pitch score is empty, not 0. 四国めたん あおい is nucleus 2 and pitch 100.0. 四国めたん いえ is nucleus 1 and the F0 is level, so pitch is None. いえ synthesized heiban and scored as atamadaka is pitch 0.0.
 
 On 四国めたん, atamadaka ハ is one CTC frame labelled k when F0 is high. Only a ハ mora already marked mispronounced is rechecked four semitones lower, and only a correct score of at least 70 replaces that mora.
 
@@ -232,7 +234,7 @@ The particle vowel is often about 20 ms. hatsuon then leaves pitch empty, or rea
 
 Deliberate errors are still caught. The audio is VOICEVOX:四国めたん. 菓子が is also atamadaka (nucleus 1). Scored as 箸が, ハ stays mispronounced at 3.7 and overall is 71.9: [docs/examples/analyze-foil-菓子が.txt](docs/examples/analyze-foil-菓子が.txt). あゆうよ scored as あいうえお is overall 42.0, with イ and エ still deleted. 橋が synthesized heiban and scored as odaka is pitch 0.0: [docs/examples/analyze-foil-橋が-heiban.txt](docs/examples/analyze-foil-橋が-heiban.txt). 端が synthesized odaka and scored as heiban is pitch 0.0: [docs/examples/analyze-foil-端が-odaka.txt](docs/examples/analyze-foil-端が-odaka.txt).
 
-Six styles are in [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt): 四国めたん ノーマル, あまあま, and ツンツン, ずんだもん ノーマル, 春日部つむぎ, and 雨晴はう. 箸が, 橋が, and 端が are word pitch 100.0 on every style. あいうえお is five correct morae on every style except つむぎ, overall 91.9 to 99.6. On つむぎ the query gives ウ a vowel_length of 0.010 s. After the slowdown it is still mispronounced at 16.6, エ is correct at 35.9, overall is 61.7, and pitch is 0.0. That mora was left mispronounced.
+Six styles are in [docs/examples/score-speakers.txt](docs/examples/score-speakers.txt): 四国めたん ノーマル, あまあま, and ツンツン, ずんだもん ノーマル, 春日部つむぎ, and 雨晴はう. 箸が, 橋が, and 端が are word pitch 100.0 on every style. あいうえお is five correct morae on every style, overall 91.9 to 99.6; つむぎ is 99.2. あおい is pitch 100.0 on five styles. ずんだもん has no fall after the nucleus, so pitch is None. For いえ, ツンツン and 雨晴はう are 100.0, and 四国めたん, ずんだもん, and 春日部つむぎ are None.
 
 Transcription uses the CTranslate2 weights of Kotoba-Whisper v2.0 through faster-whisper, CPU int8, temperature fixed at 0. Decoding the same file twice produced the same text, and neither text is the target. [docs/examples/transcribe-hashi.txt](docs/examples/transcribe-hashi.txt) writes 箸が as 歌詞は. [docs/examples/transcribe-aiueo.txt](docs/examples/transcribe-aiueo.txt) writes あいうえお as あゆえを. The transcriber runs. On these short synthetic clips it did not hear the sentence.
 
@@ -262,7 +264,7 @@ The default scheduler is FSRS-4.5 with the published initial weights and retenti
 
 - Lessons stop at N3. N2 and N1 are prerequisites and a sentence.
 - Pitch is a Tokyo teaching pattern. Items that carry `accent` were checked against OpenJTalk. On a disagreement the lesson keeps the curriculum value and says the engine is not an NHK dictionary.
-- hatsuon is not calibrated on learner speech. The word pitch score now includes a following particle. On 春日部つむぎ, う in あいうえお is about 0.010 s and stays mispronounced at 16.6, overall 61.7.
+- hatsuon is not calibrated on learner speech. The word pitch score now includes a following particle. With no nucleus, or with F0 inside the dead zone, the pitch score is empty rather than 0.
 - Kotoba-Whisper did not recover the target on these short synthetic clips.
 - There is no viseme grade. The hatsuon model, the VOICEVOX voices, and the JMdict database are not in the repo, and CI does not install them.
 - Intervals are whole days.

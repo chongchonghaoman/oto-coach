@@ -111,3 +111,69 @@ def test_wrong_word_and_wrong_accent_are_still_caught():
     assert wrong_word["words"][0]["morae"][0]["status"] == "mispronounced"
     assert score_audio(str(heiban), "橋が", reading="はし", accent={"橋": 2})["pitch"] == 0.0
     assert score_audio(str(odaka), "端が", reading="はし", accent={"端": 0})["pitch"] == 0.0
+
+
+def test_short_u_is_recovered_and_a_level_pitch_is_not_zero():
+    pytest.importorskip("hatsuon")
+    pytest.importorskip("librosa")
+    pytest.importorskip("voicevox_core")
+    if not _hatsuon_ready():
+        pytest.skip("hatsuon model is absent")
+    from voicevox_core.blocking import Onnxruntime, OpenJtalk, Synthesizer, VoiceModelFile
+
+    from oto.pronounce.hatsuon_backend import score_audio
+
+    root = Path.home() / ".cache" / "oto" / "voicevox"
+    runtime = root / "onnxruntime" / "lib" / Onnxruntime.LIB_RECOMMENDED_VERSIONED_FILENAME
+    dicts = list((root / "dict").glob("open_jtalk_dic_*"))
+    models = list((root / "models" / "vvms").glob("*.vvm"))
+    if not runtime.is_file() or not dicts or not models:
+        pytest.skip("VOICEVOX runtime is not downloaded")
+    synthesizer = Synthesizer(
+        Onnxruntime.load_once(filename=str(runtime)),
+        OpenJtalk(dicts[0]),
+        acceleration_mode="CPU",
+        cpu_num_threads=2,
+    )
+    with VoiceModelFile.open(models[0]) as model:
+        synthesizer.load_voice_model(model)
+    tsumugi_id = None
+    metan_id = None
+    for meta in synthesizer.metas():
+        for style in meta.styles:
+            if meta.name == "春日部つむぎ" and style.name == "ノーマル":
+                tsumugi_id = style.id
+            if meta.name == "四国めたん" and style.name == "ノーマル":
+                metan_id = style.id
+    if tsumugi_id is None or metan_id is None:
+        pytest.skip("VOICEVOX styles for 春日部つむぎ and 四国めたん are absent")
+
+    def wav(text: str, style_id: int, accent: int | None = None) -> Path:
+        query = synthesizer.create_audio_query(text, style_id)
+        if accent is not None:
+            phrases = query.accent_phrases
+            phrases[0].accent = accent
+            query.accent_phrases = synthesizer.replace_mora_pitch(phrases, style_id)
+        dest = ROOT / "docs" / "examples" / f"_smoke-{text}-{style_id}-{accent}.wav"
+        dest.write_bytes(synthesizer.synthesis(query, style_id))
+        return dest
+
+    try:
+        vowels = score_audio(str(wav("あいうえお", tsumugi_id)), "あいうえお")
+        assert vowels["overall"] >= 90
+        assert [mora["status"] for mora in vowels["words"][0]["morae"]] == ["correct"] * 5
+        foil = score_audio(str(wav("あゆうよ", metan_id)), "あいうえお", reading="あいうえお")
+        statuses = [mora["status"] for mora in foil["words"][0]["morae"]]
+        assert "deleted" in statuses or "mispronounced" in statuses
+        blue = score_audio(str(wav("あおい", metan_id)), "あおい")
+        assert blue["pitch"] == 100.0
+        assert blue["words"][0]["accent"] == "correct"
+        house = score_audio(str(wav("いえ", metan_id)), "いえ")
+        assert house["pitch"] is None
+        assert house["words"][0]["accent"] == "unknown"
+        flat = score_audio(str(wav("いえ", metan_id, accent=2)), "いえ", accent={"いえ": 1})
+        assert flat["pitch"] == 0.0
+        assert flat["words"][0]["accent"] == "wrong"
+    finally:
+        for path in (ROOT / "docs" / "examples").glob("_smoke-*.wav"):
+            path.unlink(missing_ok=True)

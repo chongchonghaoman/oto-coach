@@ -14,6 +14,9 @@ from typing import Any
 # Half a semitone. The fall of 橋が onto が is often only about one semitone
 # once the consonant dip is ignored, and a heiban 端が keeps rising.
 DEAD_ZONE_ST = 0.5
+# A rise has to clear this before it counts against an accented nucleus.
+# Half a semitone of rise is still level; the heiban foil rises by about two.
+RISE_WRONG_ST = 1.5
 PEAK_DELAY = 1
 MIN_COVERAGE = 0.5
 MIN_VOICED_FRAMES = 2
@@ -43,6 +46,10 @@ def judge_nucleus(values: list[float | None], nucleus: int | None) -> str:
         return "unknown"
     if min(window) < -DEAD_ZONE_ST:
         return "correct"
+    # A level step is not evidence of the wrong accent. Only a rise that
+    # clears RISE_WRONG_ST is: the pitch went up where an accent has to fall.
+    if max(window) < RISE_WRONG_ST:
+        return "unknown"
     return "wrong"
 
 

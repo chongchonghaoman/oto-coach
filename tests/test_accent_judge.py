@@ -1,5 +1,10 @@
 from oto.pronounce.accent_judge import judge_nucleus
-from oto.pronounce.hatsuon_backend import _phrases, is_bare_vowel_run
+from oto.pronounce.hatsuon_backend import (
+    _phrases,
+    accent_from_features,
+    is_bare_vowel_run,
+    short_vowel_bounds,
+)
 
 
 def test_heiban_rejects_a_fall_and_odaka_requires_one():
@@ -16,6 +21,17 @@ def test_heiban_rejects_a_fall_and_odaka_requires_one():
     assert judge_nucleus(shallow_odaka, 2) == "correct"
     assert judge_nucleus(shallow_odaka, 0) == "wrong"
     assert judge_nucleus([-3.0, 0.0, 0.2], 0) == "correct"
+
+
+def test_a_level_contour_is_unknown_and_a_rise_is_the_wrong_accent():
+    level = [0.0, 0.1]
+    small_rise = [0.0, 1.0]
+    rise = [-2.2, 2.0]
+    assert judge_nucleus(level, 1) == "unknown"
+    assert judge_nucleus(small_rise, 1) == "unknown"
+    assert judge_nucleus(level, 0) == "correct"
+    assert judge_nucleus(rise, 1) == "wrong"
+    assert judge_nucleus(rise, 0) == "correct"
 
 
 def test_pitch_abstains_without_two_voiced_morae():
@@ -45,6 +61,33 @@ def test_the_next_accented_word_starts_its_own_phrase():
     phrases = _phrases(words)
     assert [phrase["nucleus"] for phrase in phrases] == [2, 0]
     assert [phrase["n_words"] for phrase in phrases] == [1, 1]
+
+
+def test_dictionary_accent_keeps_heiban_and_skips_a_particle():
+    accent = accent_from_features(
+        [
+            {"string": "端", "acc": 0, "pos": "名詞"},
+            {"string": "が", "acc": 0, "pos": "助詞"},
+        ]
+    )
+    assert accent == {"端": 0}
+
+
+def test_short_vowel_bounds_cover_the_weak_mora_and_the_short_neighbors():
+    morae = [
+        {"kana": "ア", "status": "correct", "start": 0.18, "end": 0.34},
+        {"kana": "イ", "status": "correct", "start": 0.34, "end": 0.54},
+        {"kana": "ウ", "status": "mispronounced", "start": 0.54, "end": 0.62},
+        {"kana": "エ", "status": "correct", "start": 0.62, "end": 0.72},
+        {"kana": "オ", "status": "correct", "start": 0.72, "end": 0.80},
+    ]
+    assert short_vowel_bounds(morae) == (2, 4)
+    deleted = [
+        {"kana": "ア", "status": "correct", "start": 0.12, "end": 0.24},
+        {"kana": "イ", "status": "deleted", "start": None, "end": None},
+        {"kana": "ウ", "status": "correct", "start": 0.38, "end": 0.50},
+    ]
+    assert short_vowel_bounds(deleted) is None
 
 
 def test_bare_vowel_run_is_only_four_or_more_vowels():

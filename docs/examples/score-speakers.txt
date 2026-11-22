@@ -2,7 +2,7 @@ VOICEVOX style sweep. あいうえお is the bare vowel run. 箸/橋/端 carry �
 styles: metan=四国めたんノーマル, zunda=ずんだもんノーマル, tsumugi=春日部つむぎ, ama=四国めたんあまあま, tsun=四国めたんツンツン, hau=雨晴はう
 あいうえお metan    overall=99.6 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:97.9 オ:correct:100.0
 あいうえお zunda    overall=96.0 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:100.0 オ:correct:100.0
-あいうえお tsumugi  overall=61.7 pitch=0.0 ア:correct:100.0 イ:correct:100.0 ウ:mispronounced:16.6 エ:correct:35.9 オ:correct:100.0
+あいうえお tsumugi  overall=99.2 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:95.7 エ:correct:100.0 オ:correct:100.0
 あいうえお ama      overall=98.0 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:100.0 エ:correct:88.6 オ:correct:99.8
 あいうえお tsun     overall=99.3 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:96.1 エ:correct:100.0 オ:correct:100.0
 あいうえお hau      overall=91.9 pitch=100.0 ア:correct:100.0 イ:correct:100.0 ウ:correct:53.6 エ:correct:100.0 オ:correct:100.0
@@ -24,6 +24,21 @@ styles: metan=四国めたんノーマル, zunda=ずんだもんノーマル, ts
 箸が hau      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
 橋が hau      overall=100.0 pitch=100.0 accent=correct ハ=correct/100.0
 端が hau      overall=95.2 pitch=100.0 accent=correct ハ=correct/83.6
+
+No nucleus was passed. OpenJTalk supplied it. A level contour is pitch empty, not 0.
+あおい metan    overall=98.0 pitch=100.0 accent=correct
+あおい zunda    overall=100.0 pitch=None accent=unknown
+あおい tsumugi  overall=100.0 pitch=100.0 accent=correct
+あおい ama      overall=100.0 pitch=100.0 accent=correct
+あおい tsun     overall=100.0 pitch=100.0 accent=correct
+あおい hau      overall=100.0 pitch=100.0 accent=correct
+いえ metan    overall=100.0 pitch=None accent=unknown
+いえ zunda    overall=100.0 pitch=None accent=unknown
+いえ tsumugi  overall=100.0 pitch=None accent=unknown
+いえ ama      overall=16.7 pitch=None accent=unknown エ=deleted
+いえ tsun     overall=100.0 pitch=100.0 accent=correct
+いえ hau      overall=100.0 pitch=100.0 accent=correct
+いえ heiban audio scored as atamadaka overall=87.5 pitch=0.0 accent=wrong
 
 Shorter vowel runs are not stretched. Foils keep the error.
 あおい overall=88.0 accuracy=100.0 pitch=0.0 repairs=None ア:correct:100.0 オ:correct:100.0 イ:correct:100.0

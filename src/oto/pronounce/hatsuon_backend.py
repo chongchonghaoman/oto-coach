@@ -16,6 +16,10 @@ from typing import Any
 # Slowing only that kind of utterance gives the vowel a frame of its own.
 # あゆうよ scored as あいうえお still has イ and エ deleted at these rates.
 _VOWEL_RATES = (0.75, 0.6, 0.5)
+# A mora shorter than this, once a vowel run has been slowed, still has no
+# steady state. Give that span and the short morae beside it about this long.
+_SHORT_MORA_S = 0.12
+_SHORT_TARGETS = (0.30, 0.36, 0.42)
 _H_SHIFT_STEPS = -4.0
 _H_ROW = frozenset("ハは")
 _VOWELS = frozenset("あいうえおアイウエオぁぃぅぇぉァィゥェォ")
@@ -66,6 +70,69 @@ def _accent_key(accent: dict[str, int] | None) -> tuple[tuple[str, int], ...]:
     return tuple(sorted((key, int(value)) for key, value in accent.items()))
 
 
+def accent_from_features(features: list[dict[str, Any]]) -> dict[str, int] | None:
+    """Lexical nuclei from an OpenJTalk feature list. Particles are not nuclei.
+
+    Heiban is 0 and has to be kept. A following が is its own feature with
+    accent 0; copying that onto the phrase would split the particle off the word.
+    """
+    accent: dict[str, int] = {}
+    for feature in features:
+        pos = str(feature.get("pos") or "")
+        if pos.startswith("助詞"):
+            continue
+        surface = feature.get("string")
+        nucleus = feature.get("acc")
+        if surface in (None, "") or nucleus is None:
+            continue
+        accent[str(surface)] = int(nucleus)
+    return accent or None
+
+
+def dictionary_accent(text: str) -> dict[str, int] | None:
+    """Accent nuclei for ``text`` when the caller did not pass any."""
+    try:
+        import pyopenjtalk
+    except ImportError:
+        return None
+    try:
+        features = pyopenjtalk.run_frontend(text)
+    except Exception:
+        return None
+    if not features:
+        return None
+    return accent_from_features(features)
+
+
+def short_vowel_bounds(morae: list[dict[str, Any]]) -> tuple[int, int] | None:
+    """Span of a mispronounced vowel plus the short morae touching it.
+
+    A deleted mora has no span: the phone was not found, and stretching the
+    gap would turn a different vowel (あゆうよ scored as あいうえお) into a hit.
+    """
+    failed = [
+        index
+        for index, mora in enumerate(morae)
+        if mora.get("status") == "mispronounced" and mora.get("start") is not None
+    ]
+    if not failed:
+        return None
+    start = end = failed[0]
+    while end + 1 < len(morae):
+        nxt = morae[end + 1]
+        if nxt.get("start") is None:
+            break
+        duration = float(nxt["end"]) - float(nxt["start"])
+        if duration >= _SHORT_MORA_S:
+            break
+        end += 1
+    if start > 0:
+        prev = morae[start - 1]
+        if prev.get("start") is not None and float(prev["end"]) - float(prev["start"]) < _SHORT_MORA_S:
+            start -= 1
+    return start, end
+
+
 def is_bare_vowel_run(text: str) -> bool:
     """Four or more vowels and nothing else. あいうえお qualifies; あおい does not."""
     chars = [char for char in text if char not in " \t　、。"]
@@ -90,20 +157,54 @@ def score_audio(
         class TextError(Exception):
             pass
 
+    accent_source = None
+    if not accent:
+        derived = dictionary_accent(text)
+        if derived:
+            accent = derived
+            accent_source = "openjtalk"
     payload = _score_passes(hatsuon, TextError, audio, text, reading, accent)
+    if accent_source and payload.get("available"):
+        payload["accent_source"] = accent_source
     if not payload.get("available") or not _repair:
         return payload
     repairs: list[str] = []
-    if is_bare_vowel_run(text) or (isinstance(reading, str) and is_bare_vowel_run(reading)):
-        payload, stretched = _best_vowel_run(hatsuon, TextError, audio, text, reading, accent, payload)
-        if stretched:
-            repairs.append("vowel_stretch")
-    payload = _repair_ha_onset(payload, audio, text, reading, accent)
-    if payload.pop("_ha_repaired", False):
-        repairs.append("h_onset")
-    payload = _repair_particle_pitch(payload, audio)
-    if payload.pop("_pitch_repaired", False):
-        repairs.append("particle_pitch")
+    working = audio
+    owned: list[str] = []
+    try:
+        vowel_run = is_bare_vowel_run(text) or (isinstance(reading, str) and is_bare_vowel_run(reading))
+        if vowel_run:
+            payload, working, stretched = _best_vowel_run(
+                hatsuon, TextError, audio, text, reading, accent, payload
+            )
+            if stretched:
+                repairs.append("vowel_stretch")
+                if working != audio:
+                    owned.append(working)
+            payload, widened, widened_path = _repair_short_vowels(
+                hatsuon, TextError, working, text, reading, accent, payload
+            )
+            if widened:
+                repairs.append("short_vowel")
+                if widened_path != working:
+                    owned.append(widened_path)
+                    working = widened_path
+        payload = _repair_ha_onset(payload, audio, text, reading, accent)
+        if payload.pop("_ha_repaired", False):
+            repairs.append("h_onset")
+        # Mora times belong to ``working``. Do not scale them back onto another file.
+        payload.pop("vowel_stretch_rate", None)
+        payload = _repair_particle_pitch(payload, working)
+        if payload.pop("_pitch_repaired", False):
+            repairs.append("particle_pitch")
+    finally:
+        for path in owned:
+            try:
+                os.unlink(path)
+            except OSError:
+                pass
+    if accent_source:
+        payload["accent_source"] = accent_source
     if repairs:
         payload["repairs"] = repairs
     return payload
@@ -166,27 +267,34 @@ def _best_vowel_run(
     reading: str | None,
     accent: dict[str, int] | None,
     original: dict[str, Any],
-) -> tuple[dict[str, Any], bool]:
-    """Score slowed copies and keep the one with fewer deleted morae."""
+) -> tuple[dict[str, Any], str, bool]:
+    """Score slowed copies and keep the one with fewer deleted morae.
+
+    The returned path is the audio the kept payload was scored on. The caller
+    deletes it when it is not ``audio``.
+    """
     best = original
     best_key = _vowel_rank(original)
+    best_path = audio
     used_stretch = False
     for rate in _VOWEL_RATES:
         variant = _variant_wav(audio, rate=rate)
         if variant is None:
             continue
-        try:
-            payload = _score_passes(hatsuon, text_error, variant, text, reading, accent)
-        finally:
-            os.unlink(variant)
+        payload = _score_passes(hatsuon, text_error, variant, text, reading, accent)
         if not payload.get("available"):
+            os.unlink(variant)
             continue
         payload["vowel_stretch_rate"] = rate
         key = _vowel_rank(payload)
         if key < best_key:
-            best, best_key = payload, key
+            if used_stretch and best_path != audio:
+                os.unlink(best_path)
+            best, best_key, best_path = payload, key, variant
             used_stretch = True
-    return best, used_stretch and best is not original
+        else:
+            os.unlink(variant)
+    return best, best_path, used_stretch and best_path != audio
 
 
 def _vowel_rank(payload: dict[str, Any]) -> tuple[int, int, float]:
@@ -195,6 +303,119 @@ def _vowel_rank(payload: dict[str, Any]) -> tuple[int, int, float]:
     deleted = sum(mora["status"] == "deleted" for mora in morae)
     mismatch = 1 if "content_mismatch" in warnings else 0
     return (mismatch, deleted, -float(payload.get("overall") or 0.0))
+
+
+def _repair_short_vowels(
+    hatsuon: Any,
+    text_error: type[Exception],
+    audio: str,
+    text: str,
+    reading: str | None,
+    accent: dict[str, int] | None,
+    payload: dict[str, Any],
+) -> tuple[dict[str, Any], bool, str]:
+    """Lengthen one short, already-aligned vowel without slowing the whole clip.
+
+    Global rates that recover つむぎ's 10 ms う also make あゆうよ's ゆ look like
+    イ. Only a mora the aligner already called mispronounced is eligible, and
+    a previously correct mora has to stay correct.
+    """
+    morae = [mora for word in payload.get("words") or [] for mora in word["morae"]]
+    bounds = short_vowel_bounds(morae)
+    if bounds is None:
+        return payload, False, audio
+    start, end = bounds
+    region_start = float(morae[start]["start"])
+    region_end = float(morae[end]["end"])
+    count = end - start + 1
+    have = region_end - region_start
+    if have <= 0:
+        return payload, False, audio
+    best = payload
+    best_bad = sum(mora["status"] != "correct" for mora in morae)
+    best_overall = float(payload.get("overall") or 0.0)
+    best_path = audio
+    replaced = False
+    for target in _SHORT_TARGETS:
+        need = target * count
+        if need <= have:
+            continue
+        variant = _stretch_region(audio, region_start, region_end, have / need)
+        if variant is None:
+            continue
+        try:
+            candidate = _score_passes(hatsuon, text_error, variant, text, reading, accent)
+        except Exception:
+            os.unlink(variant)
+            continue
+        if not _keeps_correct_morae(payload, candidate):
+            os.unlink(variant)
+            continue
+        bad = sum(
+            mora["status"] != "correct"
+            for word in candidate["words"]
+            for mora in word["morae"]
+        )
+        overall = float(candidate.get("overall") or 0.0)
+        if bad < best_bad or (bad == best_bad and overall > best_overall):
+            if replaced and best_path != audio:
+                os.unlink(best_path)
+            best, best_bad, best_overall, best_path = candidate, bad, overall, variant
+            replaced = True
+        else:
+            os.unlink(variant)
+    if not replaced:
+        return payload, False, audio
+    return best, True, best_path
+
+
+def _keeps_correct_morae(before: dict[str, Any], after: dict[str, Any]) -> bool:
+    if not after.get("available"):
+        return False
+    if "content_mismatch" in (after.get("warnings") or []):
+        return False
+    old = [mora for word in before.get("words") or [] for mora in word["morae"]]
+    new = [mora for word in after.get("words") or [] for mora in word["morae"]]
+    if len(old) != len(new):
+        return False
+    for earlier, later in zip(old, new):
+        if earlier["status"] == "correct" and later["status"] != "correct":
+            return False
+    old_bad = sum(mora["status"] != "correct" for mora in old)
+    new_bad = sum(mora["status"] != "correct" for mora in new)
+    return new_bad < old_bad
+
+
+def _stretch_region(audio: str, start: float, end: float, rate: float) -> str | None:
+    try:
+        import numpy as np
+        import soundfile as sf
+    except ImportError:
+        return None
+    try:
+        import librosa
+    except ImportError:
+        return None
+    try:
+        samples, sample_rate = sf.read(audio, dtype="float32", always_2d=False)
+    except Exception:
+        return None
+    samples = np.asarray(samples, dtype=np.float32)
+    if samples.ndim > 1:
+        samples = samples.mean(axis=1)
+    i0 = max(0, int(start * sample_rate))
+    i1 = min(len(samples), int(end * sample_rate))
+    if i1 - i0 < 400:
+        return None
+    try:
+        middle = librosa.effects.time_stretch(samples[i0:i1], rate=float(rate))
+    except Exception:
+        return None
+    stretched = np.concatenate([samples[:i0], np.asarray(middle, dtype=np.float32), samples[i1:]])
+    handle = tempfile.NamedTemporaryFile(suffix=".wav", prefix="oto-score-", delete=False)
+    handle.close()
+    sf.write(handle.name, stretched, int(sample_rate))
+    return handle.name
 
 
 def _repair_ha_onset(
@@ -253,9 +474,9 @@ def _repair_particle_pitch(payload: dict[str, Any], audio: str) -> dict[str, Any
     reads the consonant in the middle of が. The end of が is the part that
     separates odaka from heiban.
     """
-    phrases = [phrase for phrase in _phrases(payload.get("words") or []) if phrase["n_words"] >= 2]
-    if not phrases or any(phrase["nucleus"] is None for phrase in phrases):
-        return payload
+    phrases = [phrase for phrase in _phrases(payload.get("words") or []) if phrase["nucleus"] is not None]
+    if not phrases:
+        return _clear_pitch_without_a_nucleus(payload)
     try:
         from oto.pronounce.accent_judge import judge_nucleus, semitone_values
         from oto.pronounce.audio import read_wav
@@ -277,11 +498,12 @@ def _repair_particle_pitch(payload: dict[str, Any], audio: str) -> dict[str, Any
         outcome = judge_nucleus(values, phrase["nucleus"])
         judged.append(outcome)
         if outcome == "unknown":
+            phrase["head"]["accent"] = "unknown"
             continue
         phrase["head"]["accent"] = outcome
     usable = [item for item in judged if item != "unknown"]
     if not usable:
-        return payload
+        return _clear_pitch_without_a_nucleus(payload)
     pitch = round(100.0 * sum(item == "correct" for item in usable) / len(usable), 1)
     changed = payload.get("pitch") != pitch or any(
         head.get("accent") != previous for previous, head in before
@@ -291,6 +513,27 @@ def _repair_particle_pitch(payload: dict[str, Any], audio: str) -> dict[str, Any
         return payload
     payload["_pitch_repaired"] = True
     _recompute(payload)
+    return payload
+
+
+def _clear_pitch_without_a_nucleus(payload: dict[str, Any]) -> dict[str, Any]:
+    """A missing or level contour is not a score of 0.
+
+    0 means the accent we were given is not the one in the audio. When there is
+    no nucleus, or the F0 never leaves the dead zone, the pitch is unknown.
+    """
+    changed = False
+    for word in payload.get("words") or []:
+        if word.get("accent") in {None, "flat_for_accented", "unknown"} or word.get("accent_type") is None:
+            if word.get("accent") != "unknown":
+                word["accent"] = "unknown"
+                changed = True
+    if payload.get("pitch") is not None:
+        payload["pitch"] = None
+        changed = True
+        _recompute(payload)
+    if changed:
+        payload["_pitch_repaired"] = True
     return payload
 
 
